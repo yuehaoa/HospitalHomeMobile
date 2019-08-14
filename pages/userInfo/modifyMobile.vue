@@ -1,5 +1,6 @@
 <template>
 	<view class="content">
+		<view v-bind:style="{height:divheight +'px'}" style="background-color: #0081FF;"></view>
 		<view class="header">
 			<navigator class="icon" open-type="navigateBack">返回</navigator>
 			<view class="person">修改手机号</view>
@@ -9,11 +10,16 @@
 			<view class="underline"></view>
 		</view>
 		<view class="tips tail"><text>请输入新手机号</text></view>
-		<view class="baiban">
-			
+		
+		<view  class="tip-text">
+			<text v-if="tip!=''">{{tip}}</text>
+			<text v-else></text>
 		</view>
+		<view class="baiban">
+		</view>
+		
 		<view class="button-type">
-			<button class="button" size="mini" type="primary" v-on:click="modifytele">保存</button>
+			<button class="button" size="mini" type="primary" v-on:click="modifytele" >保存</button>
 		</view>
 	</view>
 </template>
@@ -24,9 +30,11 @@
 		data() 
 		{
 			return {
+				divheight:this.StatusBar,
 				preMobile:'',
 				telenum: '',
 				currentUserGuid:'',
+				tip:''
 			};
 		},
 		onLoad()
@@ -62,14 +70,20 @@
 						'content-type':"application/x-www-form-urlencoded",
 					},
 					success: res => {
+						this.tip=res.data.msg;
 					},//成功之后操作
-				})
+				});
 			},
 		}
 	}
 </script>
 
 <style lang="scss">
+	.tip-text
+	{
+		text-align: center;
+		color: red;
+	}
 	.person{
 		position: absolute;
 		width: 60%;

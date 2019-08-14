@@ -1,5 +1,6 @@
 <template>
 	<view class="content">
+		<view v-bind:style="{height:divheight +'px'}" style="background-color: #0081FF;"></view>
 		<view class="header">
 			<navigator class="icon" open-type="navigateBack">返回</navigator>
 			<view class="person">修改年龄</view>
@@ -9,11 +10,17 @@
 			<view class="underline"></view>
 		</view>
 		<view class="tips tail"><text>请输入新年龄</text></view>
-		<view class="baiban">
-			
+
+		<view  class="tip-text">
+			<text v-if="tip!=''">{{tip}}</text>
+			<text v-else></text>
 		</view>
+		<view class="baiban">
+		</view>
+
+		<button class="button" size="mini" type="primary" v-on:click="modifyage" >保存</button>
 		<view class="button-type">
-			<button class="button" size="mini" type="primary" v-on:click="modifyage">保存</button>
+			
 		</view>
 	</view>
 </template>
@@ -24,9 +31,11 @@
 		data() 
 		{
 			return {
+				divheight:this.StatusBar,
 				perAge:'',
 				age: '',
 				currentUserGuid:'',
+				tip:''
 			};
 		},
 		onLoad()
@@ -61,15 +70,21 @@
 						'content-type':"application/x-www-form-urlencoded",
 					},
 					success: res => {
-						
+						this.tip=res.data.msg;
+						//if(this.tip==='年龄格式不正确。')this.tip='年龄格式不正确：如9岁应输入09';
 					}
-				})
+				});
 			},
 		}
 	}
 </script>
 
 <style lang="scss">
+	.tip-text
+	{
+		text-align: center;
+		color: red;
+	}
 	@import '../../style/main.css';
 	.person{
 		position: absolute;

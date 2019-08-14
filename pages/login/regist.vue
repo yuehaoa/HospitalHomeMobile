@@ -111,6 +111,7 @@
 		margin-top: 300upx;
 	}
 	.zai-input{
+		height:auto;
 		background: #e2f5fc;
 		margin-top: 30upx;
 		border-radius: 100upx;
@@ -161,7 +162,7 @@
 		box-sizing: border-box;
 		text-align: center;
 		text-decoration: none;
-		line-height: 2.55555556;
+		line-height: 2.3;
 		-webkit-tap-highlight-color: transparent;
 		overflow: hidden;
 		padding-top: 2upx;
