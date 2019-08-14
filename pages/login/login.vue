@@ -9,6 +9,9 @@
 				<button class="zai-checking" @tap="getCode" :loading="gettingCode">获取验证码</button>
 			</view>
 			<button class="zai-btn" @tap="Login">登录</button>
+			<view  class="tip-text">
+				<text v-if="secrettip!=''">{{secrettip}}</text>
+			</view>
 			<navigator url="./regist" class="zai-label">还没有账号？点此注册.</navigator>
 		</view>
 	</view>
@@ -22,6 +25,8 @@
 				mobile:'',
 				sceneId:'',
 				Code:'',
+				secrettip:'',
+				
 			}
 		},
 		onLoad() {
@@ -32,7 +37,7 @@
 			{
 				if(this.mobile.length!=11)
 				{
-					alert("手机号码长度错误");
+					this.secrettip='手机号码长度错误';
 					return;
 				}
 				this.gettingCode=true;
@@ -45,11 +50,12 @@
 					success: res => {
 						if(res.data.success===false)
 						{
-							alert(res.data.msg);
+							this.secrettip=res.data.msg;
 							return;
 						}
 						this.Code=res.data.Code;
 						this.sceneId=res.data.sceneId;
+						this.tip='';
 					},
 					complete: () => {
 						this.gettingCode=false;
@@ -73,7 +79,7 @@
 						console.log(res.data.success);
 						if(res.data.success===false)
 						{
-							alert(res.data.msg);
+							this.secrettip=res.data.msg;
 							return;
 						}
 						uni.setStorage({
@@ -92,7 +98,12 @@
 </script>
 
 <style>
-
+.tip-text
+	{
+		margin-top: 50upx;
+		text-align: center;
+		color: red;
+	}
 	.zai-box{
 		padding: 0 50upx;
 		position: relative;

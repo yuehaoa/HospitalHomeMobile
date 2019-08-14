@@ -14,7 +14,7 @@
 				<i style="display: inline-block;" class="iconfont icon-nan"></i>
 			</p>
 			<p class="info_text">
-				{{userInfo.Grade?userInfo.Grade:"未填写"}} 岁  {{userInfo.Location?userInfo.Location:"未填写地区"}}
+				年龄:{{userInfo.Grade?userInfo.Grade:"未填写"}}&nbsp;&nbsp;地区:{{userInfo.Location?userInfo.Location:"未填写地区"}}
 			</p>
 			<view class="info_item">
 				<p>{{userInfo.Collections.Hospitals}}</p>
