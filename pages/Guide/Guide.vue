@@ -3,26 +3,26 @@
 		<cu-custom bgColor="bg-gradual-blue" :isBack="true"><block slot="backText">返回</block><block slot="content">智能导诊</block></cu-custom>
 		<view class="cu-chat">
 			<template v-for="(item, index) in chatInfos">
-				<view :key="index" class="cu-item" :class="{ [item.direction]: true }" v-if="item.direction !== 'info'">
-					<view v-if="item.direction === 'server'" class="cu-avatar radius" :style="{ 'background-image': `url(${item.avatar})`}"></view>
+				<view :key="index" class="cu-item" :class="{ self: item.direction === 'self', server: item.direction === 'server' }" v-if="item.direction !== 'info'">
+					<view v-if="item.direction === 'server'" class="cu-avatar radius" :style="{ 'background-image': 'url(' + item.avatar + ')'}"></view>
 					<view class="main">
 						<view class="content shadow" :class="{ 'bg-green': item.direction === 'self' }">
 							<view class="margin-bottom-xs text-xl">{{item.text}}</view>
 							<view v-if="item.isEnable" class="grid col-2">
-								<view v-for="(opt, index) in item.options" :key="index" class="margin-bottom-sm">
+								<view v-for="(opt, idx) in item.options" :key="idx" class="margin-bottom-sm">
 									<button @click="getNextQuestion(opt, item)" class="cu-btn round bg-blue margin-lr-xs text-xl">{{opt.Content}}</button>
 								</view>
 							</view>
 						</view>
 					</view>
-					<view v-if="item.direction === 'self'" class="cu-avatar radius" :style="{ 'background-image': `url(${item.avatar})`}"></view>
+					<view v-if="item.direction === 'self'" class="cu-avatar radius" :style="{ 'background-image': 'url(' + item.avatar + ')'}"></view>
 				</view>
 				<view v-else class="cu-info" :key="index" @click="resetQuestion()">
 					<text class="cuIcon-roundclosefill text-red "></text> {{item.text}}
 				</view>
 			</template>
 		</view>
-		<view class="cu-bar foot input" style="display: none;" :style="[{bottom:InputBottom+'px'}]">
+		<view class="cu-bar foot input" style="display: none;" :style="{bottom: InputBottom + 'px'}">
 			<view class="action">
 				<text class="cuIcon-sound text-grey"></text>
 			</view>
