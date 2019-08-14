@@ -9,7 +9,7 @@
 						<view class="content shadow" :class="{ 'bg-green': item.direction === 'self' }">
 							<view class="margin-bottom-xs text-xl">{{item.text}}</view>
 							<view v-if="item.isEnable" class="grid col-2">
-								<view v-for="(opt, index) in item.options" :key="index" class="margin-bottom-sm">
+								<view v-for="(opt, idx) in item.options" :key="idx" class="margin-bottom-sm">
 									<button @click="getNextQuestion(opt, item)" class="cu-btn round bg-blue margin-lr-xs text-xl">{{opt.Content}}</button>
 								</view>
 							</view>
@@ -22,7 +22,7 @@
 				</view>
 			</template>
 		</view>
-		<view class="cu-bar foot input" style="display: none;" :style="[{bottom:InputBottom+'px'}]">
+		<view class="cu-bar foot input" style="display: none;" :style="{bottom: InputBottom + 'px'}">
 			<view class="action">
 				<text class="cuIcon-sound text-grey"></text>
 			</view>
