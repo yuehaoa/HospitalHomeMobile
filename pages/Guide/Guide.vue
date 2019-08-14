@@ -3,8 +3,8 @@
 		<cu-custom bgColor="bg-gradual-blue" :isBack="true"><block slot="backText">返回</block><block slot="content">智能导诊</block></cu-custom>
 		<view class="cu-chat">
 			<template v-for="(item, index) in chatInfos">
-				<view :key="index" class="cu-item" :class="{ [item.direction]: true }" v-if="item.direction !== 'info'">
-					<view v-if="item.direction === 'server'" class="cu-avatar radius" :style="{ 'background-image': `url(${item.avatar})`}"></view>
+				<view :key="index" class="cu-item" :class="{ self: item.direction === 'self', server: item.direction === 'server' }" v-if="item.direction !== 'info'">
+					<view v-if="item.direction === 'server'" class="cu-avatar radius" :style="{ 'background-image': 'url(' + item.avatar + ')'}"></view>
 					<view class="main">
 						<view class="content shadow" :class="{ 'bg-green': item.direction === 'self' }">
 							<view class="margin-bottom-xs text-xl">{{item.text}}</view>
@@ -15,7 +15,7 @@
 							</view>
 						</view>
 					</view>
-					<view v-if="item.direction === 'self'" class="cu-avatar radius" :style="{ 'background-image': `url(${item.avatar})`}"></view>
+					<view v-if="item.direction === 'self'" class="cu-avatar radius" :style="{ 'background-image': 'url(' + item.avatar + ')'}"></view>
 				</view>
 				<view v-else class="cu-info" :key="index" @click="resetQuestion()">
 					<text class="cuIcon-roundclosefill text-red "></text> {{item.text}}
