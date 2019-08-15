@@ -1,5 +1,6 @@
 <template>
 	<view class="center">
+		<view v-bind:style="{height:divheight +'px'}" style="background-color: #0081FF;"></view>
 		<view class="center_box_bg">
 			<view class="header">
 				<navigator class="icon" open-type="navigateBack">返回</navigator>
@@ -51,6 +52,9 @@
 				</navigator>
 			</view>
 		</view>
+		<view class="padding flex flex-direction">
+			<button class="cu-btn bg-red margin-tb-sm lg" @tap="logout()" >退出</button>
+		</view>
 	</view>
 </template>
 
@@ -69,6 +73,7 @@
 		},
 		data() {
 			return {
+				divheight:this.StatusBar,
 				currentUserGuid:'',
 				userInfo:{},
 				imgsrc:'',
@@ -94,12 +99,30 @@
 					complete: () => {}
 				});
 			},
+			logout(){
+				uni.request({
+					url: 'http://hh.ricebird.cn/api/security/logout',
+					method: 'POST',
+					data: {
+						currentUserGuid:this.currentUserGuid,
+					},
+					success: res => {},
+					fail: () => {},
+					complete: () => {
+						uni.clearStorage();
+					}
+				});
+				uni.reLaunch({
+					url:'../login/login',
+				});
+			},
 		},
 		
 	}
 </script>
 
 <style lang="scss">
+	@import '../../colorui/main.css';
 	.icon{
 		height: 33px;
 		font-size: 14px;

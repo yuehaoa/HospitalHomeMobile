@@ -1,5 +1,5 @@
 <template>
-	<view class="zai-box" id="login">
+	<view class="zai-box">
 		<image src="../../static/register.png" class="zai-logo"></image>
 		<view class="zai-title">用户登录</view>
 		<view class="zai-form">
@@ -9,6 +9,9 @@
 				<button class="zai-checking" @tap="getCode" :loading="gettingCode">获取验证码</button>
 			</view>
 			<button class="zai-btn" @tap="Login">登录</button>
+			<view  class="tip-text">
+				<text v-if="secrettip!=''">{{secrettip}}</text>
+			</view>
 			<navigator url="./regist" class="zai-label">还没有账号？点此注册.</navigator>
 		</view>
 	</view>
@@ -18,22 +21,26 @@
 	export default {
 		data() {
 			return {
-				gettingCode: false,
-				mobile: '',
-				sceneId: '',
-				Code: '',
+				gettingCode:false,
+				mobile:'',
+				sceneId:'',
+				Code:'',
+				secrettip:'',
+				
 			}
 		},
 		onLoad() {
-
+	
 		},
 		methods: {
-			getCode() {
-				if (this.mobile.length != 11) {
-					alert("手机号码长度错误");
+			getCode()
+			{
+				if(this.mobile.length!=11)
+				{
+					this.secrettip='手机号码长度错误';
 					return;
 				}
-				this.gettingCode = true;
+				this.gettingCode=true;
 				uni.request({
 					url: 'http://hh.ricebird.cn/api/security/GetVerifyCode',
 					method: 'POST',
@@ -41,43 +48,46 @@
 						mobile: this.mobile,
 					},
 					success: res => {
-						if (res.data.success === false) {
-							alert(res.data.msg);
+						if(res.data.success===false)
+						{
+							this.secrettip=res.data.msg;
 							return;
 						}
-						this.Code = res.data.Code;
-						this.sceneId = res.data.sceneId;
+						this.Code=res.data.Code;
+						this.sceneId=res.data.sceneId;
+						this.tip='';
 					},
 					complete: () => {
-						this.gettingCode = false;
+						this.gettingCode=false;
 					}
 				});
-			},
-			Login() {
+			},	
+			Login(){
 				uni.request({
 					url: 'http://hh.ricebird.cn/api/security/Login',
 					method: 'POST',
 					data: {
-						username: this.mobile,
-						pwd: this.Code,
-						sceneId: this.sceneId,
-						method: 'mobile',
+						username:this.mobile,
+						pwd:this.Code,
+						sceneId:this.sceneId,
+						method:'mobile',
 					},
-					header: {
-						'content-type': "application/x-www-form-urlencoded",
+					header:{
+						'content-type':"application/x-www-form-urlencoded",
 					},
 					success: res => {
 						console.log(res.data.success);
-						if (res.data.success === false) {
-							alert(res.data.msg);
+						if(res.data.success===false)
+						{
+							this.secrettip=res.data.msg;
 							return;
 						}
 						uni.setStorage({
-							key: 'currentUserGuid',
-							data: res.data.currentUserGuid,
+							key:'currentUserGuid',
+							data:res.data.currentUserGuid,
 						});
 						uni.navigateTo({
-							url: '../profile/profile',
+							url:'../profile/profile',
 						})
 
 					}
@@ -87,20 +97,24 @@
 	}
 </script>
 
-<style lang="less">
-	.zai-box {
+<style>
+.tip-text
+	{
+		margin-top: 50upx;
+		text-align: center;
+		color: red;
+	}
+	.zai-box{
 		padding: 0 50upx;
 		position: relative;
 	}
-
-	.zai-logo {
+	.zai-logo{
 		margin-top: 150rpx;
 		width: 100%;
 		width: 100%;
 		height: 310upx;
 	}
-
-	.zai-title {
+	.zai-title{
 		padding-top: 120rpx;
 		position: absolute;
 		top: 0;
@@ -109,35 +123,29 @@
 		color: #fff;
 		text-align: center;
 		width: 100%;
-		margin-left: -50upx;
+		margin-left:-50upx;
 	}
-
-	.zai-form {
+	.zai-form{
 		margin-top: 300upx;
 	}
-
-	input.zai-input {
+	.zai-input{
+		height: auto;
 		background: #e2f5fc;
 		margin-top: 30upx;
 		border-radius: 100upx;
 		padding: 20upx 40upx;
 		font-size: 36upx;
-		height: auto;
 	}
-
-	.input-placeholder,
-	.zai-input {
+	.input-placeholder, .zai-input{
 		color: #94afce;
 	}
-
-	.zai-label {
+	.zai-label{
 		padding: 60upx 0;
 		text-align: center;
 		font-size: 30upx;
 		color: #a7b6d0;
 	}
-
-	.zai-btn {
+	.zai-btn{
 		background-image: linear-gradient(45deg, #0081ff, #1cbbb4);
 		color: #ffffff;
 		border: 0;
@@ -145,21 +153,18 @@
 		font-size: 36upx;
 		margin-top: 60upx;
 	}
-
-	.zai-btn:after {
+	.zai-btn:after{
 		border: 0;
 	}
-
+	
 	/*验证码输入框*/
-	.zai-input-btn {
+	.zai-input-btn{
 		position: relative;
 	}
-
-	.zai-input-btn .zai-input {
+	.zai-input-btn .zai-input{
 		padding-right: 260upx;
 	}
-
-	.zai-checking {
+	.zai-checking{
 		position: absolute;
 		right: 0;
 		top: 0;
@@ -175,23 +180,21 @@
 		box-sizing: border-box;
 		text-align: center;
 		text-decoration: none;
-		line-height: 2.55555556;
+		line-height: 2.3;
 		-webkit-tap-highlight-color: transparent;
 		overflow: hidden;
 		padding-top: 2upx;
 		padding-bottom: 2upx;
 	}
-
-	.zai-checking.zai-time {
+	.zai-checking.zai-time{
 		background: #a7b6d0;
 	}
-
+	
 	/*按钮点击效果*/
-	.zai-btn.button-hover {
+	.zai-btn.button-hover{
 		transform: translate(1upx, 1upx);
 	}
-
-	.zai-checking.button-hover {
+	.zai-checking.button-hover{
 		transform: translate(1upx, 1upx);
 	}
 </style>

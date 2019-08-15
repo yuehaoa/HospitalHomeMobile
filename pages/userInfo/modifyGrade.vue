@@ -1,20 +1,28 @@
 <template>
-	<view class="content">
+	<view>
+		<view v-bind:style="{height:divheight +'px'}" style="background-color: #0081FF;"></view>
 		<view class="header">
 			<navigator class="icon" open-type="navigateBack">返回</navigator>
 			<view class="person">修改年龄</view>
 		</view>
-		<view class="input">
-			<input class="uni-input" focus=true v-bind:placeholder='preAge' type="number" maxlength=3 v-model="age">
-			<view class="underline"></view>
-		</view>
-		<view class="tips tail"><text>请输入新年龄</text></view>
-		<view class="baiban">
+		
+		<view class="content">
+			<view class="input-group">
+				<view class="input-row border">
+					<input class="uni-input" focus=true v-bind:placeholder='preAge' type="number" maxlength=3 v-model="age">
+					<view class="underline"></view>
+				</view>
+			</view>
+			<view class="tips tail"><text>请输入新年龄</text></view>
 			
+			<view class="baiban">
+			</view>
+			
+			<view class="button-type">
+				<button class="button" size="mini" type="primary" v-on:click="modifyage" >保存</button>
+			</view>
 		</view>
-		<view class="button-type">
-			<button class="button" size="mini" type="primary" v-on:click="modifyage">保存</button>
-		</view>
+		
 	</view>
 </template>
 
@@ -24,9 +32,11 @@
 		data() 
 		{
 			return {
+				divheight:this.StatusBar,
 				perAge:'',
 				age: '',
 				currentUserGuid:'',
+				tip:''
 			};
 		},
 		onLoad()
@@ -61,9 +71,17 @@
 						'content-type':"application/x-www-form-urlencoded",
 					},
 					success: res => {
-						
+						this.tip=res.data.msg;
+						uni.showToast({
+							icon: 'none',
+							title: this.tip,
+							duration:3000,
+							position:top,
+						})
+						this.Grade=this.age;
+						//if(this.tip==='年龄格式不正确。')this.tip='年龄格式不正确：如9岁应输入09';
 					}
-				})
+				});
 			},
 		}
 	}
@@ -71,6 +89,72 @@
 
 <style lang="scss">
 	@import '../../style/main.css';
+	
+	page {
+		background-color: white;
+	}
+	
+	.content{
+		//display: flex;
+		//flex: 1;
+		//flex-direction: column;
+		/* background-color: #efeff4; */
+		padding: 5px;
+	}
+	.input-group {
+		margin: 0 auto;
+		background-color: #ffffff;
+		//margin-top: 40upx;
+		position: relative;
+	}
+	
+	.input-row.border::after {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0px;
+		height: 1px;
+		content: '';
+		-webkit-transform: scaleY(.5);
+		transform: scaleY(.5);
+		background-color: #c8c7cc;
+	}
+	
+	.input-group::after {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		height: 1px;
+		content: '';
+		-webkit-transform: scaleY(.5);
+		transform: scaleY(.5);
+		background-color: #c8c7cc;
+	}
+	
+	.input-row {
+		display: flex;
+		flex-direction: row;
+		position: relative;
+	}
+	
+	.input-row .title,.input-row input{
+		height: 70upx;
+		padding: 20upx 0;
+		line-height: 70upx;
+	}	
+	
+	.input-row input
+	{
+		margin-left: 15upx;
+	}
+	
+	.tip-text
+	{
+		text-align: center;
+		color: red;
+	}
+	
 	.person{
 		position: absolute;
 		width: 60%;
@@ -78,12 +162,14 @@
 		font-size: 16px;
 		text-align: center;
 	}
+	
 	.icon{
 		height: 33px;
 		font-size: 14px;
 		line-height: 33px;
 		padding-left:50rpx;
 	}
+	
 	.header{
 		margin-bottom: 30rpx;
 		background-image: linear-gradient(45deg, #0081ff, #1cbbb4);
@@ -123,13 +209,14 @@
 	}
 	.tail
 	{
-		margin: 0 auto;
-		width: 90%;
+		margin:0 auto;
+		padding-top: 5px;
+		width: 98%;
 		align-content: center;
 	}
 	.button-type{
 		margin: 0 auto;
-		width: 85%;
+		width: 100%;
 	}
 	.button
 	{
@@ -137,7 +224,7 @@
 	}
 	.baiban
 	{
-		height: 50px;
+		height: 150px;
 	}
 	
 	.head{
@@ -149,23 +236,13 @@
 	.uni-input{
 		margin-left: 20rpx;
 		margin-right: 20rpx;
-		
 	}
-		
-	.input{
-		margin: 0 auto;
-		border:0px solid #fff;
-		border-bottom:1px solid #4CD964;
-		border-radius: 5px;//让方形图有椭圆边
-		width: 90%;
-	}
-	 
 	image {
 		width: 40upx;
 		height: 40upx;
 	}
 	.tips text{
-		font-size:12px;
+		font-size:15px;
 		color: #808080;
 		margin: 0 auto;
 	}

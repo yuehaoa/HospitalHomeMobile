@@ -1,19 +1,20 @@
 <template>
 	<view class="content">
+		<view v-bind:style="{height:divheight +'px'}" style="background-color: #0081FF;"></view>
 		<view class="head">
 			<p>
 				<span>我的</span>
-				<span><navigator @click="logout()" class="iconfont icon-shutDown" open-type="reLaunch" url="../login/login"></navigator></span>
+				<span><navigator class="cuIcon-settings" url="../userInfo/userInfo"></navigator></span>
 			</p>
 		</view>	
 		<view class="info">
 			<image v-on:click="NavToInfor()" v-bind:src="imgsrc" />
 			<p class="info_name">
-				<span>{{userInfo.RealName}}</span> 
-				<i class="iconfont icon-nan"></i>
+				<span>{{userInfo.RealName}}</span>
+				<i style="display: inline-block;" class="iconfont icon-nan"></i>
 			</p>
 			<p class="info_text">
-				{{userInfo.Grade?userInfo.Grade:"未填写"}} 岁  {{userInfo.Location?userInfo.Location:"未填写地区"}}
+				年龄:{{userInfo.Grade?userInfo.Grade:"未填写"}}&nbsp;&nbsp;地区:{{userInfo.Location?userInfo.Location:"未填写地区"}}
 			</p>
 			<view class="info_item">
 				<p>{{userInfo.Collections.Hospitals}}</p>
@@ -34,7 +35,7 @@
 				<i class="iconfont icon-xiezuo icon_comment"></i>
 				<p>首页</p>
 			</view>
-			<view>
+			<view @click="NavToDJ()">
 				<i class="iconfont icon-tupian icon_comment"></i>
 				<p>智能导诊</p>
 			</view>
@@ -73,6 +74,7 @@
 	export default {
 		data() {
 			return {
+				divheight:this.StatusBar,
 				currentUserGuid:'',
 				imgsrc:'',
 				userInfo:{},
@@ -88,6 +90,7 @@
 		},
 		onShow() {
 			this.GetInfor();
+			console.log(this.divheight);
 		},
 		methods: {
 			GetInfor(){
@@ -110,21 +113,12 @@
 					url:'../userInfo/userInfo',
 				})
 			},
-			logout(){
-				uni.request({
-					url: 'http://hh.ricebird.cn/api/security/logout',
-					method: 'POST',
-					data: {
-						currentUserGuid:this.currentUserGuid,
-					},
-					success: res => {
-					},
-					fail: () => {},
-					complete: () => {
-						uni.clearStorage();
-					}
+			NavToDJ(){
+				uni.navigateTo({
+					url:'../Guide/Guide',
 				});
-			}
+			},
+			
 		}
 
 	}
@@ -132,6 +126,7 @@
 
 <style>
 	@import '../../style/icon.css';
+	@import'../../colorui/icon.css';
 	*{
 		margin: 0;
 		padding: 0;
@@ -161,11 +156,14 @@
 	.head > p > span:nth-of-type(2){
 		display: inline-block;
 		float: right;
-		padding-right: 16px;
+		padding:0rpx 0rpx 0 0;
+		font-size: 20px;
 	}
-	.head > p > span:nth-of-type(2)>i{
-		font-size: 18px;
-		font-weight: bold;
+	.head > p > span:nth-of-type(2)> navigator{
+		text-align: center;
+		font-size: 40rpx;
+		width: 90rpx;
+		margin-right: 20rpx;
 	}
 	
 	
@@ -227,8 +225,8 @@
 		width: 100%;
 		float: left;
 		overflow: hidden;
-		margin-top: 16px;
-		padding: 32px 0;
+		margin-top: 32rpx;
+		padding: 20rpx 0rpx;
 	}
 	.iconCon > view{
 		float: left;

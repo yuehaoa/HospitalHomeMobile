@@ -63,8 +63,8 @@
 		"current": 0, //当前激活的模式(list 的索引项)
 		"list": [
 			{
-				"name": "导诊",
-				"path": "pages/Guide/Guide"
+				"name": "登录",
+				"path": "pages/login/login"
 			}
 		]
 	},
