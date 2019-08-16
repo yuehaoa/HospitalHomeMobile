@@ -14,7 +14,7 @@
 				<i style="display: inline-block;" class="iconfont icon-nan"></i>
 			</p>
 			<p class="info_text">
-				年龄:{{userInfo.Grade?userInfo.Grade:"未填写"}}&nbsp;&nbsp;地区:{{userInfo.Location?userInfo.Location:"未填写地区"}}
+				{{userInfo.Grade?userInfo.Grade:"未填写"}} 岁  {{userInfo.Location?userInfo.Location:"未填写地区"}}
 			</p>
 			<view class="info_item">
 				<p>{{userInfo.Collections.Hospitals}}</p>
@@ -50,22 +50,22 @@
 		</view>
 		
 		<view class="ui-table">
-			<view class="ui-table-cell">
+			<navigator class="ui-table-cell">
 				<span>附近医院</span>
 				<i class="iconfont icon-you1"></i>
-			</view>
-			<view>
+			</navigator>
+			<navigator>
 				<span>我的收藏</span>
 				<i class="iconfont icon-you1"></i>
-			</view>
-			<view>
+			</navigator>
+			<navigator>
 				<span>导诊记录</span>
 				<i class="iconfont icon-you1"></i>
-			</view>
-			<view>
+			</navigator>
+			<navigator>
 				<span>扫一扫</span>
 				<i class="iconfont icon-you1"></i>
-			</view>
+			</navigator>
 		</view>
 	</view>
 </template>
@@ -124,9 +124,10 @@
 	}
 </script>
 
-<style>
+<style lang="less">
 	@import '../../style/icon.css';
 	@import'../../colorui/icon.css';
+	@import url("../../color.less");
 	*{
 		margin: 0;
 		padding: 0;
@@ -135,10 +136,9 @@
 	}
 	.head{
 		/* 头部包含背景图 */
-		background-color: #ffda19;
+		background-color: @mainColor;
 		width: 100%;
 		overflow: hidden;
-		
 		height: 160px;
 	}
 	.head > p{
@@ -240,20 +240,20 @@
 		background-color: #FFFFFF;
 		border-top: 8px solid #EFEFF4;
 	}
-	.ui-table > view{
+	.ui-table > navigator{
 		height: 50px;
 		line-height: 50px;
 		border-bottom: 1px solid #EFEFF4;
 		padding: 0 32px;
 	}
-	.ui-table > view > span{
+	.ui-table > navigator > span{
 		float: left;
 	}
-	.ui-table > view > i{
+	.ui-table > navigator > i{
 		float: right;
 	}
-	.ui-table > view:hover{
-		background: #F6F6F6;
+	.ui-table .navigator-hover{
+		background: #B0B0B0;
 	}
 	
 	.icon_comment{

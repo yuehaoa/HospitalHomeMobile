@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "手机号码修改",
-  "usingComponents": {}
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  }
 }

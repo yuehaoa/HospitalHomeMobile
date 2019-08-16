@@ -1114,20 +1114,20 @@
 	background-color: #FFFFFF;
 	border-top: 8px solid #EFEFF4;
 }
-.ui-table > view{
+.ui-table > navigator{
 	height: 50px;
 	line-height: 50px;
 	border-bottom: 1px solid #EFEFF4;
 	padding: 0 32px;
 }
-.ui-table > view > ._span{
+.ui-table > navigator > ._span{
 	float: left;
 }
-.ui-table > view > ._i{
+.ui-table > navigator > ._i{
 	float: right;
 }
-.ui-table > view:hover{
-	background: #F6F6F6;
+.ui-table .navigator-hover{
+	background: #B0B0B0;
 }
 .icon_comment{
 	border-radius: 100px;

@@ -11,6 +11,7 @@
 			<button class="zai-btn" @tap="Regist">注册</button>
 			<view  class="tip-text">
 				<text v-if="secrettip!=''">{{secrettip}}</text>
+				<text v-else></text>
 			</view>
 			<navigator url="./login" hover-class="none" class="zai-label">已有账号？点此登录.</navigator>
 		</view>
@@ -32,7 +33,7 @@
 	
 		},
 		methods: {
-			getCode()
+			getCode(mobile)
 			{
 				if(this.mobile.length!=11)
 				{
@@ -74,6 +75,11 @@
 						'content-type':"application/x-www-form-urlencoded",
 					},
 					success: res => {
+						if(this.sceneId==='')
+						{
+							this.secrettip='请先获取验证码';
+							return;
+						}
 						if(res.data.success===false)
 						{
 							this.secrettip=res.data.msg;
