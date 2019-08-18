@@ -11,6 +11,7 @@
 			<button class="zai-btn" @tap="Login">登录</button>
 			<view  class="tip-text">
 				<text v-if="secrettip!=''">{{secrettip}}</text>
+				<text v-else></text>
 			</view>
 			<navigator url="./regist" class="zai-label">还没有账号？点此注册.</navigator>
 		</view>
@@ -50,7 +51,7 @@
 					success: res => {
 						if(res.data.success===false)
 						{
-							this.secrettip=res.data.msg;
+							this.secrettip = res.data.msg;
 							return;
 						}
 						this.Code=res.data.Code;

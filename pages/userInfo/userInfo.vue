@@ -1,11 +1,10 @@
 <template>
 	<view class="center">
-		<view v-bind:style="{height:divheight +'px'}" style="background-color: #0081FF;"></view>
+		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
+			<block slot="backText">返回</block>
+			<block slot="content">个人信息</block>
+		</cu-custom>
 		<view class="center_box_bg">
-			<view class="header">
-				<navigator class="icon" open-type="navigateBack">返回</navigator>
-				<view class="person">个人信息</view>
-			</view>
 			<view class="center_menu">
 				<navigator  class="menu_item">
 					<text style="flex:1;">头像</text>
@@ -122,7 +121,6 @@
 </script>
 
 <style lang="scss">
-	@import '../../colorui/main.css';
 	.icon{
 		height: 33px;
 		font-size: 14px;
@@ -135,22 +133,6 @@
 		margin:0 20%;
 		font-size: 16px;
 		text-align: center;
-	}
-	.cu-custom  {
-		min-height: 0px;
-		-webkit-box-shadow: 0px 0px 0px;
-		box-shadow: 0px 0px 0px;
-		z-index: 9999;
-		background-image: linear-gradient(45deg, #0081ff, #1cbbb4);
-		color: #ffffff
-	}
-	.cu-bar .content {
-		padding-left:150rpx;
-		text-align: center;
-		width: calc(100% - 187px);
-		height: 33px;
-		font-size: 17px;
-		line-height: 33px;
 	}
 	image {
 		width: 50upx;
@@ -264,10 +246,11 @@
 			position: relative;
 			border-bottom: 1px solid #EFEFEF;
 
-			&:hover {
-				background: #F6F6F6 !important;
+			&.navigator-hover{
+				/*按钮点击效果*/
+				background: #B0B0B0;
 			}
-
+			
 			&::after {
 				content: '';
 				width: 30upx;
@@ -287,4 +270,6 @@
 			}
 		}
 	}
+
+
 </style>

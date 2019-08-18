@@ -24,6 +24,62 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+page {
+  background-color: white;
+}
+.container {
+  /* background-color: #efeff4; */
+  padding: 5px;
+}
+.input-group {
+  margin: 0 auto;
+  background-color: #ffffff;
+  position: relative;
+}
+.input-row.border::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0px;
+  height: 1px;
+  content: '';
+  -webkit-transform: scaleY(0.5);
+  -ms-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+  background-color: #c8c7cc;
+}
+.input-group::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  content: '';
+  -webkit-transform: scaleY(0.5);
+  -ms-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+  background-color: #c8c7cc;
+}
+.input-row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: relative;
+}
+.input-row .title, .input-row input {
+  height: 70rpx;
+  padding: 20rpx 0;
+  line-height: 70rpx;
+}
+.input-row input {
+  margin-left: 15rpx;
+}
 .tip-text {
   text-align: center;
   color: red;
@@ -84,20 +140,21 @@ image {
 }
 .tail {
   margin: 0 auto;
-  width: 90%;
+  padding-top: 5px;
+  width: 98%;
   -webkit-align-content: center;
       -ms-flex-line-pack: center;
           align-content: center;
 }
 .button-type {
   margin: 0 auto;
-  width: 85%;
+  width: 100%;
 }
 .button {
   width: 100%;
 }
 .baiban {
-  height: 50px;
+  height: 150px;
 }
 .head {
   text-align: left;
@@ -107,23 +164,12 @@ image {
   margin-left: 20rpx;
   margin-right: 20rpx;
 }
-.input {
-  margin: 0 auto;
-  border: 0px solid #fff;
-  border-bottom: 1px solid #4CD964;
-  height: 50rpx;
-  border-radius: 5px;
-  width: 90%;
-  -webkit-align-content: center;
-      -ms-flex-line-pack: center;
-          align-content: center;
-}
 image {
   width: 40rpx;
   height: 40rpx;
 }
 .tips text {
-  font-size: 12px;
+  font-size: 15px;
   color: #808080;
   margin: 0 auto;
 }

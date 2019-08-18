@@ -1,12 +1,11 @@
 <template>
 	<view>
-		<view v-bind:style="{height:divheight +'px'}" style="background-color: #0081FF;"></view>
-		<view class="header">
-			<navigator class="icon" open-type="navigateBack">返回</navigator>
-			<view class="person">修改昵称</view>
-		</view>
+		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
+			<block slot="backText">返回</block>
+			<block slot="content">修改昵称</block>
+		</cu-custom>
 		
-		<view class="content">
+		<view class="container">
 			<view class="input-row border">
 				<input class="uni-input" focus=true v-bind:placeholder="preNickName" type="text" maxlength=100 v-model="nickname">
 				<view class="underline"></view>
@@ -72,7 +71,7 @@
 							icon: 'none',
 							title: this.tip,
 							duration:3000,
-							position:top,
+							position:'center',
 						})
 						this.preNickName=this.nickname;
 					},//成功之后操作
@@ -83,13 +82,11 @@
 </script>
 
 <style lang="scss">
-	@import '../../style/main.css';
-	
 	page {
 		background-color: white;
 	}
 	
-	.content{
+	.container{
 		//display: flex;
 		//flex: 1;
 		//flex-direction: column;
