@@ -1,9 +1,9 @@
 <template>
 	<view class="content">
-		<view v-bind:style="{height:divheight +'px'}" style="background-color: #0081FF;"></view>
+		<view v-bind:style="{height: divheight +'px'}" style="background-color: #0081FF;"></view>
 		<view class="head">
 			<p>
-				<span>我的</span>
+				<span></span>
 				<span><navigator class="cuIcon-settings" url="../userInfo/userInfo"></navigator></span>
 			</p>
 		</view>	
@@ -90,7 +90,6 @@
 		},
 		onShow() {
 			this.GetInfor();
-			console.log(this.divheight);
 		},
 		methods: {
 			GetInfor(){
@@ -136,13 +135,14 @@
 	}
 	.head{
 		/* 头部包含背景图 */
+		color: #FFF;
 		background-color: @mainColor;
 		width: 100%;
 		overflow: hidden;
 		height: 160px;
 	}
 	.head > p{
-		/* 放我的和关机图标 */
+		/* 放我的和设置图标 */
 		height: 50px;
 		line-height: 50px;
 	}
@@ -226,14 +226,18 @@
 		float: left;
 		overflow: hidden;
 		margin-top: 32rpx;
-		padding: 20rpx 0rpx;
+		padding: 0rpx 0rpx;
 	}
 	.iconCon > view{
 		float: left;
 		width: calc( 100% / 4 );
 		text-align: center;
+		padding: 20rpx 0rpx;
 	}
-
+	.iconCon > view:active{
+		background-color: @active-Color;
+	}
+	
 	.ui-table{
 		float: left;
 		width: calc(100%);

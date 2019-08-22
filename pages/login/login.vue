@@ -77,7 +77,6 @@
 						'content-type':"application/x-www-form-urlencoded",
 					},
 					success: res => {
-						console.log(res.data.success);
 						if(res.data.success===false)
 						{
 							this.secrettip=res.data.msg;
