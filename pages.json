@@ -2,6 +2,36 @@
 	"pages": [
 		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path": "pages/ExpertList/ExpertList",
+			"style": {
+				"navigationBarTitleText": "医生列表"
+			}
+		},
+		{
+			"path": "pages/DoctorDetail/DoctorDetail",
+			"style": {
+				"navigationBarTitleText": "医生详细"
+			}
+		},
+		{
+			"path": "pages/Search/search",
+			"style": {
+				"navigationBarTitleText": "搜索页"
+			}
+		},
+		{
+			"path": "pages/HospitalDetail/HospitalDetail",
+			"style": {
+				"navigationBarTitleText": "医院介绍"
+			}
+		},
+		{
+			"path": "pages/DepartList/DepartList",
+			"style": {
+				"navigationBarTitleText": "科室列表"
+			}
+		},
+		{
 			"path": "pages/login/login",
 			"style": {
 				"navigationBarTitleText": "登录界面"
