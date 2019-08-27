@@ -50,7 +50,7 @@
 		<view class="cu-list menu sm-border" id="list">	<!--科室列表-->
 			<view class="cu-item" :key="index" v-for="(item, index) in departList">
 				<view class="content" >
-					<text class="text-black">{{item}}</text>
+					<text class="text-black" @click="NavToDetail">{{item}}</text>
 				</view>
 			</view>
 		</view>
@@ -80,6 +80,14 @@
 					"市级",
 					"公立"
 				]
+			}
+		},
+		methods: {
+			NavToDetail() {
+				uni.navigateTo({
+					url: '../ExpertList/ExpertList',
+					success: res => {},
+				});
 			}
 		}
 	}

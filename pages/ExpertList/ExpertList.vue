@@ -5,7 +5,7 @@
 			<view class="padding-top-lg flex">	<!--四个按钮-->
 				<view class="padding-lr">
 					<button class="cu-btn cuIcon bg-grey text-xl">
-						<text class="cuIcon-back"></text>
+						<text class="cuIcon-back" @click="NavToDepaList"></text>
 					</button>
 				</view>
 				<view class="padding-lr" style="margin-left: auto;">
@@ -28,7 +28,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="margin-lr radius bg-white" style="height: 500px;" >
+		<view class="margin-lr radius bg-white" style="height: auto;" >
 			<view class="text-xxl padding-top margin-left">
 				<text class="text-cyan text-xxl">{{depart[0].name}}</text>
 				<text class="margin-left text-df">({{depart[0].ExpertNumber}}位专家)</text>
@@ -36,9 +36,9 @@
 			<view class="margin-left margin">
 				<text class="text-df">{{depart[0].departintro}}</text>
 			</view>
-			<view class="solids-bottom margin-lr-sm flex  p-xs mb-sm" :key="index" v-for="(item,index) in depart[0].Experts">
+			<view class="solids-bottom margin-lr-sm flex  p-xs mb-sm" :key="index" v-for="(item,index) in depart[0].Experts" @click="NavToDocDetail">
 					<view class="flex-sub  ">
-					<image id='avatar' class="cu-avatar xl round margin" :src="item.avatar"></image>
+					<image id='avatar' class="cu-avatar xl round margin" :src="item.avatar" ></image>
 					</view>
 					<view class="flex-twice margin-top margin-bottom margin-right">
 						<view class="display:inline margin-bottom-sm">
@@ -77,7 +77,18 @@
 	
 		},
 		methods: {
-	
+			NavToDepaList(){
+				uni.navigateTo({
+					url: '../DepartList/DepartList',
+					success: res => {},
+				});
+			},
+			NavToDocDetail(){
+				uni.navigateTo({
+					url: '../DoctorDetail/DoctorDetail',
+					success: res => {},
+				});
+			}
 		}
 	}
 </script>

@@ -5,7 +5,7 @@
 			<view class="padding-top-lg flex">	<!--四个按钮-->
 				<view class="padding-lr">
 					<button class="cu-btn cuIcon bg-grey text-xl">
-						<text class="cuIcon-back"></text>
+						<text class="cuIcon-back" @click="NavToExList"></text>
 					</button>
 				</view>
 				<view class="padding-lr" style="margin-left: auto;">
@@ -78,7 +78,12 @@
 	
 		},
 		methods: {
-	
+			NavToExList(){
+				uni.navigateTo({
+					url: '../ExpertList/ExpertList',
+					success: res => {},
+				});
+			}
 		}
 	}
 </script>
