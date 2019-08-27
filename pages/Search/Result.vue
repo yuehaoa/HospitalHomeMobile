@@ -26,15 +26,13 @@
 			</scroll-view>
 		</view>
 		<view class="flex">
-			<picker class="bg-white" :value="index" :range="picker">
-				<view class="picker">
-					{{picker[index]}}
-					<text class="cuIcon-unfold margin-left-sm"></text>
-				</view>
+			<picker class="bg-white padding-sm radius cu-btn" :value="index" :range="picker">
+				<text>{{picker[index]}}</text>
+				<text class="cuIcon-unfold margin-left-sm"></text>
 			</picker>
 			<button>筛选</button>
 		</view>
-		<view> <!--自动展开-->
+		<view style="height"> <!--自动展开-->
 			
 		</view>
 	</view>
