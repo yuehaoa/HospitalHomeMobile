@@ -42,7 +42,7 @@
 				<p :key="key" v-for="(value,key) in contacts">{{key}}:{{value}}</p>
 			</view>
 			<view>
-				<button class="cu-btn">查看科室</button>
+				<button class="cu-btn" @click="NavDepartList()">查看科室</button>
 			</view>
 		</view>
 		<view id="HospitalDetail" class="bg-white">
@@ -109,6 +109,12 @@
 		methods:{
 			tabSelect(e) {
 				this.TabCur = e.currentTarget.dataset.id;
+			},
+			NavDepartList() {
+				uni.navigateTo({
+					url: '../DepartList/DepartList',
+					success: res => {},
+				});
 			}
 		}
 	}

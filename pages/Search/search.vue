@@ -20,7 +20,7 @@
 						科室
 					</view>
 					<view class="cu-item" :class="2==TabCur?'text-blue cur':''" @tap="tabSelect" data-id="2">
-						医生
+						专家
 					</view>
 				</view>
 			</scroll-view>
