@@ -26,14 +26,14 @@
 			<view class="chat">
 					<p style="font-size: 25px;padding: 10px 15px;color: #00a7f4;">智能导诊</p>
 					<view class="cu-chat">
-						<view class="cu-item">
+						<view class="cu-item" style="padding: 10rpx;">
 							<view class="main">
 								<view class="content shadow" style="background-color: #f9f9f9;">
 									<text>Hi~<br/>我是智能导诊助手</text>
 								</view>
 							</view>
 						</view>
-						<view class="cu-item self">
+						<view class="cu-item self" style="padding: 10rpx;">
 							<view class="main">
 								<view class="content bg-blue shadow">
 									<text>感冒</text>
@@ -55,14 +55,14 @@
 						<text class="cuIcon-titles text-blue"></text>
 						<text class="text-xl text-bold">医院介绍</text>
 					</view>
-					<view class="more flex" @tap="SearchMore">查看更多<image src="../static/多边形%201%20拷贝%202.png"></image></view>
+					<view class="more" @tap="SearchMore">查看更多<text class="cuIcon-playfill"></text></view>
 				</view>
 				<scroll-view scroll-x>
 					<view class="flex text-center">
-						<view class="card bg-white margin-lr-sm padding"  v-for="(doctor,index) in doctors1" :key="index">
-							<view><image :src="doctor.avatar" class="cu-avatar round xl"></image></view>
-							<view class=" text-xl text-black padding-sm">{{doctor.name}}</view>
-							<button class="cu-tag radius text-lg" :class="[doctor.state=='关注'?'bg-blue':'']" @tap="subsribe1(index)">{{doctor.state}}</button>
+						<view class="card bg-white margin-lr-sm padding"  v-for="(hospitals,index) in hospitals1" :key="index">
+							<view><image :src="hospitals.avatar" class="cu-avatar round lg margin-xs"></image></view>
+							<view class=" text-xs text-black padding-sm">{{hospitals.name}}</view>
+							<button style="padding:0 32px" class="cu-tag sm radius text-xs" :class="[hospitals.state=='关注'?'bg-blue':'']" @tap="subsribe1(index)">{{hospitals.state}}</button>
 						</view>
 					</view>
 				</scroll-view>
@@ -73,14 +73,14 @@
 						<text class="cuIcon-titles text-blue"></text>
 						<text class="text-xl text-bold">进驻医疗机构</text>
 					</view>
-					<view class="more flex" @tap="SearchMore">查看更多<image src="../../static/多边形%201%20拷贝%202.png"></image></view>
+					<view class="more" @tap="SearchMore">查看更多<text class="cuIcon-playfill"></text></view>
 				</view>
 				<scroll-view scroll-x>
 					<view class="flex text-center">
-						<view class="card bg-white margin-lr-sm padding"  v-for="(doctor,index) in doctors2" :key="index">
-							<view><image :src="doctor.avatar" class="cu-avatar round xl"></image></view>
-							<view class=" text-xl text-black padding-sm">{{doctor.name}}</view>
-							<button class="cu-tag radius text-lg" :class="[doctor.state=='关注'?'bg-blue':'']" @tap="subsribe2(index)">{{doctor.state}}</button>
+						<view class="card bg-white margin-lr-sm padding"  v-for="(hospitals,index) in hospitals2" :key="index">
+							<view><image :src="hospitals.avatar" class="cu-avatar round lg margin-xs"></image></view>
+							<view class="text-xs text-black padding-sm">{{hospitals.name}}</view>
+							<button style="padding:0 32px" class="cu-tag sm radius text-xs " :class="[hospitals.state=='关注'?'bg-blue':'']" @tap="subsribe2(index)">{{hospitals.state}}</button>
 						</view>
 					</view>
 				</scroll-view>
@@ -113,57 +113,57 @@
 			return{
 				TabCur: 0,
 				scrollLeft: 0,
-				doctors1:[
+				hospitals1:[
 					{
 						avatar:"../static/fumou-center-template/header.jpg",
-						name:"黄玺",
+						name:"厦门大学附属翔安医院",
 						state:"关注"
 					},
 					{
 						avatar:"../static/fumou-center-template/header.jpg",
-						name:"黄玺",
+						name:"厦门大学附属翔安医院",
 						state:"已关注"
 					},
 					{
 						avatar:"../static/fumou-center-template/header.jpg",
-						name:"黄玺",
+						name:"厦门大学附属翔安医院",
 						state:"关注"
 					},
 					{
 						avatar:"../static/fumou-center-template/header.jpg",
-						name:"黄玺",
+						name:"厦门大学附属翔安医院",
 						state:"关注"
 					},
 					{
 						avatar:"../static/fumou-center-template/header.jpg",
-						name:"黄玺",
+						name:"厦门大学附属翔安医院",
 						state:"关注"
 					},
 				],
-				doctors2:[
+				hospitals2:[
 					{
 						avatar:"../static/fumou-center-template/header.jpg",
-						name:"黄玺",
+						name:"厦门大学附属翔安医院",
 						state:"关注"
 					},
 					{
 						avatar:"../static/fumou-center-template/header.jpg",
-						name:"黄玺",
+						name:"厦门大学附属翔安医院",
 						state:"已关注"
 					},
 					{
 						avatar:"../static/fumou-center-template/header.jpg",
-						name:"黄玺",
+						name:"厦门大学附属翔安医院",
 						state:"关注"
 					},
 					{
 						avatar:"../static/fumou-center-template/header.jpg",
-						name:"黄玺",
+						name:"厦门大学附属翔安医院",
 						state:"关注"
 					},
 					{
 						avatar:"../static/fumou-center-template/header.jpg",
-						name:"黄玺",
+						name:"厦门大学附属翔安医院",
 						state:"关注"
 					},
 				],
@@ -181,11 +181,11 @@
 		methods:{
 			subsribe1(index)
 			{
-				this.doctors1[index].state=(this.doctors1[index].state=='已关注')?'关注':'已关注';
+				this.hospitals1[index].state=(this.hospitals1[index].state=='已关注')?'关注':'已关注';
 			},
 			subsribe2(index)
 			{
-				this.doctors2[index].state=(this.doctors2[index].state=='已关注')?'关注':'已关注';
+				this.hospitals2[index].state=(this.hospitals2[index].state=='已关注')?'关注':'已关注';
 			},
 			tabSelect(e) {
 				this.TabCur = e.currentTarget.dataset.id;
@@ -236,5 +236,9 @@
 			height: 20rpx;
 			margin: 10rpx;
 		}
+	}
+	.card{
+		min-width: 200rpx;
+		height: 286rpx;
 	}
 </style>
