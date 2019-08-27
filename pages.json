@@ -8,6 +8,12 @@
 			}
 		},
 		{
+			"path": "pages/Search/Result",
+			"style": {
+				"navigationBarTitleText": "搜索结果"
+			}
+		},
+		{
 			"path": "pages/ExpertList/ExpertList",
 			"style": {
 				"navigationBarTitleText": "医生列表"
