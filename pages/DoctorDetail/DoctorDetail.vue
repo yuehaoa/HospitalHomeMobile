@@ -28,7 +28,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="margin-lr radius " style="height: 400px; background-color: white;" >
+		<view class="margin-lr radius padding-bottom-xl" style="height: auto; background-color: white;" >
 			<view class="solids-bottom padding-bottom-xs margin-lr-sm text-center" v-for="(item,index) in doctor">
 				<image id='avatar' class="cu-avatar xl round margin" :src="item.avatar"></image>
 				<view>
@@ -42,7 +42,7 @@
 				<text class="text-xl flex justify-start" style="color: #000;">排班表</text>
 				
 				<view class="margin-tb">
-					<view class="cu-tag light bg-cyan radius" style="margin-left:20upx"
+					<view class="cu-tag light bg-cyan radius" style="margin-left:20rpx"
 					v-for="items in item.schedule">{{items.name}}</view>
 				</view>
 			</view>
@@ -94,6 +94,6 @@
 		position: absolute;
 	}
 	#avatar{
-	  border: 3px solid #0081FF;
+	  border: 6rpx solid #0081FF;
 	}
 </style>

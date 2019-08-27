@@ -123,26 +123,26 @@
 			.nav{
 				width: 100%;
 				position: absolute;
-				top: 20px;
+				top: 40rpx;
 			}
 		}
 		.Info{
 			p{
-				line-height: 40px;
+				line-height: 80rpx;
 			}
 			strong{
 				color: #000;
-				font-size: 20px;
-				margin-right: 10px;
-				border-left: 5px rgb(0, 167, 244) solid;
-				padding-left: 5px;
+				font-size: 40rpx;
+				margin-right: 20rpx;
+				border-left: 10rpx rgb(0, 167, 244) solid;
+				padding-left: 10rpx;
 			}
 			span{
-				font-size: 16px;
+				font-size: 32rpx;
 			}
 			.tag{
-				padding: 2px 10px;
-				border: rgb(0, 167, 244) solid 1px;
+				padding: 4rpx 20rpx;
+				border: rgb(0, 167, 244) solid 2rpx;
 			}
 			.collection{
 				color: rgb(0, 167, 244);

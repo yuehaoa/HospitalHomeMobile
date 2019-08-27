@@ -101,11 +101,11 @@
 		}
 		#tags{
 			view{
-				margin: 0 10px;
+				margin: 0 20rpx;
 				height: 40rpx;
 			}
 			view::after{
-				border: 0.5px solid #00A7F4;
+				border: 1rpx solid #00A7F4;
 			}
 		}
 		#searcher{

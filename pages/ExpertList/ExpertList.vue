@@ -99,7 +99,7 @@
 		position: absolute;
 	}
 	#avatar{
-	  border: 3px solid #0081FF;
+	  border: 6rpx solid #0081FF;
 	}
 	
 </style>
