@@ -4,8 +4,8 @@
 			<image src="../../static/background.png" mode="aspectFill"></image>
 			<view class="padding-top-lg flex">	<!--四个按钮-->
 				<view class="padding-lr">
-					<button class="cu-btn cuIcon bg-grey text-xl">
-						<text class="cuIcon-back" @click="NavToDepaList"></text>
+					<button class="cu-btn cuIcon bg-grey text-xl" @click="back">
+						<text class="cuIcon-back"></text>
 					</button>
 				</view>
 				<view class="padding-lr" style="margin-left: auto;">
@@ -77,17 +77,16 @@
 	
 		},
 		methods: {
-			NavToDepaList(){
-				uni.navigateTo({
-					url: '../DepartList/DepartList',
-					success: res => {},
-				});
-			},
 			NavToDocDetail(){
 				uni.navigateTo({
 					url: '../DoctorDetail/DoctorDetail',
 					success: res => {},
 				});
+			},
+			back(){
+				uni.navigateBack({
+					
+				})
 			}
 		}
 	}

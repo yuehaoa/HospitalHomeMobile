@@ -5,7 +5,7 @@
 			<image class="bg-img" src="../../static/background.png" mode="aspectFill"></image>
 			<view class="padding-top-lg flex">	<!--四个按钮-->
 				<view class="padding-lr">
-					<button class="cu-btn cuIcon bg-grey text-xl">
+					<button class="cu-btn cuIcon bg-grey text-xl" @click="back">
 						<text class="cuIcon-back"></text>
 					</button>
 				</view>
@@ -49,8 +49,8 @@
 		</view>
 		<view class="cu-list menu sm-border" id="list">	<!--科室列表-->
 			<view class="cu-item" :key="index" v-for="(item, index) in departList">
-				<view class="content" >
-					<text class="text-black" @click="NavToDetail">{{item}}</text>
+				<view class="content" @click="NavToDetail">
+					<text class="text-black">{{item}}</text>
 				</view>
 			</view>
 		</view>
@@ -88,6 +88,11 @@
 					url: '../ExpertList/ExpertList',
 					success: res => {},
 				});
+			},
+			back(){
+				uni.navigateBack({
+					
+				})
 			}
 		}
 	}

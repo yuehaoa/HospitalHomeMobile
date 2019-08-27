@@ -1,17 +1,18 @@
 <template>
 	<view>
 		<view id="search">
-			<image src="../../static/矢量智能对象.png" mode="aspectFit"></image>
+			<image src="../static/矢量智能对象.png" mode="aspectFit"></image>
 			<view class="content">
 				<view class="cu-bar search">
 					<view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big11010.jpg"></view>
 					<view class="search-form round" style="background-color: white;">
-						<input style="padding-left: 10px;" :adjust-position="false" type="text" placeholder="让呼吸更健康" confirm-type="search"></input>
-						<text class="cuIcon-search" style="color: blue;font-size: 15px;margin-right: 10px;"></text>
+						<input @focus="NavToSearch" style="padding-left: 10px;" :adjust-position="false" type="text" placeholder="让呼吸更健康" confirm-type="search"></input>
+						<text class="cuIcon-search" style="color: blue;font-size: 18px;margin-right: 10px;"></text>
 					</view>
 					<view class="action">
-						<text style="color: white;">厦门</text>
-						<view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big11010.jpg;margin-left:20px;"></view>
+						<text class="text-white">厦门</text>
+						<text class="text-white text-xxl margin-left-sm">|</text>
+						<view class="cu-avatar round margin-left-sm" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big11010.jpg;"></view>
 					</view>
 				</view>
 				<view style="margin: 5px;">
@@ -54,7 +55,7 @@
 						<text class="cuIcon-titles text-blue"></text>
 						<text class="text-xl text-bold">医院介绍</text>
 					</view>
-					<view class="more flex" @tap="SearchMore">查看更多<image src="../../static/多边形%201%20拷贝%202.png"></image></view>
+					<view class="more flex" @tap="SearchMore">查看更多<image src="../static/多边形%201%20拷贝%202.png"></image></view>
 				</view>
 				<scroll-view scroll-x>
 					<view class="flex text-center">
@@ -114,54 +115,54 @@
 				scrollLeft: 0,
 				doctors1:[
 					{
-						avatar:"../../static/fumou-center-template/header.jpg",
+						avatar:"../static/fumou-center-template/header.jpg",
 						name:"黄玺",
 						state:"关注"
 					},
 					{
-						avatar:"../../static/fumou-center-template/header.jpg",
+						avatar:"../static/fumou-center-template/header.jpg",
 						name:"黄玺",
 						state:"已关注"
 					},
 					{
-						avatar:"../../static/fumou-center-template/header.jpg",
+						avatar:"../static/fumou-center-template/header.jpg",
 						name:"黄玺",
 						state:"关注"
 					},
 					{
-						avatar:"../../static/fumou-center-template/header.jpg",
+						avatar:"../static/fumou-center-template/header.jpg",
 						name:"黄玺",
 						state:"关注"
 					},
 					{
-						avatar:"../../static/fumou-center-template/header.jpg",
+						avatar:"../static/fumou-center-template/header.jpg",
 						name:"黄玺",
 						state:"关注"
 					},
 				],
 				doctors2:[
 					{
-						avatar:"../../static/fumou-center-template/header.jpg",
+						avatar:"../static/fumou-center-template/header.jpg",
 						name:"黄玺",
 						state:"关注"
 					},
 					{
-						avatar:"../../static/fumou-center-template/header.jpg",
+						avatar:"../static/fumou-center-template/header.jpg",
 						name:"黄玺",
 						state:"已关注"
 					},
 					{
-						avatar:"../../static/fumou-center-template/header.jpg",
+						avatar:"../static/fumou-center-template/header.jpg",
 						name:"黄玺",
 						state:"关注"
 					},
 					{
-						avatar:"../../static/fumou-center-template/header.jpg",
+						avatar:"../static/fumou-center-template/header.jpg",
 						name:"黄玺",
 						state:"关注"
 					},
 					{
-						avatar:"../../static/fumou-center-template/header.jpg",
+						avatar:"../static/fumou-center-template/header.jpg",
 						name:"黄玺",
 						state:"关注"
 					},
@@ -191,6 +192,11 @@
 				this.scrollLeft = (e.currentTarget.dataset.id - 1) * 60
 			},
 			SearchMore(){
+			},
+			NavToSearch(){
+				uni.navigateTo({
+					url:'./Search/search'
+				})
 			}
 		}
 	}
