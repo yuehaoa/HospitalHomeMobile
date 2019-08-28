@@ -1,0 +1,2 @@
+setCssToHead(["#filters{ position: fixed; width: 100%; height: 0%; overflow: hidden; -webkit-transition:height 2s; -o-transition:height 2s; transition:height 2s; }\n",],"Some selectors are not allowed in component wxss, including tag name selectors, ID selectors, and attribute selectors.(./pages/Search/Result.wxss:2:1)",{path:"./pages/Search/Result.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/Search/Result.wxml') } }));

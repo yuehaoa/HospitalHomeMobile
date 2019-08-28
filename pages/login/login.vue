@@ -1,5 +1,6 @@
 <template>
 	<view class="zai-box">
+		<abc></abc>
 		<image src="../../static/register.png" class="zai-logo"></image>
 		<view class="zai-title">用户登录</view>
 		<view class="zai-form">
@@ -9,7 +10,7 @@
 				<button class="zai-checking" @tap="getCode" :loading="gettingCode">获取验证码</button>
 			</view>
 			<button class="zai-btn" @tap="Login">登录</button>
-			<view  class="tip-text">
+			<view class="tip-text">
 				<text v-if="secrettip!=''">{{secrettip}}</text>
 				<text v-else></text>
 			</view>

@@ -1,5 +1,12 @@
 {
   "pages": [
+    "pages/index",
+    "pages/Search/Result",
+    "pages/ExpertList/ExpertList",
+    "pages/DoctorDetail/DoctorDetail",
+    "pages/Search/search",
+    "pages/HospitalDetail/HospitalDetail",
+    "pages/DepartList/DepartList",
     "pages/login/login",
     "pages/login/regist",
     "pages/profile/profile",
@@ -24,6 +31,7 @@
   "appname": "HospitalHomeMobile",
   "compilerVersion": "2.2.2",
   "usingComponents": {
-    "cu-custom": "/colorui/components/cu-custom"
+    "cu-custom": "/colorui/components/cu-custom",
+    "status-bar": "/colorui/components/myStatusBar"
   }
 }

@@ -1,0 +1,2 @@
+setCssToHead(["body{ background-color: #FFF; }\n",],undefined,{path:"./pages/Search/search.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/Search/search.wxml') } }));

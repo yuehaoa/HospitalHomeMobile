@@ -1,0 +1,8 @@
+.head > image {
+  width: 100%;
+  position: absolute;
+}
+#avatar {
+  border: 6rpx solid #0081FF;
+}
+
