@@ -35,15 +35,27 @@
 				<text class="cuIcon-unfold margin-left-sm"></text>
 			</button>
 		</view>
-		<view id="filters" class="flex justify-around bg-gray shadow shadow-lg" :style="{height:myheight}">	<!--自动展开-->
-			<picker class="bg-white radius cu-btn" :value="index" :range="picker">
-				<text>请选择省</text>
-				<text class="cuIcon-unfold margin-left-sm"></text>
-			</picker>
-			<picker class="bg-white radius cu-btn" :value="index" :range="picker">
-				<text>请选择市</text>
-				<text class="cuIcon-unfold margin-left-sm"></text>
-			</picker>
+		<view id="filters" class=" justify-around bg-gray shadow shadow-lg" :style="{height:myheight}">	<!--自动展开-->
+			<view  >
+				<text class="margin">省份</text>
+				<button class="cu-btn bg-white flex-sub  margin-right margin-bottom-sm sm"@click="provinceopen" style="float:right">
+					<text class="cuIcon-unfold "></text>
+				</button>
+				<view class=" margin-lr-lg margin-top-xs padding-left":style="{height:provinceheight,overflow:hidden}" >
+					<view class="cu-tag light bg-cyan radius margin-bottom-xs " 
+					v-for="item in province" >{{item.name}}</view>
+				</view>
+			</view>
+			<view class="margin-top-xs">
+				<text class="margin">市</text>
+				<button class="cu-btn bg-white flex-sub  margin-right margin-lr margin-bottom-sm sm"@click="cityopen"style="float:right" >
+					<text class="cuIcon-unfold  "></text>
+				</button>
+				<view class="margin-lr-lg margin-top-xs padding-left":style="{height:cityheight,overflow:hidden}">
+					<view class="cu-tag light bg-cyan radius margin-bottom-xs  " 
+					v-for="item in city">{{item.name}}</view>
+				</view>
+			</view>
 		</view>
 		<view>	<!--搜索结果-->
 			<view class="cu-card article no-card">
@@ -91,6 +103,41 @@
 				picker: ['按推荐', '按收藏', '按更新'],
 				showFilters:false,
 				myheight:"0px",
+				cityheight:'50rpx',
+				provinceheight:'50rpx',
+				hidden: 'hidden',
+				province: [
+					{name:'福建省'},
+					{name:'山东省'},
+					{name:'甘肃省'},
+					{name:'宁夏回族自治区'},
+					{name:'广东省'},
+					{name:'四川省'},
+					{name:'山西省'},
+					{name:'陕西省'},
+					{name:'福建省'},
+					{name:'山东省'},
+					{name:'甘肃省'},
+					{name:'宁夏回族自治区'},
+					{name:'广东省'},
+					{name:'四川省'},
+					{name:'山西省'},
+					{name:'陕西省'},
+				],
+				city:[
+				{name:'厦门市'},
+				{name:'福州市'},
+				{name:'龙岩市'},
+				{name:'南平市'},
+				{name:'莆田市'},
+				{name:'漳州市'},
+				{name:'厦门市'},
+				{name:'福州市'},
+				{name:'龙岩市'},
+				{name:'南平市'},
+				{name:'莆田市'},
+				{name:'漳州市'},
+				]
 			}
 		},
 		methods: {
@@ -100,12 +147,33 @@
 			open(){
 				if(this.myheight=='0px')
 				{
-					this.myheight="10%";
+					this.myheight="auto";
 				}
 				else{
 					this.myheight="0px";
 				}
+			},
+			cityopen(){
+				if(this.cityheight=='50rpx')
+				{
+					this.cityheight="auto";
+				}
+			
+			else{
+				this.cityheight='50rpx';
 			}
+			},
+			provinceopen(){
+				if(this.provinceheight=='50rpx')
+				{
+					this.provinceheight="auto";
+				}
+			
+			else{
+				this.provinceheight='50rpx';
+			}
+			},
+			
 		}
 	}
 </script>
