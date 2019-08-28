@@ -1,6 +1,7 @@
 <template>
 	<view class="content">
 		<view v-bind:style="{height: divheight +'px'}" style="background-color: #0081FF;"></view>
+		<abc></abc>
 		<view class="head">
 			<p>
 				<span></span>
