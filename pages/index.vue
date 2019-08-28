@@ -2,10 +2,10 @@
 	<view>
 		<statusBar></statusBar>
 		<view id="search" class="margin-bottom-xl">
-			<image src="../static/矢量智能对象.png" style="position: absolute;"></image>
+			<image src="../static/blue.png" style="position: absolute;"></image>
 			<view class="content" style="padding-top: 20rpx;">
 				<view class="cu-bar search">
-					<view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big11010.jpg"></view>
+					<view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big11010.jpg);"></view>
 					<view class="search-form round bg-white">
 						<input @focus="NavToSearch" style="padding-left: 20rpx;" :adjust-position="false" type="text" placeholder="让呼吸更健康" confirm-type="search"></input>
 						<text class="cuIcon-search text-blue margin-right-sm" style="font-size: 36rpx;"></text>
@@ -13,7 +13,7 @@
 					<view class="action">
 						<text class="text-white">厦门</text>
 						<text class="text-white text-xxl margin-left-sm">|</text>
-						<view class="cu-avatar round margin-left-sm" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big11010.jpg;"></view>
+						<view class="cu-avatar round margin-left-sm" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big11010.jpg);"></view>
 					</view>
 				</view>
 				<view class="margin-xs flex justify-around">
