@@ -5,7 +5,7 @@
 			<view class="content">
 				<view class="cu-bar search">
 					<view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big11010.jpg"></view>
-					<view class="search-form round" style="background-color: white;">
+					<view class="search-form round bg-white">
 						<input @focus="NavToSearch" style="padding-left: 10px;" :adjust-position="false" type="text" placeholder="让呼吸更健康" confirm-type="search"></input>
 						<text class="cuIcon-search" style="color: blue;font-size: 18px;margin-right: 10px;"></text>
 					</view>
@@ -45,7 +45,7 @@
 						<view class="action">
 							<text class="cuIcon-voice text-blue"></text>
 						</view>
-						<input style="background-color: white;" class="solid-bottom" :adjust-position="false" :focus="false" maxlength="300" cursor-spacing="10"></input>
+						<input class="solid-bottom bg-white" :adjust-position="false" :focus="false" maxlength="300" cursor-spacing="10"></input>
 						<button class="cu-btn bg-blue shadow">发送</button>
 					</view>
 			</view>
