@@ -43,7 +43,7 @@
 				</button>
 				<view class=" margin-lr-lg margin-top-xs padding-left":style="{height:provinceheight,overflow:hidden}" >
 					<view class="cu-tag light bg-cyan radius margin-bottom-xs " 
-					v-for="item in province" >{{item.name}}</view>
+					v-for="(item,index) in province" @click="showCity(index)" >{{item.name}}</view>
 				</view>
 			</view>
 			<view class="margin-top-xs">
@@ -52,8 +52,8 @@
 					<text class="cuIcon-unfold  "></text>
 				</button>
 				<view class="margin-lr-lg margin-top-xs padding-left":style="{height:cityheight,overflow:hidden}">
-					<view class="cu-tag light bg-cyan radius margin-bottom-xs  " 
-					v-for="item in city">{{item.name}}</view>
+					<view class="cu-tag light bg-cyan radius margin-bottom-xs"  v-for="(item,index) in province[number].city"
+					>{{item.name}}</view>
 				</view>
 			</view>
 		</view>
@@ -106,38 +106,147 @@
 				cityheight:'50rpx',
 				provinceheight:'50rpx',
 				hidden: 'hidden',
+				number:0,
 				province: [
-					{name:'福建省'},
-					{name:'山东省'},
-					{name:'甘肃省'},
-					{name:'宁夏回族自治区'},
-					{name:'广东省'},
-					{name:'四川省'},
-					{name:'山西省'},
-					{name:'陕西省'},
-					{name:'福建省'},
-					{name:'山东省'},
-					{name:'甘肃省'},
-					{name:'宁夏回族自治区'},
-					{name:'广东省'},
-					{name:'四川省'},
-					{name:'山西省'},
-					{name:'陕西省'},
+					{name:'北京',
+					  city:[
+						  {name:'北京'},
+						  ],
+					},
+					{name:'天津',
+					  city:[
+						  {name:'天津'},
+					  ],
+					},
+					{name:'河北',
+					  city:[
+						  {name:'石家庄'},
+						  {name:'唐山'},
+							{name:'秦皇岛'},
+							{name:'邯郸'},
+							{name:'邢台'},
+							{name:'保定'},
+							{name:'张家口'},
+							{name:'承德'},
+							{name:'沧州'},
+							{name:'廊坊'},
+							{name:'衡水'},
+					  ],
+					},
+					{name:'山西',
+					city:[
+						{name:'太原'},
+						{name:'大同'},
+						{name:'阳泉'},
+						{name:'长治'},
+						{name:'晋城'},
+						{name:'朔州'},
+						{name:'晋中'},
+						{name:'运城'},
+						{name:'忻州'},
+						{name:'临汾'},
+						{name:'吕梁'},
+					 ],
+					},
+					{name:'内蒙古',
+					city:[
+						{name:'呼和浩特'},
+						{name:'包头'},
+						{name:'乌海'},
+						{name:'赤峰'},
+						{name:'通辽'},
+						{name:'鄂尔多斯'},
+						{name:'呼伦贝尔'},
+						{name:'巴彦淖尔'},
+						{name:'乌兰察布'},
+						{name:'兴安'},
+						{name:'锡林郭勒'},
+						{name:'阿拉善'},
+					]
+					},
+					{name:'福建',
+					city:[
+						{name:'福州'},
+						{name:'厦门'},
+						{name:'莆田'},
+						{name:'三明'},
+						{name:'泉州'},
+						{name:'漳州'},
+						{name:'南平'},
+						{name:'龙岩'},
+						{name:'宁德'},
+					],
+					},
+					{name:'北京',
+					  city:[
+						  {name:'北京'},
+						  ],
+					},
+					{name:'天津',
+					  city:[
+						  {name:'天津'},
+					  ],
+					},
+					{name:'河北',
+					  city:[
+						  {name:'石家庄'},
+						  {name:'唐山'},
+							{name:'秦皇岛'},
+							{name:'邯郸'},
+							{name:'邢台'},
+							{name:'保定'},
+							{name:'张家口'},
+							{name:'承德'},
+							{name:'沧州'},
+							{name:'廊坊'},
+							{name:'衡水'},
+					  ],
+					},
+					{name:'山西',
+					city:[
+						{name:'太原'},
+						{name:'大同'},
+						{name:'阳泉'},
+						{name:'长治'},
+						{name:'晋城'},
+						{name:'朔州'},
+						{name:'晋中'},
+						{name:'运城'},
+						{name:'忻州'},
+						{name:'临汾'},
+						{name:'吕梁'},
+					 ],
+					},
+					{name:'内蒙古',
+					city:[
+						{name:'呼和浩特'},
+						{name:'包头'},
+						{name:'乌海'},
+						{name:'赤峰'},
+						{name:'通辽'},
+						{name:'鄂尔多斯'},
+						{name:'呼伦贝尔'},
+						{name:'巴彦淖尔'},
+						{name:'乌兰察布'},
+						{name:'兴安'},
+						{name:'锡林郭勒'},
+						{name:'阿拉善'},
+					]
+					},
+					{name:'福建',
+					city:[
+						{name:'福州'},
+						{name:'厦门'},
+						{name:'莆田'},
+						{name:'三明'},
+						{name:'泉州'},
+						{name:'漳州'},
+						{name:'南平'},
+						{name:'龙岩'},
+						{name:'宁德'},
+					],
+					},
 				],
-				city:[
-				{name:'厦门市'},
-				{name:'福州市'},
-				{name:'龙岩市'},
-				{name:'南平市'},
-				{name:'莆田市'},
-				{name:'漳州市'},
-				{name:'厦门市'},
-				{name:'福州市'},
-				{name:'龙岩市'},
-				{name:'南平市'},
-				{name:'莆田市'},
-				{name:'漳州市'},
-				]
 			}
 		},
 		methods: {
@@ -173,7 +282,9 @@
 				this.provinceheight='50rpx';
 			}
 			},
-			
+			showCity(index){
+				this.number=index;
+			}
 		}
 	}
 </script>
