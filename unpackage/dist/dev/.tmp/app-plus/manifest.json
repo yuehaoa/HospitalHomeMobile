@@ -116,10 +116,9 @@
     "arguments": "{\"id\":1,\"name\":\"pages/index\",\"pathName\":\"pages/index\",\"query\":\"\"}",
     "allowsInlineMediaPlayback": true,
     "uni-app": {
-      "compilerVersion": "2.2.2",
+      "compilerVersion": "2.1.3",
       "control": "v8",
-      "nvueCompiler": "weex",
-      "renderer": "auto"
+      "nvueCompiler": "weex"
     }
   }
 }
