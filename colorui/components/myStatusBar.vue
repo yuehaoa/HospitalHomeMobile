@@ -1,6 +1,7 @@
 <template>
-	<view>
-		<view class="cu-custom flex" :style="[{height:StatusBar+'px'},{'background-color':color}]"></view>
+	<view style="width: 100%;" :style="{height:StatusBar+'px'}">
+		<view class="bg-blue" :style="[{height:StatusBar+'px'},{'background-color':color}]" style="position: fixed;top: 0;z-index: 20; width: 100%;">	
+		</view>
 	</view>
 </template>
 
@@ -8,11 +9,14 @@
 	export default {
 		data(){
 			return {
-				StatusBar: this.StatusBar
+				StatusBar: this.StatusBar,
 			};
 		},
 		name: 'abc',
-		props:['color']
+		props:{
+			color:[String],
+			default:'#000000'
+		}
 	}
 </script>
 

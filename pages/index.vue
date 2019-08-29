@@ -1,7 +1,7 @@
 <template>
 	<view>
-		<statusBar color="#FFFFFF"></statusBar>
-		<view id="search" class="margin-bottom-xl">
+		<statusBar></statusBar>
+		<view id="search" class="margin-bottom-xl" style="position: relative;">
 			<image src="../static/blue.png" style="position: absolute;"></image>
 			<view class="content" style="padding-top: 20rpx;">
 				<view class="cu-bar search">
