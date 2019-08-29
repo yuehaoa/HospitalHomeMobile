@@ -35,7 +35,7 @@
 				<text class="cuIcon-unfold margin-left-sm"></text>
 			</button>
 		</view>
-		<view id="filters" class=" justify-around bg-gray shadow shadow-lg" :style="{height:myheight}">	<!--自动展开-->
+		<view id="filters" class=" justify-around bg-gray shadow shadow-lg you" :style="{height:myheight}">	<!--自动展开-->
 			<view  >
 				<text class="margin">省份</text>
 				<button class="cu-btn bg-white flex-sub  margin-right margin-bottom-sm sm"@click="provinceopen" style="float:right">
@@ -46,19 +46,19 @@
 					v-for="(item,index) in province" @click="showCity(index)" >{{item.name}}</view>
 				</view>
 			</view>
-			<view class="margin-top-xs">
+			<view class="margin-top-xs ">
 				<text class="margin">市</text>
 				<button class="cu-btn bg-white flex-sub  margin-right margin-lr margin-bottom-sm sm"@click="cityopen"style="float:right" >
 					<text class="cuIcon-unfold  "></text>
 				</button>
-				<view class="margin-lr-lg margin-top-xs padding-left":style="{height:cityheight,overflow:hidden}">
-					<view class="cu-tag light bg-cyan radius margin-bottom-xs"  v-for="(item,index) in province[number].city"
+				<view class="margin-lr-lg margin-top-xs padding-left ":style="{height:cityheight,overflow:hidden}">
+					<view class="cu-tag light bg-cyan radius margin-bottom-xs "  v-for="(item,index) in province[number].city"
 					>{{item.name}}</view>
 				</view>
 			</view>
 		</view>
 		<view>	<!--搜索结果-->
-			<view class="cu-card article no-card">
+			<view class="cu-card article no-card ">
 				<view class="cu-item shadow">
 					<view class="title">
 						<view class="text-cut">无意者 烈火焚身;以正义的烈火拔出黑暗。我有自己的正义，见证至高的烈火吧。</view>
@@ -67,14 +67,14 @@
 						<view class="desc">
 							<view class="text-content"> 折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！真正的恩典因不完整而美丽，因情感而真诚，因脆弱而自由！</view>
 							<view>
-								<view class="cu-tag bg-red light sm round">正义天使</view>
-								<view class="cu-tag bg-green light sm round">史诗</view>
+								<view class="cu-tag bg-red light sm round we">正义天使</view>
+								<view class="cu-tag bg-green light sm round we">史诗</view>
 							</view>
 						</view>
 					</view>
 				</view>
 			</view>
-			<view class="cu-card article no-card">
+			<view class="cu-card article no-card ">
 				<view class="cu-item shadow">
 					<view class="title"><view class="text-cut">无意者 烈火焚身;以正义的烈火拔出黑暗。我有自己的正义，见证至高的烈火吧。</view></view>
 					<view class="content">
@@ -83,8 +83,8 @@
 						<view class="desc">
 							<view class="text-content"> 折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！真正的恩典因不完整而美丽，因情感而真诚，因脆弱而自由！</view>
 							<view>
-								<view class="cu-tag bg-red light sm round">正义天使</view>
-								<view class="cu-tag bg-green light sm round">史诗</view>
+								<view class="cu-tag bg-red light sm round ">正义天使</view>
+								<view class="cu-tag bg-green light sm round ">史诗</view>
 							</view>
 						</view>
 					</view>
@@ -296,5 +296,11 @@
 		height: 0%;
 		overflow: hidden;
 		transition:height 2s;
+	}
+	.you{
+		z-index:3;
+	}
+	.we{
+		z-index:1;
 	}
 </style>
