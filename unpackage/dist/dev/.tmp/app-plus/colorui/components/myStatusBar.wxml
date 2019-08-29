@@ -1,1 +1,0 @@
-<view><view class="cu-custom flex" style="{{'height:'+(StatusBar+'px')+';'+('background-color:'+(color)+';')}}"></view></view>

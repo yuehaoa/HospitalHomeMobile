@@ -1,7 +1,7 @@
 <template>
 	<view>
-		<statusBar color="#FFFFFF"></statusBar>
-		<view id="search" class="margin-bottom-xl">
+		<statusBar></statusBar>
+		<view id="search" class="margin-bottom-xl" style="position: relative;">
 			<image src="../static/blue.png" style="position: absolute;"></image>
 			<view class="content" style="padding-top: 20rpx;">
 				<view class="cu-bar search">
@@ -59,10 +59,10 @@
 				</view>
 				<scroll-view scroll-x>
 					<view class="flex text-center" id='subsCard'>
-						<view class="card bg-white margin-lr-sm padding"  v-for="(hospitals,index) in hospitals1" :key="index">
-							<view><image :src="hospitals.avatar" class="cu-avatar round lg margin-xs"></image></view>
-							<view class=" text-xs text-black padding-sm">{{hospitals.name}}</view>
-							<button id="button" class="text-xs" :class="[hospitals.state=='关注'?'bg-blue':'']" @tap="subsribe1(index)">{{hospitals.state}}</button>
+						<view class="card bg-white margin-lr-sm"  v-for="(hospital,index) in hospitals1" :key="index">
+							<view class="padding-top-sm"><image :src="hospital.avatar" class="cu-avatar round lg"></image></view>
+							<view class="text text-black text-overflow">{{hospital.name}}</view>
+							<button id="button" class="text-xs" :class="[hospital.state=='关注'?'bg-blue':'']" @tap="subsribe1(index)">{{hospital.state}}</button>
 						</view>
 					</view>
 				</scroll-view>
@@ -77,10 +77,10 @@
 				</view>
 				<scroll-view scroll-x>
 					<view class="flex text-center" id='subsCard'>
-						<view class="card bg-white margin-lr-sm padding"  v-for="(hospitals,index) in hospitals2" :key="index">
-							<view><image :src="hospitals.avatar" class="cu-avatar round lg margin-xs"></image></view>
-							<view class="text-xs text-black padding-sm">{{hospitals.name}}</view>
-							<button class="text-xs" :class="[hospitals.state=='关注'?'bg-blue':'']" @tap="subsribe1(index)">{{hospitals.state}}</button>
+						<view class="card bg-white margin-lr-sm"  v-for="(hospital,index) in hospitals2" :key="index">
+							<view class="padding-top-sm"><image :src="hospital.avatar" class="cu-avatar round lg"></image></view>
+							<view class="text text-black text-overflow">{{hospital.name}}</view>
+							<button id="button" class="text-xs" :class="[hospital.state=='关注'?'bg-blue':'']" @tap="subsribe2(index)">{{hospital.state}}</button>
 						</view>
 					</view>
 				</scroll-view>
@@ -117,7 +117,7 @@
 				hospitals1:[
 					{
 						avatar:"../static/fumou-center-template/header.jpg",
-						name:"厦门大学附属翔安医院",
+						name:"厦门大学附属翔安医院厦门大学附属翔安医院",
 						state:"关注"
 					},
 					{
@@ -228,13 +228,22 @@
 		min-width: 200rpx;
 		min-height: 286rpx;
 	}
+	.text-overflow{
+		text-overflow: -o-ellipsis-lastline;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		line-clamp: 2;
+		-webkit-box-orient: vertical;
+		margin: 10rpx 5rpx 20rpx 5rpx;
+	}
 	#subsCard{
 		button{
 			padding:0 30rpx;
-			height: 32rpx;
+			height: 40rpx;
 			align-items: center;
 			display: inline-flex;
-			justify-content: center;
 			white-space: nowrap;
 		}
 	}
