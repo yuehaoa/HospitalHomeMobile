@@ -66,9 +66,9 @@
 					 ExpertNumber:3,
 					 departintro:'厦门大学附属翔安医院（以下简称翔安医院）位于厦门市翔安区翔安东路2000号，,是由厦门市政府与厦门大学共同投资建设的非营利性公立医院。按照三级甲等医院标准建设成立的一所集治疗、教学、科研、预防为一体的综合性临床研究型医院',
 					 Experts:[
-						 {name:'名称', level:'脊柱外科 主任医师', avatar:'../../static/logo.png',Abstract:'医学硕士，三级甲等医院医疗、教学、科研、预防为一体'},
-						 {name:'名称',level:'脊柱外科 主任医师', avatar:'../../static/logo.png',Abstract:'医学硕士，三级甲等医院医疗、教学、科研、预防为一体'},
-						 {name:'名称',level:'脊柱外科 主任医师', avatar:'../../static/logo.png',Abstract:'医学硕士，三级甲等医院医疗、教学、科研、预防为一体'},
+						 {name:'宋润涵', level:'脊柱外科 主任医师', avatar:'../../static/logo.png',Abstract:'医学硕士，三级甲等医院医疗、教学、科研、预防为一体'},
+						 {name:'宋润涵',level:'脊柱外科 主任医师', avatar:'../../static/logo.png',Abstract:'医学硕士，三级甲等医院医疗、教学、科研、预防为一体'},
+						 {name:'宋润涵',level:'脊柱外科 主任医师', avatar:'../../static/logo.png',Abstract:'医学硕士，三级甲等医院医疗、教学、科研、预防为一体'},
 					 ],
 					}
 				]
