@@ -2,10 +2,10 @@
 	<view>
 		<view id="HospitalInfo">
 			<view class="head bg-white">
-				<image src="../../static/图层8.png" mode="aspectFill"></image>
+				<image src="../../static/hospital.png" mode="aspectFill"></image>
 				<view class="nav flex">
 					<view class="padding-lr">
-						<button class="cu-btn cuIcon bg-grey text-xl">
+						<button class="cu-btn cuIcon bg-grey text-xl" @click="back">
 							<text class="cuIcon-back"></text>
 						</button>
 					</view>
@@ -115,6 +115,11 @@
 					url: '../DepartList/DepartList',
 					success: res => {},
 				});
+			},
+			back(){
+				uni.navigateBack({
+					
+				})
 			}
 		}
 	}

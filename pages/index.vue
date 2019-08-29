@@ -1,13 +1,13 @@
 <template>
 	<view>
-		<statusBar color="#FFFFFF"></statusBar>
-		<view id="search" class="margin-bottom-xl">
+		<statusBar></statusBar>
+		<view id="search" class="margin-bottom-xl" style="position: relative;">
 			<image src="../static/blue.png" style="position: absolute;"></image>
-			<view class="content" style="padding-top: 20rpx;">
+			<view class="content padding-top-sm">
 				<view class="cu-bar search">
 					<view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big11010.jpg);"></view>
 					<view class="search-form round bg-white">
-						<input @focus="NavToSearch" style="padding-left: 20rpx;" :adjust-position="false" type="text" placeholder="让呼吸更健康" confirm-type="search"></input>
+						<input @tap="NavToSearch" style="padding-left: 20rpx;" :adjust-position="false" type="text" placeholder="让呼吸更健康" confirm-type="search"></input>
 						<text class="cuIcon-search text-blue margin-right-sm" style="font-size: 36rpx;"></text>
 					</view>
 					<view class="action">
@@ -22,9 +22,9 @@
 				</view>
 			</view>
 		</view>
-		<view class="margin-lr-sm padding-top-sm">
+		<view class="margin-lr-sm">
 			<view class="chat bg-white padding-bottom-xs">
-					<p class="padding-lr-xl padding-tb-xs text-xxl" style="color: #00a7f4;">智能导诊</p>
+					<p class="padding-lr-xl padding-top-sm padding-bottom-xs text-xxl" style="color: #00a7f4;">智能导诊</p>
 					<view class="cu-chat">
 						<view class="cu-item" style="padding: 10rpx;">
 							<view class="main">
@@ -190,13 +190,18 @@
 			},
 			tabSelect(e) {
 				this.TabCur = e.currentTarget.dataset.id;
+				if(this.TabCur==4){
+					uni.navigateTo({
+						url:'./profile/profile'
+					})
+				}
 				this.scrollLeft = (e.currentTarget.dataset.id - 1) * 60
 			},
 			SearchMore(){
 			},
 			NavToSearch(){
 				uni.navigateTo({
-					url:'./Search/search'
+					url:'./Search/Search'
 				})
 			}
 		}
@@ -236,7 +241,7 @@
 		-webkit-line-clamp: 2;
 		line-clamp: 2;
 		-webkit-box-orient: vertical;
-		margin: 10rpx 5rpx 20rpx 5rpx;
+		margin: 10rpx 15rpx 20rpx 15rpx;
 	}
 	#subsCard{
 		button{
