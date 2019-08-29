@@ -1,30 +1,30 @@
 <template>
 	<view>
-		<view id="search">
-			<image src="../static/矢量智能对象.png" mode="aspectFit"></image>
-			<view class="content">
+		<statusBar color="#FFFFFF"></statusBar>
+		<view id="search" class="margin-bottom-xl">
+			<image src="../static/blue.png" style="position: absolute;"></image>
+			<view class="content" style="padding-top: 20rpx;">
 				<view class="cu-bar search">
-					<view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big11010.jpg"></view>
-					<view class="search-form round" style="background-color: white;">
-						<input @focus="NavToSearch" style="padding-left: 10px;" :adjust-position="false" type="text" placeholder="让呼吸更健康" confirm-type="search"></input>
-						<text class="cuIcon-search" style="color: blue;font-size: 18px;margin-right: 10px;"></text>
+					<view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big11010.jpg);"></view>
+					<view class="search-form round bg-white">
+						<input @focus="NavToSearch" style="padding-left: 20rpx;" :adjust-position="false" type="text" placeholder="让呼吸更健康" confirm-type="search"></input>
+						<text class="cuIcon-search text-blue margin-right-sm" style="font-size: 36rpx;"></text>
 					</view>
 					<view class="action">
 						<text class="text-white">厦门</text>
 						<text class="text-white text-xxl margin-left-sm">|</text>
-						<view class="cu-avatar round margin-left-sm" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big11010.jpg;"></view>
+						<view class="cu-avatar round margin-left-sm" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big11010.jpg);"></view>
 					</view>
 				</view>
-				<view style="margin: 5px;">
-					<span style="color: white;">热搜</span>
-					<span class="sm cu-tag round tag" v-for="tag in tags">{{tag}}</span>
+				<view class="margin-xs flex justify-around">
+					<span class="text-white" style="z-index:1;">热搜：</span>
+					<span class="sm cu-tag round tag" :key="index" v-for="(tag,index) in tags">{{tag}}</span>
 				</view>
 			</view>
 		</view>
-		<view style="height: 206rpx;"></view>
-		<view id="body">
-			<view class="chat">
-					<p style="font-size: 25px;padding: 10px 15px;color: #00a7f4;">智能导诊</p>
+		<view class="margin-lr-sm padding-top-sm">
+			<view class="chat bg-white padding-bottom-xs">
+					<p class="padding-lr-xl padding-tb-xs text-xxl" style="color: #00a7f4;">智能导诊</p>
 					<view class="cu-chat">
 						<view class="cu-item" style="padding: 10rpx;">
 							<view class="main">
@@ -41,59 +41,60 @@
 							</view>
 						</view>
 					</view>
-					<view class="cu-bar input radius shadow bg-grey" style="background-color: #f9f9f9;margin: 10px 10px;">
+					<view class="cu-bar input radius shadow bg-grey margin-sm" style="background-color: #f9f9f9;">
 						<view class="action">
 							<text class="cuIcon-voice text-blue"></text>
 						</view>
-						<input style="background-color: white;" class="solid-bottom" :adjust-position="false" :focus="false" maxlength="300" cursor-spacing="10"></input>
+						<input class="solid-bottom bg-white" :adjust-position="false" :focus="false" maxlength="300" cursor-spacing="10"></input>
 						<button class="cu-btn bg-blue shadow">发送</button>
 					</view>
 			</view>
 			<view style="background-color: #f9f9f9;">
 				<view class="cu-bar">
-					<view>
+					<view class="text-xl">
 						<text class="cuIcon-titles text-blue"></text>
-						<text class="text-xl text-bold">医院介绍</text>
+						<text class="text-bold">医院介绍</text>
 					</view>
 					<view class="more" @tap="SearchMore">查看更多<text class="cuIcon-playfill"></text></view>
 				</view>
 				<scroll-view scroll-x>
-					<view class="flex text-center">
+					<view class="flex text-center" id='subsCard'>
 						<view class="card bg-white margin-lr-sm padding"  v-for="(hospitals,index) in hospitals1" :key="index">
 							<view><image :src="hospitals.avatar" class="cu-avatar round lg margin-xs"></image></view>
 							<view class=" text-xs text-black padding-sm">{{hospitals.name}}</view>
-							<button style="padding:0 32px" class="cu-tag sm radius text-xs" :class="[hospitals.state=='关注'?'bg-blue':'']" @tap="subsribe1(index)">{{hospitals.state}}</button>
+							<button id="button" class="text-xs" :class="[hospitals.state=='关注'?'bg-blue':'']" @tap="subsribe1(index)">{{hospitals.state}}</button>
 						</view>
 					</view>
 				</scroll-view>
 			</view>
 			<view style="background-color: #f9f9f9;">
 				<view class="cu-bar">
-					<view>
+					<view class="text-xl">
 						<text class="cuIcon-titles text-blue"></text>
-						<text class="text-xl text-bold">进驻医疗机构</text>
+						<text class="text-bold">进驻医疗机构</text>
 					</view>
 					<view class="more" @tap="SearchMore">查看更多<text class="cuIcon-playfill"></text></view>
 				</view>
 				<scroll-view scroll-x>
-					<view class="flex text-center">
+					<view class="flex text-center" id='subsCard'>
 						<view class="card bg-white margin-lr-sm padding"  v-for="(hospitals,index) in hospitals2" :key="index">
 							<view><image :src="hospitals.avatar" class="cu-avatar round lg margin-xs"></image></view>
 							<view class="text-xs text-black padding-sm">{{hospitals.name}}</view>
-							<button style="padding:0 32px" class="cu-tag sm radius text-xs " :class="[hospitals.state=='关注'?'bg-blue':'']" @tap="subsribe2(index)">{{hospitals.state}}</button>
+							<button class="text-xs" :class="[hospitals.state=='关注'?'bg-blue':'']" @tap="subsribe2(index)">{{hospitals.state}}</button>
 						</view>
 					</view>
 				</scroll-view>
 			</view>
 		</view>
-		<scroll-view class="nav text-center margin-top">
+		<view style="height: 120rpx;"></view>
+		<scroll-view class="nav text-center bg-white" style="position: fixed;bottom: 0;left: 0;">
 			<view class="cu-item" :class="0==TabCur?'text-blue cur':''" @tap="tabSelect" data-id="0">
 				<text class="cuIcon-home"></text> 首页
 			</view>
 			<view class="cu-item" :class="1==TabCur?'text-blue cur':''" @tap="tabSelect" data-id="1">
 				<text class="cuIcon-discover"></text> 招聘
 			</view>
-			<view class="cu-item" :class="2==TabCur?'text-blue cur':''" @tap="tabSelect" data-id="2">
+			<view class="cu-item" @tap="tabSelect" data-id="2">
 				<view class="cu-avatar round"><image src="cuIcon-round"></image></view> 
 			</view>
 			<view class="cu-item" :class="3==TabCur?'text-blue cur':''" @tap="tabSelect" data-id="3">
@@ -206,39 +207,35 @@
 	page{
 		background-color: #f9f9f9;
 	}
-	#body{
-		margin:5rpx 20rpx; 
-	}
 	#search{
+		width:100%;
 		image{
 			position: absolute;
-			width: 750rpx;
+			width: 100%;
 			height: 206rpx;
 		}
 		.content{
-			position: absolute;
-			margin: 10rpx;
 			.tag{
 				min-width: 120rpx;
-				margin: 0 20rpx;
 				background-color: rgba(#4ddbfe, 0.4);
 			}
 		}
 	}
-	.chat{
-			background-color: white;
-			padding-bottom: 10rpx;
-	}
 	.more{
 		color: rgb(0, 167, 244);
-		image{
-			width: 20rpx;
-			height: 20rpx;
-			margin: 10rpx;
-		}
 	}
 	.card{
 		min-width: 200rpx;
-		height: 286rpx;
+		min-height: 286rpx;
+	}
+	#subsCard{
+		button{
+			padding:0 30rpx;
+			height: 32rpx;
+			align-items: center;
+			display: inline-flex;
+			justify-content: center;
+			white-space: nowrap;
+		}
 	}
 </style>
