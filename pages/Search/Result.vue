@@ -36,26 +36,28 @@
 				<text class="cuIcon-unfold margin-left-sm"></text>
 			</button>
 		</view>
-		<view id="filters" class=" justify-around bg-gray shadow shadow-lg you" :style="{height:myheight}">	<!--自动展开-->
-			<view  >
-				<text class="margin">省份</text>
-				<button class="cu-btn bg-white flex-sub  margin-right margin-bottom-sm sm" @click="provinceopen" style="float:right">
-					<text class="cuIcon-unfold "></text>
-				</button>
-				<view class=" margin-lr-lg margin-top-xs padding-left" :style="{height:provinceheight,overflow:hidden}" >
-					<view class="cu-tag light bg-cyan radius margin-bottom-xs " 
-					v-for="(item,index) in Province" @click="showCity(index)" >{{item.value}}</view>
+		<view id="filters" class="bg-gray shadow shadow-lg" :style="{height:myheight}">	<!--自动展开-->
+			<view class="flex justify-between align-center margin margin-lr-lg">
+				<text>选择省份</text>
+				<text class="cuIcon-unfold" @click="provinceopen"></text>
+			</view>
+			<view class="grid col-5 text-center" :style="{height:provinceheight,overflow:hidden}">
+				<view :key="proIndex" v-for="(item,proIndex) in Province" @click="proChoice=proIndex" class="margin-tb-xs">
+					<view class="cu-tag light radius" :class="[proIndex==proChoice ? 'bg-blue':'bg-cyan']">{{item.value}}</view>
 				</view>
 			</view>
-			<view class="margin-top-xs ">
-				<text class="margin">市</text>
-				<button class="cu-btn bg-white flex-sub  margin-right margin-lr margin-bottom-sm sm" @click="cityopen" style="float:right" >
-					<text class="cuIcon-unfold  "></text>
-				</button>
-				<view class="margin-lr-lg margin-top-xs padding-left ":style="{height:cityheight,overflow:hidden}">
-					<view class="cu-tag light bg-cyan radius margin-bottom-xs "  v-for="(item,index) in Province[number].children"
-					>{{item.value}}</view>
+			
+			<view class="flex justify-between align-center margin margin-lr-lg">
+				<text>选择市</text>
+				<text class="cuIcon-unfold" @click="cityopen"></text>
+			</view>
+			<view class="grid col-5 text-center" :style="{height:cityheight,overflow:hidden}">
+				<view :key="cityIndex" v-for="(item,cityIndex) in Province[proChoice].children" @click="cityChoice=cityIndex" class="margin-tb-xs">
+					<view class="cu-tag light radius" :class="[cityChoice==cityIndex ? 'bg-blue':'bg-cyan']">{{item.value}}</view>
 				</view>
+			</view>
+			<view class="padding flex flex-direction">
+				<button class="cu-btn bg-grey lg" @click="open()">确定</button>
 			</view>
 		</view>
 		<view>	<!--搜索结果-->
@@ -101,15 +103,16 @@
 		data() {
 			return {
 				TabCur:0,
-				index: 0,
+				proChoice: 0,
+				cityChoice: -1,
 				picker: ['按推荐', '按收藏', '按更新'],
 				showFilters:false,
 				myheight:"0px",
-				cityheight:'50rpx',
-				provinceheight:'50rpx',
+				cityheight:'68rpx',
+				provinceheight:'68rpx',
 				hidden: 'hidden',
-				number:0,
 				Province:[],
+				index:0,
 			}
 		},
 		methods: {
@@ -117,8 +120,7 @@
 				this.TabCur = e.currentTarget.dataset.id;
 			},
 			open(){
-				if(this.myheight=='0px')
-				{
+				if(this.myheight=='0px'){
 					this.myheight="auto";
 				}
 				else{
@@ -126,27 +128,20 @@
 				}
 			},
 			cityopen(){
-				if(this.cityheight=='50rpx')
-				{
+				if(this.cityheight=='68rpx'){
 					this.cityheight="auto";
 				}
-			
-			else{
-				this.cityheight='50rpx';
-			}
+				else{
+					this.cityheight='68rpx';
+				}
 			},
 			provinceopen(){
-				if(this.provinceheight=='50rpx')
-				{
+				if(this.provinceheight=='68rpx'){
 					this.provinceheight="auto";
 				}
-			
-			else{
-				this.provinceheight='50rpx';
-			}
-			},
-			showCity(index){
-				this.number=index;
+				else{
+					this.provinceheight='68rpx';
+				}
 			},
 			NavToHospital(){
 				uni.navigateTo({
@@ -171,10 +166,8 @@
 		width: 100%;
 		height: 0%;
 		overflow: hidden;
-		transition:height 2s;
-	}
-	.you{
-		z-index:3;
+		transition:all 2s;
+		z-index:10;
 	}
 	.we{
 		z-index:1;
