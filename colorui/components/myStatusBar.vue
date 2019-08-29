@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view class="cu-custom bg-brown flex" :style="{height:StatusBar+'px'}"></view>
+		<view class="cu-custom flex" :style="[{height:StatusBar+'px'},{'background-color':color}]"></view>
 	</view>
 </template>
 
@@ -11,9 +11,13 @@
 				StatusBar: this.StatusBar
 			};
 		},
-		name: 'abc'
+		name: 'abc',
+		props:['color']
 	}
 </script>
 
 <style>
+	.cu-custom {
+		background-color:#a5673f ;
+	}
 </style>
