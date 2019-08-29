@@ -80,7 +80,7 @@
 						<view class="card bg-white margin-lr-sm padding"  v-for="(hospitals,index) in hospitals2" :key="index">
 							<view><image :src="hospitals.avatar" class="cu-avatar round lg margin-xs"></image></view>
 							<view class="text-xs text-black padding-sm">{{hospitals.name}}</view>
-							<button class="text-xs" :class="[hospitals.state=='关注'?'bg-blue':'']" @tap="subsribe1(index)">{{hospitals.state}}</button>
+							<button class="text-xs" :class="[hospitals.state=='关注'?'bg-blue':'']" @tap="subsribe2(index)">{{hospitals.state}}</button>
 						</view>
 					</view>
 				</scroll-view>
