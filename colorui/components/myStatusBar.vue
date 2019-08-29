@@ -14,9 +14,11 @@
 		},
 		name: 'abc',
 		props:{
-			color:[String],
-			default:'#000000'
-		}
+			color:{
+				type:String,
+				default:'#000000'
+			}
+		},
 	}
 </script>
 

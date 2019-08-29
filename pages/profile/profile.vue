@@ -3,7 +3,7 @@
 		<statusBar></statusBar>
 		<view class="head">
 			<p>
-				<span></span>
+				<span><navigator class="cuIcon-home" url="../index"></navigator></span>
 				<span><navigator class="cuIcon-settings" url="../userInfo/userInfo"></navigator></span>
 			</p>
 		</view>	
