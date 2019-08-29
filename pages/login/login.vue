@@ -1,6 +1,5 @@
 <template>
 	<view class="zai-box">
-		<abc></abc>
 		<image src="../../static/register.png" class="zai-logo"></image>
 		<view class="zai-title">用户登录</view>
 		<view class="zai-form">
@@ -88,7 +87,7 @@
 							data:res.data.currentUserGuid,
 						});
 						uni.navigateTo({
-							url:'../profile/profile',
+							url:'../index',
 						})
 
 					}

@@ -1,6 +1,6 @@
 <template>
 	<view id="departList">
-		<view v-bind:style="{height: divheight +'px'}" style="background-color: #C0E5F2;"></view>
+		<statusBar></statusBar>
 		<view>	<!--上半部分-->
 			<image class="bg-img" src="../../static/background.png" mode="aspectFill"></image>
 			<view class="padding-top-lg flex">	<!--四个按钮-->

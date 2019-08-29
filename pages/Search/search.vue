@@ -1,13 +1,14 @@
 <template>
 	<view>
+		<statusBar></statusBar>
 		<view class="cu-bar search bg-gray text-xxl">
-			<span class="cuIcon-back_android margin-left"></span>
+			<span class="cuIcon-back_android margin-left" @tap="back()" ></span>
 			<view class="search-form round text-xxl">
-				<input class="padding-left" :adjust-position="false" type="text" placeholder="原发性肝癌" confirm-type="search"></input>
+				<input class="padding-left" :adjust-position="false" type="text" placeholder="原发性肝癌" confirm-type="search" @confirm="NavToRes"></input>
 				<text class="cuIcon-voice text-blue" style="font-size: 44rpx;"></text>
 			</view>
 			<view class="action">
-				<button class="cu-btn shadow-blur round">搜索</button>
+				<button class="cu-btn shadow-blur round" @tap="NavToRes()">搜索</button>
 			</view>
 		</view>
 		<view>
@@ -81,6 +82,16 @@
 		methods: {
 			tabSelect(e) {
 				this.TabCur = e.currentTarget.dataset.id;
+			},
+			back(){
+				uni.navigateBack({
+					
+				})
+			},
+			NavToRes(){
+				uni.navigateTo({
+					url:'./Result'
+				})
 			}
 		}
 	}
