@@ -1,7 +1,8 @@
 <template>
 	<view>
+		<statusBar></statusBar>
 		<view class="cu-bar search bg-gray text-xxl">
-			<span class="cuIcon-back_android margin-left"></span>
+			<span class="cuIcon-back_android margin-left" @tap="back()"></span>
 			<view class="search-form round text-xxl">
 				<input class="padding-left" :adjust-position="false" type="text" placeholder="原发性肝癌" confirm-type="search"></input>
 				<text class="cuIcon-voice text-blue" style="font-size: 44rpx;"></text>
@@ -38,17 +39,17 @@
 		<view id="filters" class=" justify-around bg-gray shadow shadow-lg you" :style="{height:myheight}">	<!--自动展开-->
 			<view  >
 				<text class="margin">省份</text>
-				<button class="cu-btn bg-white flex-sub  margin-right margin-bottom-sm sm"@click="provinceopen" style="float:right">
+				<button class="cu-btn bg-white flex-sub  margin-right margin-bottom-sm sm" @click="provinceopen" style="float:right">
 					<text class="cuIcon-unfold "></text>
 				</button>
-				<view class=" margin-lr-lg margin-top-xs padding-left":style="{height:provinceheight,overflow:hidden}" >
+				<view class=" margin-lr-lg margin-top-xs padding-left" :style="{height:provinceheight,overflow:hidden}" >
 					<view class="cu-tag light bg-cyan radius margin-bottom-xs " 
 					v-for="(item,index) in Province" @click="showCity(index)" >{{item.value}}</view>
 				</view>
 			</view>
 			<view class="margin-top-xs ">
 				<text class="margin">市</text>
-				<button class="cu-btn bg-white flex-sub  margin-right margin-lr margin-bottom-sm sm"@click="cityopen"style="float:right" >
+				<button class="cu-btn bg-white flex-sub  margin-right margin-lr margin-bottom-sm sm" @click="cityopen" style="float:right" >
 					<text class="cuIcon-unfold  "></text>
 				</button>
 				<view class="margin-lr-lg margin-top-xs padding-left ":style="{height:cityheight,overflow:hidden}">
@@ -58,7 +59,7 @@
 			</view>
 		</view>
 		<view>	<!--搜索结果-->
-			<view class="cu-card article no-card ">
+			<view class="cu-card article no-card" @click="NavToHospital">
 				<view class="cu-item shadow">
 					<view class="title">
 						<view class="text-cut">无意者 烈火焚身;以正义的烈火拔出黑暗。我有自己的正义，见证至高的烈火吧。</view>
@@ -146,6 +147,16 @@
 			},
 			showCity(index){
 				this.number=index;
+			},
+			NavToHospital(){
+				uni.navigateTo({
+					url:'../HospitalDetail/HospitalDetail'
+				})
+			},
+			back(){
+				uni.navigateBack({
+					
+				})
 			}
 		},
 		onLoad() {

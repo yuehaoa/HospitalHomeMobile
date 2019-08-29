@@ -1,5 +1,6 @@
 <template>
 	<view id="ExpertList">
+		<statusBar></statusBar>
 		<view class="head"> 
 			<image src="../../static/background.png" mode="aspectFill"></image>
 			<view class="padding-top-lg flex">	<!--四个按钮-->

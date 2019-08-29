@@ -1,6 +1,12 @@
 {
     "pages" : [
         //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+		    "path" : "pages/login/login",
+		    "style" : {
+		        "navigationBarTitleText" : "登录界面"
+		    }
+		},
         {
             "path" : "pages/index",
             "style" : {
@@ -26,7 +32,7 @@
             }
         },
         {
-            "path" : "pages/Search/search",
+            "path" : "pages/Search/Search",
             "style" : {
                 "navigationBarTitleText" : "搜索页"
             }
@@ -41,12 +47,6 @@
             "path" : "pages/DepartList/DepartList",
             "style" : {
                 "navigationBarTitleText" : "科室列表"
-            }
-        },
-        {
-            "path" : "pages/login/login",
-            "style" : {
-                "navigationBarTitleText" : "登录界面"
             }
         },
         {
