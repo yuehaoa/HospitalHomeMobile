@@ -31,7 +31,7 @@
 		</view>
 			
 		<view class="iconCon">
-			<view>
+			<view @click="NavBackIndex">
 				<i class="iconfont icon-xiezuo icon_comment"></i>
 				<p>首页</p>
 			</view>
@@ -117,6 +117,10 @@
 					url:'../Guide/Guide',
 				});
 			},
+			NavBackIndex(){
+				uni.navigateBack({
+				});
+			}
 			
 		}
 
