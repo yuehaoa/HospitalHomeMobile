@@ -5,7 +5,7 @@
 			<image src="../static/blue.png" style="position: absolute;"></image>
 			<view class="content padding-top-sm">
 				<view class="cu-bar search">
-					<view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big11010.jpg);"></view>
+					<view class="cu-avatar round" style="background-image:url(../mob/static/brand.png); background-color: rgba(0,0,0,0);"></view>
 					<view class="search-form round bg-white">
 						<input @tap="NavToSearch" style="padding-left: 20rpx;" :adjust-position="false" type="text" placeholder="让呼吸更健康" confirm-type="search"></input>
 						<text class="cuIcon-search text-blue margin-right-sm" style="font-size: 36rpx;"></text>
@@ -13,7 +13,7 @@
 					<view class="action">
 						<text class="text-white">厦门</text>
 						<text class="text-white text-xxl margin-left-sm">|</text>
-						<view class="cu-avatar round margin-left-sm" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big11010.jpg);"></view>
+						<view class="cu-avatar round margin-left-sm" style="background-image:url(../mob/static/avatar.png);"></view>
 					</view>
 				</view>
 				<view class="margin-xs flex justify-around">
@@ -41,13 +41,11 @@
 							</view>
 						</view>
 					</view>
-					<view class="cu-bar input radius shadow bg-grey margin-sm" style="background-color: #f9f9f9;">
-						<view class="action">
-							<text class="cuIcon-voice text-blue"></text>
-						</view>
-						<input class="solid-bottom bg-white" :adjust-position="false" :focus="false" maxlength="300" cursor-spacing="10"></input>
-						<button class="cu-btn bg-blue shadow">发送</button>
-					</view>
+			</view>
+			<view class="cu-bar input radius bg-grey margin-sm" style="background-color: #f9f9f9;margin-left: 0;">
+				<text class="cuIcon-voice text-white bg-blue cu-avatar round" style="font-size: 25px;"></text>
+				<input class="solid-bottom bg-white round shadow" :adjust-position="false" :focus="false" maxlength="300" cursor-spacing="10"></input>
+				<button class="text-sm bg-blue">发送</button>
 			</view>
 			<view style="background-color: #f9f9f9;">
 				<view class="cu-bar">
@@ -87,23 +85,7 @@
 			</view>
 		</view>
 		<view style="height: 120rpx;"></view>
-		<scroll-view class="nav text-center bg-white" style="position: fixed;bottom: 0;left: 0;">
-			<view class="cu-item" :class="0==TabCur?'text-blue cur':''" @tap="tabSelect" data-id="0">
-				<text class="cuIcon-home"></text> 首页
-			</view>
-			<view class="cu-item" :class="1==TabCur?'text-blue cur':''" @tap="tabSelect" data-id="1">
-				<text class="cuIcon-discover"></text> 招聘
-			</view>
-			<view class="cu-item" @tap="tabSelect" data-id="2">
-				<view class="cu-avatar round"><image src="cuIcon-round"></image></view> 
-			</view>
-			<view class="cu-item" :class="3==TabCur?'text-blue cur':''" @tap="tabSelect" data-id="3">
-				<text class="cuIcon-dianhua"></text> 招投标
-			</view>
-			<view class="cu-item" :class="4==TabCur?'text-blue cur':''" @tap="tabSelect" data-id="4">
-				<text class="cuIcon-my"></text> 我的
-			</view>
-		</scroll-view>
+		<bottom-navbar :navs='mynavs' style="position: fixed;bottom: 0;left: 0;" v-on:selectchange="change($event)"></bottom-navbar>
 	</view>
 </template>
 
@@ -114,65 +96,117 @@
 			return{
 				TabCur: 0,
 				scrollLeft: 0,
+				mynavs:[
+					{
+						id:0,
+						name:"首页",
+						icon:"cuIcon-home",
+						url:""
+					},
+					{
+						id:1,
+						name:"招聘",
+						icon:"cuIcon-discover",
+						url:""
+					},
+					{
+						id:2,
+						name:"",
+						icon:"cuIcon-round",
+						url:""
+					},
+					{
+						id:3,
+						name:"招投标",
+						icon:"cuIcon-dianhua",
+						url:""
+					},
+					{
+						id:4,
+						name:"我的",
+						icon:"cuIcon-my",
+						url:"./profile/profile"
+					},
+				],
 				hospitals1:[
 					{
-						avatar:"../static/fumou-center-template/header.jpg",
-						name:"厦门大学附属翔安医院厦门大学附属翔安医院",
-						state:"关注"
-					},
-					{
-						avatar:"../static/fumou-center-template/header.jpg",
-						name:"厦门大学附属翔安医院",
-						state:"已关注"
-					},
-					{
-						avatar:"../static/fumou-center-template/header.jpg",
+						avatar:"../static/avatar.png",
 						name:"厦门大学附属翔安医院",
 						state:"关注"
 					},
 					{
-						avatar:"../static/fumou-center-template/header.jpg",
+						avatar:"../static/avatar.png",
 						name:"厦门大学附属翔安医院",
 						state:"关注"
 					},
 					{
-						avatar:"../static/fumou-center-template/header.jpg",
+						avatar:"../static/avatar.png",
+						name:"厦门大学附属翔安医院",
+						state:"关注"
+					},
+					{
+						avatar:"../static/avatar.png",
+						name:"厦门大学附属翔安医院",
+						state:"关注"
+					},
+					{
+						avatar:"../static/avatar.png",
+						name:"厦门大学附属翔安医院",
+						state:"关注"
+					},
+					{
+						avatar:"../static/avatar.png",
+						name:"厦门大学附属翔安医院",
+						state:"关注"
+					},
+					{
+						avatar:"../static/avatar.png",
 						name:"厦门大学附属翔安医院",
 						state:"关注"
 					},
 				],
 				hospitals2:[
 					{
-						avatar:"../static/fumou-center-template/header.jpg",
+						avatar:"../static/avatar.png",
 						name:"厦门大学附属翔安医院",
 						state:"关注"
 					},
 					{
-						avatar:"../static/fumou-center-template/header.jpg",
-						name:"厦门大学附属翔安医院",
-						state:"已关注"
-					},
-					{
-						avatar:"../static/fumou-center-template/header.jpg",
+						avatar:"../static/avatar.png",
 						name:"厦门大学附属翔安医院",
 						state:"关注"
 					},
 					{
-						avatar:"../static/fumou-center-template/header.jpg",
+						avatar:"../static/avatar.png",
 						name:"厦门大学附属翔安医院",
 						state:"关注"
 					},
 					{
-						avatar:"../static/fumou-center-template/header.jpg",
+						avatar:"../static/avatar.png",
+						name:"厦门大学附属翔安医院",
+						state:"关注"
+					},
+					{
+						avatar:"../static/avatar.png",
+						name:"厦门大学附属翔安医院",
+						state:"关注"
+					},
+					{
+						avatar:"../static/avatar.png",
+						name:"厦门大学附属翔安医院",
+						state:"关注"
+					},
+					{
+						avatar:"../static/avatar.png",
 						name:"厦门大学附属翔安医院",
 						state:"关注"
 					},
 				],
 				tags:[
-					"1",
-					"2",
-					"3",
-					"4",
+					"厦门大学厦门大学",
+					"原发性肝癌",
+					"中医养生",
+					"时尚刮痧",
 				]
 			}
 		},
@@ -180,6 +214,12 @@
 			
 		},
 		methods:{
+			change(index){
+				if(!this.mynavs[index].url)return;
+				uni.navigateTo({
+					url:this.mynavs[index].url
+				})
+			},
 			subsribe1(index)
 			{
 				this.hospitals1[index].state=(this.hospitals1[index].state=='已关注')?'关注':'已关注';
@@ -195,7 +235,7 @@
 						url:'./profile/profile'
 					})
 				}
-				this.scrollLeft = (e.currentTarget.dataset.id - 1) * 60
+				this.scrollLeft = (e.currentTarget.dataset.id - 1) * 60;
 			},
 			SearchMore(){
 			},
@@ -223,6 +263,8 @@
 			.tag{
 				min-width: 120rpx;
 				background-color: rgba(#4ddbfe, 0.4);
+				white-space: nowrap;
+				overflow: ellipsis;
 			}
 		}
 	}

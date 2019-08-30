@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<statusBar></statusBar>
-		<view class="cu-bar search bg-gray text-xxl">
+		<view class="cu-bar search bg-gray text-xxl" >
 			<span class="cuIcon-back_android margin-left" @tap="back()"></span>
 			<view class="search-form round text-xxl">
 				<input class="padding-left" :adjust-position="false" type="text" placeholder="原发性肝癌" confirm-type="search"></input>
@@ -36,42 +36,44 @@
 				<text class="cuIcon-unfold margin-left-sm"></text>
 			</button>
 		</view>
-		<view id="filters" class="bg-gray shadow shadow-lg" :style="{height:myheight}">	<!--自动展开-->
-			<view class="flex justify-between align-center margin margin-lr-lg">
-				<text>选择省份</text>
-				<text class="cuIcon-unfold" @click="provinceopen"></text>
-			</view>
-			<view class="grid col-5 text-center" :style="{height:provinceheight,overflow:hidden}">
-				<view :key="proIndex" v-for="(item,proIndex) in Province" @click="proChoice=proIndex" class="margin-tb-xs">
-					<view class="cu-tag light radius" :class="[proIndex==proChoice ? 'bg-blue':'bg-cyan']">{{item.value}}</view>
+		<view style="max-height: 70%;position:absolute;overflow: scroll;">
+			<scroll-view scroll-y id="filters" class="bg-gray shadow shadow-lg" :style="{height:myheight}">	<!--自动展开-->
+				<view class="flex justify-between align-center margin margin-lr-lg">
+					<text>选择省份</text>
+					<text class="cuIcon-unfold" @click="provinceopen"></text>
 				</view>
-			</view>
-			
-			<view class="flex justify-between align-center margin margin-lr-lg">
-				<text>选择市</text>
-				<text class="cuIcon-unfold" @click="cityopen"></text>
-			</view>
-			<view class="grid col-5 text-center" :style="{height:cityheight,overflow:hidden}">
-				<view :key="cityIndex" v-for="(item,cityIndex) in Province[proChoice].children" @click="cityChoice=cityIndex" class="margin-tb-xs">
-					<view class="cu-tag light radius" :class="[cityChoice==cityIndex ? 'bg-blue':'bg-cyan']">{{item.value}}</view>
+				<view class="grid col-5 text-center" :style="{height:provinceheight,overflow:hidden}">
+					<view :key="proIndex" v-for="(item,proIndex) in Province" @click="proChoice=proIndex" class="margin-tb-xs">
+						<view class="cu-tag light radius" :class="[proIndex==proChoice ? 'bg-blue':'bg-cyan']">{{item.value}}</view>
+					</view>
 				</view>
-			</view>
-			<view class="padding flex flex-direction">
-				<button class="cu-btn bg-grey lg" @click="open()">确定</button>
-			</view>
+				
+				<view class="flex justify-between align-center margin margin-lr-lg">
+					<text>选择市</text>
+					<text class="cuIcon-unfold" @click="cityopen"></text>
+				</view>
+				<view class="grid col-5 text-center" :style="{height:cityheight,overflow:hidden}">
+					<view :key="cityIndex" v-for="(item,cityIndex) in Province[proChoice].children" @click="cityChoice=cityIndex" class="margin-tb-xs">
+						<view class="cu-tag light radius" :class="[cityChoice==cityIndex ? 'bg-blue':'bg-cyan']">{{item.value}}</view>
+					</view>
+				</view>
+				<view class="padding flex flex-direction">
+					<button class="cu-btn bg-grey lg" @click="open()">确定</button>
+				</view>
+			</scroll-view>
 		</view>
 		<view>	<!--搜索结果-->
 			<view class="cu-card article no-card" @click="NavToHospital">
 				<view class="cu-item shadow">
 					<view class="title">
-						<view class="text-cut">无意者 烈火焚身;以正义的烈火拔出黑暗。我有自己的正义，见证至高的烈火吧。</view>
+						<view class="text-cut">厦门大学附属翔安医院</view>
 					</view>
 					<view class="content">
 						<view class="desc">
-							<view class="text-content"> 折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！真正的恩典因不完整而美丽，因情感而真诚，因脆弱而自由！</view>
+							<view class="text-content"> 厦门大学附属翔安医院（以下简称翔安医院）位于厦门市翔安区翔安东路2000号，是由厦门市政府与厦门大学共同投资建设的非营利性公立医院。</view>
 							<view>
-								<view class="cu-tag bg-red light sm round we">正义天使</view>
-								<view class="cu-tag bg-green light sm round we">史诗</view>
+								<view class="cu-tag bg-red light sm round we">三甲</view>
+								<view class="cu-tag bg-green light sm round we">市级</view>
 							</view>
 						</view>
 					</view>
@@ -79,15 +81,15 @@
 			</view>
 			<view class="cu-card article no-card ">
 				<view class="cu-item shadow">
-					<view class="title"><view class="text-cut">无意者 烈火焚身;以正义的烈火拔出黑暗。我有自己的正义，见证至高的烈火吧。</view></view>
+					<view class="title"><view class="text-cut">厦门大学附属翔安医院</view></view>
 					<view class="content">
-						<image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg"
+						<image src="../../static/hospital.png"
 						 mode="aspectFill"></image>
 						<view class="desc">
-							<view class="text-content"> 折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！真正的恩典因不完整而美丽，因情感而真诚，因脆弱而自由！</view>
+							<view class="text-content">厦门大学附属翔安医院（以下简称翔安医院）位于厦门市翔安区翔安东路2000号，是由厦门市政府与厦门大学共同投资建设的非营利性公立医院。</view>
 							<view>
-								<view class="cu-tag bg-red light sm round ">正义天使</view>
-								<view class="cu-tag bg-green light sm round ">史诗</view>
+								<view class="cu-tag bg-red light sm round ">三甲</view>
+								<view class="cu-tag bg-green light sm round ">市级</view>
 							</view>
 						</view>
 					</view>
@@ -162,7 +164,7 @@
 
 <style>
 	#filters{
-		position: fixed;
+		position: relative;
 		width: 100%;
 		height: 0%;
 		overflow: hidden;
