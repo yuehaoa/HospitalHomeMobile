@@ -26,8 +26,8 @@
 						<strong>{{name}}</strong>
 						<span>{{area}}</span>
 					</p>
-					<view class="flex margin-bottom margin-left-sm margin-top-xs">
-						<view class="tag round margin-right" :key="index" v-for="(tag,index) in tags">{{tag}}</view>
+					<view class="flex margin-bottom margin-left-sm margin-top-xs" id="tags">
+						<view class="radius cu-tag line-blue padding-lr-sm text-black" :key="index" v-for="(tag,index) in tags">{{tag}}</view>
 					</view>
 					<view class="flex margin-left-sm padding-bottom-sm">
 						<view class="flex justify-between basis-lg">
@@ -151,13 +151,18 @@
 			span{
 				font-size: 32rpx;
 			}
-			.tag{
-				padding: 4rpx 20rpx;
-				border: rgb(0, 167, 244) solid 2rpx;
-			}
 			.collection{
 				color: rgb(0, 167, 244);
 			}
+		}
+	}
+	#tags{
+		view{
+			margin-right:20rpx;
+			height: 40rpx;
+		}
+		view::after{
+			border: 1rpx solid #00A7F4;
 		}
 	}
 	#Contact{
