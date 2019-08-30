@@ -130,7 +130,7 @@
 <style lang="scss">
 	#HospitalInfo{
 		.head{
-			position:relative;
+			position: relative;
 			image{
 				width:100%;
 			}
@@ -151,7 +151,7 @@
 			margin-right:20rpx;
 			height: 40rpx;
 		}
-		view::after{
+		view:after{
 			border: 1rpx solid #00A7F4;
 		}
 	}
