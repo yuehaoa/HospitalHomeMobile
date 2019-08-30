@@ -24,7 +24,7 @@
 			<view class="hospitalname margin-tb-lg margin-left">
 				<view class="ShowHospitalName text-xxl" >
 					<text class="cuIcon-titles text-blue"></text>
-					<text class="text-black text-bold text-xxl"style="color: #000;">{{head[0].name}}</text>
+					<text class="text-black text-bold text-xxl" style="color: #000;">{{head[0].name}}</text>
 					<text class="margin-left text-df">{{head[1].name}}</text>
 				</view>
 			</view>
@@ -61,7 +61,7 @@
 					{name:'厦门大学附属翔安医院'},
 				    {name: '福建厦门'},	
 				],
-					doctor:[
+					doctor:
 						{name:'宋润涵',
 						 avatar:'../../static/logo.png',
 						 level:'脊柱外科 主任医师',
@@ -69,7 +69,6 @@
 						 skill:'擅长骨关节病治疗',
 						 schedule:[],
 						}
-					]
 			}
 		},
 		onLoad() {
