@@ -130,6 +130,7 @@
 <style lang="scss">
 	#HospitalInfo{
 		.head{
+			position:relative;
 			image{
 				width:100%;
 			}
