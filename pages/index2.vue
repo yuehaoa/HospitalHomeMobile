@@ -16,13 +16,13 @@
 						<view class="cu-avatar round margin-left-sm" style="background-image:url(../mob/static/avatar.png);"></view>
 					</view>
 				</view>
-				<view class="margin-xs flex justify-around align-center">
+				<view class="flex justify-around align-center margin-right">
 					<span class="text-white" style="z-index:1;">热搜：</span>
-					<span class="sm cu-tag round tag" :key="index" v-for="(tag,index) in tags">{{tag}}</span>
+					<span  style="z-index:1;" class="round tag cu-tags text-sm padding-xs" :key="index" v-for="(tag,index) in tags">{{tag}}</span>
 				</view>
 			</view>
 		</view>
-		<view class="margin-lr-sm" @tap="">
+		<view class="margin-lr-sm">
 			<view class="chat bg-white padding-bottom-xs">
 					<p class="padding-lr-xl padding-top-sm padding-bottom-xs text-xxl" style="color: #00a7f4;">智能导诊</p>
 					<view class="cu-chat margin-tb-sm">
@@ -40,8 +40,6 @@
 				<input placeholder="请输入症状/疾病/药品/疫苗..." class="solid-bottom bg-white round shadow padding-left" :adjust-position="false" :focus="false" maxlength="300" cursor-spacing="10"></input>
 				<button class="text-sm bg-blue">发送</button>
 			</view>
-		</view>
-		<view class="margin-lr-sm">
 			<view style="background-color: #f9f9f9;">
 				<view class="cu-bar">
 					<view class="text-xl">
@@ -60,8 +58,6 @@
 					</view>
 				</scroll-view>
 			</view>
-		</view>
-		<view class="margin-lr-sm">
 			<view style="background-color: #f9f9f9;">
 				<view class="cu-bar">
 					<view class="text-xl">
@@ -73,7 +69,7 @@
 				<scroll-view scroll-x>
 					<view class="flex text-center" id='subsCard'>
 						<view class="card bg-white margin-lr-sm"  v-for="(hospital,index) in hospitals2" :key="index">
-							<view class="padding-top-sm bg-white"><image :src="hospital.avatar" class="cu-avatar round lg" style="background-color: white;"></image></view>
+							<view class="padding-top-sm"><image :src="hospital.avatar" class="cu-avatar round lg" style="background-color: white;"></image></view>
 							<view class="text text-black text-overflow">{{hospital.name}}</view>
 							<button id="button" class="text-xs" :class="[hospital.state=='关注'?'bg-blue':'']" @tap="subsribe2(index)">{{hospital.state}}</button>
 						</view>
@@ -95,21 +91,25 @@
 				scrollLeft: 0,
 				mynavs:[
 					{
+						id:0,
 						name:"首页",
 						icon:"cuIcon-home",
-						url:"./index2"
+						url:"./index"
 					},
 					{
+						id:1,
 						name:"招聘",
 						icon:"cuIcon-discover",
 						url:""
 					},
 					{
+						id:3,
 						name:"招投标",
 						icon:"cuIcon-dianhua",
 						url:""
 					},
 					{
+						id:4,
 						name:"我的",
 						icon:"cuIcon-my",
 						url:"./profile/profile"
@@ -117,49 +117,7 @@
 				],
 				hospitals1:[
 					{
-						avatar:"../static/hospital0.png",
-						name:"厦门大学附属翔安医院",
-						state:"关注"
-					},
-					{
-						avatar:"../static/hospital1.png",
-						name:"厦门大学附属翔安医院",
-						state:"关注"
-					},
-					{
-						avatar:"../static/hospital2.png",
-						name:"厦门大学附属翔安医院",
-						state:"关注"
-					},
-					{
-						avatar:"../static/hospital3.png",
-						name:"厦门大学附属翔安医院",
-						state:"关注"
-					},
-					{
-						avatar:"../static/hospital4.png",
-						name:"厦门大学附属翔安医院",
-						state:"关注"
-					},
-					{
-						avatar:"../static/hospital5.png",
-						name:"厦门大学附属翔安医院",
-						state:"关注"
-					},
-					{
-						avatar:"../static/hospital6.png",
-						name:"厦门大学附属翔安医院",
-						state:"关注"
-					},
-				],
-				hospitals2:[
-					{
-						avatar:"../static/hospital7.png",
-						name:"厦门大学附属翔安医院",
-						state:"关注"
-					},
-					{
-						avatar:"../static/hospital8.png",
+						avatar:"../static/hospital9.png",
 						name:"厦门大学附属翔安医院",
 						state:"关注"
 					},
@@ -169,22 +127,64 @@
 						state:"关注"
 					},
 					{
-						avatar:"../static/hospital1.png",
+						avatar:"../static/hospital9.png",
 						name:"厦门大学附属翔安医院",
 						state:"关注"
 					},
 					{
-						avatar:"../static/hospital2.png",
+						avatar:"../static/hospital9.png",
 						name:"厦门大学附属翔安医院",
 						state:"关注"
 					},
 					{
-						avatar:"../static/hospital3.png",
+						avatar:"../static/hospital9.png",
 						name:"厦门大学附属翔安医院",
 						state:"关注"
 					},
 					{
-						avatar:"../static/hospital4.png",
+						avatar:"../static/hospital9.png",
+						name:"厦门大学附属翔安医院",
+						state:"关注"
+					},
+					{
+						avatar:"../static/hospital9.png",
+						name:"厦门大学附属翔安医院",
+						state:"关注"
+					},
+				],
+				hospitals2:[
+					{
+						avatar:"../static/hospital9.png",
+						name:"厦门大学附属翔安医院",
+						state:"关注"
+					},
+					{
+						avatar:"../static/hospital9.png",
+						name:"厦门大学附属翔安医院",
+						state:"关注"
+					},
+					{
+						avatar:"../static/hospital9.png",
+						name:"厦门大学附属翔安医院",
+						state:"关注"
+					},
+					{
+						avatar:"../static/hospital9.png",
+						name:"厦门大学附属翔安医院",
+						state:"关注"
+					},
+					{
+						avatar:"../static/hospital9.png",
+						name:"厦门大学附属翔安医院",
+						state:"关注"
+					},
+					{
+						avatar:"../static/hospital9.png",
+						name:"厦门大学附属翔安医院",
+						state:"关注"
+					},
+					{
+						avatar:"../static/hospital9.png",
 						name:"厦门大学附属翔安医院",
 						state:"关注"
 					},
@@ -232,7 +232,7 @@
 				uni.navigateTo({
 					url:'./Search/Search'
 				})
-			},
+			}
 		}
 	}
 </script>
@@ -250,7 +250,6 @@
 		}
 		.content{
 			.tag{
-				min-width: 120rpx;
 				background-color: rgba(#4ddbfe, 0.4);
 				white-space: nowrap;
 				overflow: ellipsis;

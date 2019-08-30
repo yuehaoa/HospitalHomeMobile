@@ -43,7 +43,7 @@
 					<text class="cuIcon-unfold" @click="provinceopen"></text>
 				</view>
 				<view class="grid col-5 text-center" :style="{height:provinceheight,overflow:hidden}">
-					<view :key="proIndex" v-for="(item,proIndex) in Province" @click="proChoice=proIndex" class="margin-tb-xs">
+					<view v-for="(item,proIndex) in Province" :key="proIndex" @click="proChoice=proIndex" class="margin-tb-xs">
 						<view class="cu-tag light radius" :class="[proIndex==proChoice ? 'bg-blue':'bg-cyan']">{{item.value}}</view>
 					</view>
 				</view>
