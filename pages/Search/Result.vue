@@ -36,31 +36,6 @@
 				<text class="cuIcon-unfold margin-left-sm"></text>
 			</button>
 		</view>
-<<<<<<< Updated upstream
-		<view style="max-height: 70%;position:absolute;overflow: scroll;">
-			<scroll-view scroll-y id="filters" class="bg-gray shadow shadow-lg" :style="{height:myheight}">	<!--自动展开-->
-				<view class="flex justify-between align-center margin margin-lr-lg">
-					<text>选择省份</text>
-					<text class="cuIcon-unfold" @click="provinceopen"></text>
-				</view>
-				<view class="grid col-5 text-center" :style="{height:provinceheight,overflow:hidden}">
-					<view v-for="(item,proIndex) in Province" :key="proIndex" @click="proChoice=proIndex" class="margin-tb-xs">
-						<view class="cu-tag light radius" :class="[proIndex==proChoice ? 'bg-blue':'bg-cyan']">{{item.value}}</view>
-					</view>
-				</view>
-				
-				<view class="flex justify-between align-center margin margin-lr-lg">
-					<text>选择市</text>
-					<text class="cuIcon-unfold" @click="cityopen"></text>
-				</view>
-				<view class="grid col-5 text-center" :style="{height:cityheight,overflow:hidden}">
-					<view :key="cityIndex" v-for="(item,cityIndex) in Province[proChoice].children" @click="cityChoice=cityIndex" class="margin-tb-xs">
-						<view class="cu-tag light radius" :class="[cityChoice==cityIndex ? 'bg-blue':'bg-cyan']">{{item.value}}</view>
-					</view>
-				</view>
-				<view class="padding flex flex-direction">
-					<button class="cu-btn bg-grey lg" @click="open()">确定</button>
-=======
 		<scroll-view scroll-y="true" id="filters" class="bg-gray shadow shadow-lg" :style="{height:myheight}">	<!--自动展开-->
 			<view class="flex justify-between align-center margin margin-lr-lg">
 				<text>选择省份</text>
@@ -69,7 +44,6 @@
 			<view class="grid col-5 text-center" :style="{height:provinceheight,overflow:hidden}">
 				<view v-for="(item,proIndex) in Province" :key="proIndex" @click="chooseProvience(proIndex)" class="margin-tb-xs">
 					<view class="cu-tag light radius" :class="[proIndex==proChoice ? 'bg-blue':'bg-cyan']">{{item.value}}</view>
->>>>>>> Stashed changes
 				</view>
 			</view>
 			
@@ -86,7 +60,7 @@
 				<button class="cu-btn bg-grey lg" @click="open()">确定</button>
 			</view>
 		</scroll-view>
-		<view scroll-y="true" style="">	<!--搜索结果-->
+		<view>	<!--搜索结果-->
 			<view class="cu-card article no-card " @click="NavToHospital" v-for="result in searchResult">
 				<view class="cu-item shadow">
 					<view class="title"><view class="text-cut">{{result.name}}</view></view>
