@@ -77,7 +77,10 @@
 				divheight:this.StatusBar,
 				currentUserGuid:'',
 				imgsrc:'',
-				userInfo:{},
+				userInfo:{
+					Collections:{	
+					}
+				},
 			}
 		},
 		onLoad(){
