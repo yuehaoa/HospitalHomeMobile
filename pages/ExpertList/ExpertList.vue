@@ -34,10 +34,10 @@
 				<text class="text-cyan text-xxl">{{depart[0].name}}</text>
 				<text class="margin-left text-df">({{depart[0].ExpertNumber}}位专家)</text>
 			</view>
-			<view class="margin-left margin">
+			<view class="margin-left margin" v-if="HavExpert">
 				<text class="text-df">{{depart[0].departintro}}</text>
 			</view>
-			<view class="solids-bottom margin-lr-sm flex  p-xs mb-sm" :key="index" v-for="(item,index) in depart[0].Experts" @click="NavToDocDetail">
+			<view class="solids-bottom margin-lr-sm flex  " :key="index" v-for="(item,index) in depart[0].Experts" @click="NavToDocDetail"v-if="HavExpert">
 					<view class="flex-sub  ">
 					<image id='avatar' class="cu-avatar xl round margin" :src="item.avatar" ></image>
 					</view>
@@ -48,6 +48,9 @@
 						</view>
 					<text class="text-df">{{item.Abstract}}</text>
 					</view>
+			</view>
+			<view class="margin-lr-sm flex "v-if="!HavExpert">
+				<image  class=" xl  margin" src="../../static/noexpert.png"style="height:80px" ></image>
 			</view>
 		</view>
 	</view>
@@ -71,11 +74,24 @@
 						 {name:'宋润涵',level:'脊柱外科 主任医师', avatar:'../../static/logo.png',Abstract:'医学硕士，三级甲等医院医疗、教学、科研、预防为一体'},
 					 ],
 					}
-				]
+				],
+				HavExpert:true,
+				ExpertNumber:0,
 			}
 		},
 		onLoad() {
-	
+			uni.request({
+				url: '',
+				method: 'GET',
+				data: {},
+				success: res => {
+					this.ExpertNumber=2;
+					if(this.ExpertNumber==0){
+						this.HavExpert=false;
+						this.depart[0].ExpertNumber=0;
+					}
+				},
+			});
 		},
 		methods: {
 			NavToDocDetail(){
