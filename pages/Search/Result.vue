@@ -79,7 +79,7 @@
 					</view>
 				</view>
 			</view>
-			<view class="cu-card article no-card ">
+			<view class="cu-card article no-card "@click="NavToHospital">
 				<view class="cu-item shadow">
 					<view class="title"><view class="text-cut">厦门大学附属翔安医院</view></view>
 					<view class="content">
