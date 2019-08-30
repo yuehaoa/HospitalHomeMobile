@@ -5,7 +5,7 @@
 			<image src="../static/blue.png" style="position: absolute;"></image>
 			<view class="content padding-top-sm">
 				<view class="cu-bar search">
-					<view class="cu-avatar round" style="background-image:url(../static/LO GO.png);"></view>
+					<view class="cu-avatar round" style="background-image:url(../mob/static/brand.png); background-color: rgba(0,0,0,0);"></view>
 					<view class="search-form round bg-white">
 						<input @tap="NavToSearch" style="padding-left: 20rpx;" :adjust-position="false" type="text" placeholder="让呼吸更健康" confirm-type="search"></input>
 						<text class="cuIcon-search text-blue margin-right-sm" style="font-size: 36rpx;"></text>
@@ -13,7 +13,7 @@
 					<view class="action">
 						<text class="text-white">厦门</text>
 						<text class="text-white text-xxl margin-left-sm">|</text>
-						<view class="cu-avatar round margin-left-sm" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big11010.jpg);"></view>
+						<view class="cu-avatar round margin-left-sm" style="background-image:url(../mob/static/avatar.png);"></view>
 					</view>
 				</view>
 				<view class="margin-xs flex justify-around">
@@ -101,13 +101,13 @@
 						id:0,
 						name:"首页",
 						icon:"cuIcon-home",
-						url:"./profile/profile"
+						url:""
 					},
 					{
 						id:1,
 						name:"招聘",
 						icon:"cuIcon-discover",
-						url:"./profile/profile"
+						url:""
 					},
 					{
 						id:2,
@@ -119,7 +119,7 @@
 						id:3,
 						name:"招投标",
 						icon:"cuIcon-dianhua",
-						url:"./profile/profile"
+						url:""
 					},
 					{
 						id:4,

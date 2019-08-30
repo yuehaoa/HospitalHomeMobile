@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<statusBar></statusBar>
-		<view class="cu-bar search bg-gray text-xxl">
+		<view class="cu-bar search bg-gray text-xxl" >
 			<span class="cuIcon-back_android margin-left" @tap="back()"></span>
 			<view class="search-form round text-xxl">
 				<input class="padding-left" :adjust-position="false" type="text" placeholder="原发性肝癌" confirm-type="search"></input>
@@ -36,57 +36,60 @@
 				<text class="cuIcon-unfold margin-left-sm"></text>
 			</button>
 		</view>
-		<view id="filters" class=" justify-around bg-gray shadow shadow-lg" :style="{height:myheight}">	<!--自动展开-->
-			<view  >
-				<text class="margin">省份</text>
-				<button class="cu-btn bg-white flex-sub  margin-right margin-bottom-sm sm" @click="provinceopen" style="float:right">
-					<text class="cuIcon-unfold "></text>
-				</button>
-				<view class=" margin-lr-lg margin-top-xs padding-left" :style="{height:provinceheight,overflow:hidden}" >
-					<view class="cu-tag light bg-cyan radius margin-bottom-xs " 
-					v-for="(item,index) in province" @click="showCity(index)" >{{item.name}}</view>
+		<view style="max-height: 70%;position:absolute;overflow: scroll;">
+			<scroll-view scroll-y id="filters" class="bg-gray shadow shadow-lg" :style="{height:myheight}">	<!--自动展开-->
+				<view class="flex justify-between align-center margin margin-lr-lg">
+					<text>选择省份</text>
+					<text class="cuIcon-unfold" @click="provinceopen"></text>
 				</view>
-			</view>
-			<view class="margin-top-xs">
-				<text class="margin">市</text>
-				<button class="cu-btn bg-white flex-sub  margin-right margin-lr margin-bottom-sm sm" @click="cityopen" style="float:right" >
-					<text class="cuIcon-unfold  "></text>
-				</button>
-				<view class="margin-lr-lg margin-top-xs padding-left" :style="{height:cityheight,overflow:hidden}">
-					<view class="cu-tag light bg-cyan radius margin-bottom-xs"  v-for="(item,index) in province[number].city">
-						{{item.name}}
+				<view class="grid col-5 text-center" :style="{height:provinceheight,overflow:hidden}">
+					<view :key="proIndex" v-for="(item,proIndex) in Province" @click="proChoice=proIndex" class="margin-tb-xs">
+						<view class="cu-tag light radius" :class="[proIndex==proChoice ? 'bg-blue':'bg-cyan']">{{item.value}}</view>
 					</view>
 				</view>
-			</view>
+				
+				<view class="flex justify-between align-center margin margin-lr-lg">
+					<text>选择市</text>
+					<text class="cuIcon-unfold" @click="cityopen"></text>
+				</view>
+				<view class="grid col-5 text-center" :style="{height:cityheight,overflow:hidden}">
+					<view :key="cityIndex" v-for="(item,cityIndex) in Province[proChoice].children" @click="cityChoice=cityIndex" class="margin-tb-xs">
+						<view class="cu-tag light radius" :class="[cityChoice==cityIndex ? 'bg-blue':'bg-cyan']">{{item.value}}</view>
+					</view>
+				</view>
+				<view class="padding flex flex-direction">
+					<button class="cu-btn bg-grey lg" @click="open()">确定</button>
+				</view>
+			</scroll-view>
 		</view>
 		<view>	<!--搜索结果-->
 			<view class="cu-card article no-card" @click="NavToHospital">
 				<view class="cu-item shadow">
 					<view class="title">
-						<view class="text-cut">无意者 烈火焚身;以正义的烈火拔出黑暗。我有自己的正义，见证至高的烈火吧。</view>
+						<view class="text-cut">厦门大学附属翔安医院</view>
 					</view>
 					<view class="content">
 						<view class="desc">
-							<view class="text-content"> 折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！真正的恩典因不完整而美丽，因情感而真诚，因脆弱而自由！</view>
+							<view class="text-content"> 厦门大学附属翔安医院（以下简称翔安医院）位于厦门市翔安区翔安东路2000号，是由厦门市政府与厦门大学共同投资建设的非营利性公立医院。</view>
 							<view>
-								<view class="cu-tag bg-red light sm round">正义天使</view>
-								<view class="cu-tag bg-green light sm round">史诗</view>
+								<view class="cu-tag bg-red light sm round we">三甲</view>
+								<view class="cu-tag bg-green light sm round we">市级</view>
 							</view>
 						</view>
 					</view>
 				</view>
 			</view>
-			<view class="cu-card article no-card">
+			<view class="cu-card article no-card ">
 				<view class="cu-item shadow">
-					<view class="title"><view class="text-cut">无意者 烈火焚身;以正义的烈火拔出黑暗。我有自己的正义，见证至高的烈火吧。</view></view>
+					<view class="title"><view class="text-cut">厦门大学附属翔安医院</view></view>
 					<view class="content">
-						<image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg"
+						<image src="../../static/hospital.png"
 						 mode="aspectFill"></image>
 						<view class="desc">
-							<view class="text-content"> 折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！真正的恩典因不完整而美丽，因情感而真诚，因脆弱而自由！</view>
+							<view class="text-content">厦门大学附属翔安医院（以下简称翔安医院）位于厦门市翔安区翔安东路2000号，是由厦门市政府与厦门大学共同投资建设的非营利性公立医院。</view>
 							<view>
-								<view class="cu-tag bg-red light sm round">正义天使</view>
-								<view class="cu-tag bg-green light sm round">史诗</view>
+								<view class="cu-tag bg-red light sm round ">三甲</view>
+								<view class="cu-tag bg-green light sm round ">市级</view>
 							</view>
 						</view>
 					</view>
@@ -97,158 +100,21 @@
 </template>
 
 <script>
+	import exp from '../../area.js'
 	export default {
 		data() {
 			return {
 				TabCur:0,
-				index: 0,
+				proChoice: 0,
+				cityChoice: -1,
 				picker: ['按推荐', '按收藏', '按更新'],
 				showFilters:false,
 				myheight:"0px",
-				cityheight:'50rpx',
-				provinceheight:'50rpx',
+				cityheight:'68rpx',
+				provinceheight:'68rpx',
 				hidden: 'hidden',
-				number:0,
-				province: [
-					{name:'北京',
-					  city:[
-						  {name:'北京'},
-						  ],
-					},
-					{name:'天津',
-					  city:[
-						  {name:'天津'},
-					  ],
-					},
-					{name:'河北',
-					  city:[
-						  {name:'石家庄'},
-						  {name:'唐山'},
-							{name:'秦皇岛'},
-							{name:'邯郸'},
-							{name:'邢台'},
-							{name:'保定'},
-							{name:'张家口'},
-							{name:'承德'},
-							{name:'沧州'},
-							{name:'廊坊'},
-							{name:'衡水'},
-					  ],
-					},
-					{name:'山西',
-					city:[
-						{name:'太原'},
-						{name:'大同'},
-						{name:'阳泉'},
-						{name:'长治'},
-						{name:'晋城'},
-						{name:'朔州'},
-						{name:'晋中'},
-						{name:'运城'},
-						{name:'忻州'},
-						{name:'临汾'},
-						{name:'吕梁'},
-					 ],
-					},
-					{name:'内蒙古',
-					city:[
-						{name:'呼和浩特'},
-						{name:'包头'},
-						{name:'乌海'},
-						{name:'赤峰'},
-						{name:'通辽'},
-						{name:'鄂尔多斯'},
-						{name:'呼伦贝尔'},
-						{name:'巴彦淖尔'},
-						{name:'乌兰察布'},
-						{name:'兴安'},
-						{name:'锡林郭勒'},
-						{name:'阿拉善'},
-					]
-					},
-					{name:'福建',
-					city:[
-						{name:'福州'},
-						{name:'厦门'},
-						{name:'莆田'},
-						{name:'三明'},
-						{name:'泉州'},
-						{name:'漳州'},
-						{name:'南平'},
-						{name:'龙岩'},
-						{name:'宁德'},
-					],
-					},
-					{name:'北京',
-					  city:[
-						  {name:'北京'},
-						  ],
-					},
-					{name:'天津',
-					  city:[
-						  {name:'天津'},
-					  ],
-					},
-					{name:'河北',
-					  city:[
-						  {name:'石家庄'},
-						  {name:'唐山'},
-							{name:'秦皇岛'},
-							{name:'邯郸'},
-							{name:'邢台'},
-							{name:'保定'},
-							{name:'张家口'},
-							{name:'承德'},
-							{name:'沧州'},
-							{name:'廊坊'},
-							{name:'衡水'},
-					  ],
-					},
-					{name:'山西',
-					city:[
-						{name:'太原'},
-						{name:'大同'},
-						{name:'阳泉'},
-						{name:'长治'},
-						{name:'晋城'},
-						{name:'朔州'},
-						{name:'晋中'},
-						{name:'运城'},
-						{name:'忻州'},
-						{name:'临汾'},
-						{name:'吕梁'},
-					 ],
-					},
-					{name:'内蒙古',
-					city:[
-						{name:'呼和浩特'},
-						{name:'包头'},
-						{name:'乌海'},
-						{name:'赤峰'},
-						{name:'通辽'},
-						{name:'鄂尔多斯'},
-						{name:'呼伦贝尔'},
-						{name:'巴彦淖尔'},
-						{name:'乌兰察布'},
-						{name:'兴安'},
-						{name:'锡林郭勒'},
-						{name:'阿拉善'},
-					]
-					},
-					{name:'福建',
-					city:[
-						{name:'福州'},
-						{name:'厦门'},
-						{name:'莆田'},
-						{name:'三明'},
-						{name:'泉州'},
-						{name:'漳州'},
-						{name:'南平'},
-						{name:'龙岩'},
-						{name:'宁德'},
-					],
-					},
-				],
+				Province:[],
+				index:0,
 			}
 		},
 		methods: {
@@ -256,8 +122,7 @@
 				this.TabCur = e.currentTarget.dataset.id;
 			},
 			open(){
-				if(this.myheight=='0px')
-				{
+				if(this.myheight=='0px'){
 					this.myheight="auto";
 				}
 				else{
@@ -265,27 +130,20 @@
 				}
 			},
 			cityopen(){
-				if(this.cityheight=='50rpx')
-				{
+				if(this.cityheight=='68rpx'){
 					this.cityheight="auto";
 				}
-			
-			else{
-				this.cityheight='50rpx';
-			}
+				else{
+					this.cityheight='68rpx';
+				}
 			},
 			provinceopen(){
-				if(this.provinceheight=='50rpx')
-				{
+				if(this.provinceheight=='68rpx'){
 					this.provinceheight="auto";
 				}
-			
-			else{
-				this.provinceheight='50rpx';
-			}
-			},
-			showCity(index){
-				this.number=index;
+				else{
+					this.provinceheight='68rpx';
+				}
 			},
 			NavToHospital(){
 				uni.navigateTo({
@@ -297,16 +155,23 @@
 					
 				})
 			}
+		},
+		onLoad() {
+			this.Province=exp;
 		}
 	}
 </script>
 
 <style>
 	#filters{
-		position: fixed;
+		position: relative;
 		width: 100%;
 		height: 0%;
 		overflow: hidden;
-		transition:height 2s;
+		transition:all 2s;
+		z-index:10;
+	}
+	.we{
+		z-index:1;
 	}
 </style>

@@ -60,7 +60,7 @@
 				    {name: '福建厦门'},	
 				],
 					doctor:[
-						{name:'某某专家',
+						{name:'宋润涵',
 						 avatar:'../../static/logo.png',
 						 level:'脊柱外科 主任医师',
 						 introduce:'医学硕士,三级甲等医院治疗、教学、科研',
