@@ -1,11 +1,9 @@
 <template>
-	<scroll-view class="nav text-center bg-white">
-		<view class="cu-item" :class="nav.id==TabCur?'text-blue cur':''" @tap="tabSelect" :data-id='nav.id' v-for="nav in navs" :key='nav.id'>
-			<view class="flex-sub">
-				<text :class="nav.icon"></text> {{nav.name}}
-			</view>
+	<view class="nav text-center bg-white flex" style="position: fixed;bottom: 0;left: 0; width:100%">
+		<view class="cu-item flex-sub" :class="nav.id==TabCur?'text-blue cur':''" @tap="tabSelect" :data-id='nav.id' v-for="nav in navs" :key='nav.id'>
+			<text :class="nav.icon"></text> {{nav.name}}
 		</view>
-	</scroll-view>
+	</view>
 </template>
 
 <script>

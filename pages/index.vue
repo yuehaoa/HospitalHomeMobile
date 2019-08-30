@@ -44,7 +44,7 @@
 			</view>
 			<view class="cu-bar input radius bg-grey margin-sm" style="background-color: #f9f9f9;margin-left: 0;">
 				<text class="cuIcon-voice text-white bg-blue cu-avatar round" style="font-size: 25px;"></text>
-				<input class="solid-bottom bg-white round shadow" :adjust-position="false" :focus="false" maxlength="300" cursor-spacing="10"></input>
+				<input class=" padding-lr bg-white round shadow" :adjust-position="false" :focus="false" maxlength="300" cursor-spacing="10"></input>
 				<button class="text-sm bg-blue">发送</button>
 			</view>
 			<view style="background-color: #f9f9f9;">
@@ -85,7 +85,7 @@
 			</view>
 		</view>
 		<view style="height: 120rpx;"></view>
-		<bottom-navbar :navs='mynavs' style="position: fixed;bottom: 0;left: 0;" v-on:selectchange="change($event)"></bottom-navbar>
+		<bottom-navbar :navs='mynavs' v-on:selectchange="change($event)"></bottom-navbar>
 	</view>
 </template>
 
