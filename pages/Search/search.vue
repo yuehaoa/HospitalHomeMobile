@@ -4,7 +4,7 @@
 		<view class="cu-bar search bg-gray text-xxl">
 			<span class="cuIcon-back_android margin-left" @tap="back()" ></span>
 			<view class="search-form round text-xxl">
-				<input   class="padding-left" :adjust-position="false" type="text" :placeholder="inikeyword" confirm-type="search" 
+				<input class="padding-left" :adjust-position="false" type="text" :placeholder="inikeyword" confirm-type="search" 
 				v-model="keyword" @confirm="NavToRes(false)"></input>
 				<text class="cuIcon-voice text-blue" style="font-size: 44rpx;"></text>
 			</view>
@@ -48,17 +48,21 @@
 					<view class="action flex" style="width: 100%;">
 						<text class="cuIcon-titles text-blue"></text>
 						<text class="text-xl text-bold">搜索发现</text>
-						<text class="cuIcon-attention" style="margin-left:auto;" @click="btn1" v-show="atten"></text>
-						<text class="cuIcon-attentionforbid" style="margin-left:auto;" @click="btn1" v-show="!atten"></text>
+						<text class="cuIcon-attention" style="margin-left:auto;"></text>
 					</view>
 				</view>
-				<view class="box flex flex-wrap">
-					<view v-if="atten" class="basis-sm padding-sm margin-xs radius" :key="index" v-for="(key,index) in findKeywordList" @tap="NavToRes(key)">{{key}}</view>
-			         
-					 <view class="flex-sub text-center"  v-if="!atten">
-					 	<view class=" text-sm padding">
-					 		<text class="text-grey">当前搜索已隐藏</text>
-					 	</view>
+				<view class="box">
+					<view class="flex">
+						<view class="flex-sub  padding-sm margin-xs radius">呼吸科</view>
+						<view class="flex-sub padding-sm margin-xs radius">原发性肝癌</view>
+					</view>
+					<view class="flex">
+						<view class="flex-sub padding-sm margin-xs radius">呼吸科权威医院</view>
+						<view class="flex-sub padding-sm margin-xs radius">广州医科</view>
+					</view>
+					<view class="flex">
+						<view class="flex-sub padding-sm margin-xs radius">呼吸健康</view>
+						<view class="flex-sub padding-sm margin-xs radius">医院</view>
 					</view>
 				</view>
 			</view>
@@ -70,7 +74,6 @@
 	export default {
 		onLoad() {
 			this.loadoldkeys();
-			this.loadfindkeys();
 		},
 		data() {
 			return {
@@ -78,25 +81,12 @@
 				inikeyword:"原发性肝癌",
 				keyword:"",
 				oldKeywordList:[],
-				findKeywordList:[],
-				fold:true,
-				atten:true
+				fold:true
 				
 			}
 		},
 		methods: {
-			
-
-			btn1()
-			{
-				this.atten=!this.atten;
-			},
-			loadfindkeys()
-			{
-				this.findKeywordList=['呼吸科','原发性肝癌','呼吸科权威医院','广州医科','呼吸健康','医院'];
-				
-			},
-			btn:function()
+			btn()
 			{
 				this.fold=!this.fold;
 			},
@@ -105,13 +95,11 @@
 					content: '确定清除历史搜索记录？',
 					success: (res) => {
 						if (res.confirm) {
-							
 							this.oldKeywordList = [];
 							uni.removeStorage({
 								key: 'oldkeys'
 							});
 						} else if (res.cancel) {
-							
 						}
 					}
 				});
@@ -149,15 +137,10 @@
 				uni.getStorage({
 					key:'oldkeys',
 					success: (res) => {
-						let Oldkeys=res.data;
-						let f=Oldkeys.indexOf(key)
-						if(f>-1){
-							Oldkeys.splice(f,1);
-						}
-						Oldkeys.unshift(key);
-						if(Oldkeys.length>10){
-							Oldkeys.pop();
-						}
+						var Oldkeys=res.data;
+						if(Oldkeys.indexOf(key)==-1)
+						Oldkeys.push(key);
+						Oldkeys.length>10 && Oldkeys.pop();
 						uni.setStorage({
 							key:'oldkeys',
 							data:Oldkeys

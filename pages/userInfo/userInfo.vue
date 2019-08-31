@@ -108,12 +108,13 @@
 					success: res => {},
 					fail: () => {},
 					complete: () => {
-						uni.clearStorage();
+						uni.removeStorageSync('userInfo');
+						uni.reLaunch({
+							url:'../login/login',
+						});
 					}
 				});
-				uni.reLaunch({
-					url:'../login/login',
-				});
+				
 			},
 		},
 		
