@@ -6,7 +6,7 @@
 			<view class="padding-top-lg flex">	<!--四个按钮-->
 				<view class="padding-lr">
 					<button class="cu-btn cuIcon bg-grey text-xl" @click="back">
-						<text class="cuIcon-back"></text>
+						<text class="cuIcon-home"></text>
 					</button>
 				</view>
 				<view class="padding-lr" style="margin-left: auto;">
@@ -41,14 +41,14 @@
 			<view class="cu-bar search flex justify-center">	<!--搜索条-->
 				<view class="basis-xl">
 					<view class="search-form round" id="searcher">
-						<input class="padding-left" type="text" placeholder="肝胆外科" confirm-type="search"></input>
+						<input class="padding-left" type="text" placeholder="肝胆外科" confirm-type="search" @input="search"></input>
 						<text class="cuIcon-search text-blue" style="font-size: 40rpx;"></text>
 					</view>
 				</view>
 			</view>
 		</view>
 		<view class="cu-list menu sm-border" id="list">	<!--科室列表-->
-			<view class="cu-item" :key="index" v-for="(item, index) in departList">
+			<view class="cu-item" v-show="keyword==''||index==chooseIndex" :key="index" v-for="(item, index) in departList">
 				<view class="content" @click="NavToDetail">
 					<text class="text-black">{{item}}</text>
 				</view>
@@ -61,7 +61,8 @@
 	export default {
 		data() {
 			return{
-				divheight:this.StatusBar,
+				chooseIndex:'',
+				keyword:'',
 				departList:[
 					"脊柱外科(3位专家)",
 					"肝胆外科(7位专家)",
@@ -90,9 +91,14 @@
 				});
 			},
 			back(){
-				uni.navigateBack({
-					
-				})
+				uni.reLaunch({
+					url: '../index'
+				});
+			},
+			search(event){
+				debugger;
+				this.keyword=event.target.value;
+				this.chooseIndex=this.departList.indexOf(event.target.value);
 			}
 		}
 	}

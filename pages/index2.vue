@@ -79,7 +79,7 @@
 			</view>
 		</view>
 		<view style="height: 120rpx;"></view>
-		<bottom-navbar :navs='mynavs' style="position: fixed;bottom: 0;left: 0;" v-on:selectchange="change($event)"></bottom-navbar>
+		<bottom-navbar :navs='mynavs' v-on:selectchange="change($event)" :iniTabCur="0"></bottom-navbar>
 	</view>
 </template>
 
@@ -92,25 +92,21 @@
 				scrollLeft: 0,
 				mynavs:[
 					{
-						id:0,
 						name:"首页",
 						icon:"cuIcon-home",
 						url:"./index3"
 					},
 					{
-						id:1,
 						name:"招聘",
 						icon:"cuIcon-discover",
 						url:"./News/newsList?cate=招聘"
 					},
 					{
-						id:3,
 						name:"招投标",
 						icon:"cuIcon-dianhua",
 						url:"./News/newsList?cate=招投标"
 					},
 					{
-						id:4,
 						name:"我的",
 						icon:"cuIcon-my",
 						url:"./profile/profile"

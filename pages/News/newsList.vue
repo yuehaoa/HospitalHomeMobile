@@ -27,7 +27,7 @@
 				</view>
 			</scroll-view>
 		</view>
-		<view :key="index" v-for="(item,index) in news">
+		<view :key="index" v-for="(item,index) in news" @click="toDetail()">
 			<view class="solids-bottom padding" style="background-color: white;" v-if="item.photo.length==0">
 				<view class="padding-bottom-xs">
 					<text class="text-xxl">{{item.title}}</text>
@@ -56,6 +56,7 @@
 					<text class="text-df">{{item.date}}</text>
 			</view>
 		</view>
+		<bottom-navbar :navs='mynavs' v-on:selectchange="change($event)" :iniTabCur="TabCur+1"></bottom-navbar>
 	</view>
 </template>
 
@@ -64,6 +65,28 @@
 		data() {
 			return {
 				TabCur: 0,
+				mynavs:[
+					{
+						name:"首页",
+						icon:"cuIcon-home",
+						url:"/pages/index2"
+					},
+					{
+						name:"招聘",
+						icon:"cuIcon-discover",
+						url:"/pages/News/newsList?cate=招聘"
+					},
+					{
+						name:"招投标",
+						icon:"cuIcon-dianhua",
+						url:"/pages/News/newsList?cate=招投标"
+					},
+					{
+						name:"我的",
+						icon:"cuIcon-my",
+						url:"/pages/profile/profile"
+					},
+				],
 				tabNav:[
 					"招聘",
 					"招投标",
@@ -84,8 +107,16 @@
 		},
 		onLoad(data) {
 			this.TabCur=this.tabNav.indexOf(data.cate);
+			if(data.cate=="招聘")this.x=1;
+			else this.x=2;
 		},
 		methods: {
+			change(index){
+				this.TabCur=index-1;
+				uni.redirectTo({
+					url:this.mynavs[index].url
+				})
+			},
 			tabSelect(e) {
 				this.TabCur = e.currentTarget.dataset.id;
 			},
@@ -93,6 +124,11 @@
 			{
 				uni.navigateTo({
 					url:'../Search/Search',
+				})
+			},
+			toDetail(){
+				uni.navigateTo({
+					url:'./newsDetail',
 				})
 			}
 		}
