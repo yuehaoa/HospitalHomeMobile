@@ -75,11 +75,11 @@
 				],
 				recruitNews:[
 					{title:'关于收看2019年“开学第一课”的提示',photo:[],date:'2019-08-28',photonumber:0},
-					{title:'2018年我国城乡居民健康素养水平提升至17.06%呈稳步提升态势',photo:'../static/hospital.png',photonumber:1,date:'2019-08-28'},
-					{title:'陕西：“最美逆行员”消防员 保护我们安全',photo:[{name:'../static/hospital.png'},{name:'../static/hospital.png'},{name:'../static/hospital.png'}],photonumber:3,date:'2019-08-28'},
+					{title:'2018年我国城乡居民健康素养水平提升至17.06%呈稳步提升态势',photo:'../static/hospital0.png',photonumber:1,date:'2019-08-28'},
+					{title:'陕西：“最美逆行员”消防员 保护我们安全',photo:[{name:'../static/hospital0.png'},{name:'../static/hospital0.png'},{name:'../static/hospital0.png'}],photonumber:3,date:'2019-08-28'},
 				],
 				bidNews:[
-					{title:'陕西：“最美逆行员”消防员 保护我们安全',photo:[{name:'../static/hospital.png'},{name:'../static/hospital.png'},{name:'../static/hospital.png'}],photonumber:3,date:'2019-08-28'},
+					{title:'陕西：“最美逆行员”消防员 保护我们安全',photo:[{name:'../static/hospital0.png'},{name:'../static/hospital0.png'},{name:'../static/hospital0.png'}],photonumber:3,date:'2019-08-28'},
 				]
 			}
 		},

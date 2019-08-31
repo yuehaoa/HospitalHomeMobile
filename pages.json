@@ -31,6 +31,12 @@
 		        "navigationBarTitleText" : "主页2"
 		    }
 		},
+		{
+		    "path" : "pages/index3",
+		    "style" : {
+		        "navigationBarTitleText" : "主页3"
+		    }
+		},
         {
             "path" : "pages/Search/Result",
             "style" : {
