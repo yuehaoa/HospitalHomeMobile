@@ -19,6 +19,12 @@
                 "navigationBarTitleText" : "主页"
             }
         },
+		{
+		    "path" : "pages/index2",
+		    "style" : {
+		        "navigationBarTitleText" : "主页2"
+		    }
+		},
         {
             "path" : "pages/Search/Result",
             "style" : {
@@ -93,10 +99,6 @@
         },
         {
             "path" : "pages/Guide/Guide",
-            "style" : {}
-        },
-        {
-            "path" : "colorui/components/myStatusBar",
             "style" : {}
         }
     ],
