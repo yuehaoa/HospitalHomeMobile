@@ -6,7 +6,7 @@
 			<view class="padding-top-lg flex">	<!--四个按钮-->
 				<view class="padding-lr">
 					<button class="cu-btn cuIcon bg-grey text-xl" @click="back">
-						<text class="cuIcon-home"></text>
+						<text class="cuIcon-back"></text>
 					</button>
 				</view>
 				<view class="padding-lr" style="margin-left: auto;">
@@ -91,9 +91,14 @@
 				});
 			},
 			back(){
-				uni.reLaunch({
-					url: '../index'
-				});
+				uni.navigateBack({
+					
+				})
+			},
+			search(event){
+				debugger;
+				this.keyword=event.target.value;
+				this.chooseIndex=this.departList.indexOf(event.target.value);
 			}
 		}
 	}

@@ -100,31 +100,31 @@
 					{
 						name:'厦门大学附属翔安医院',
 						abstract:'厦门大学附属翔安医院（以下简称翔安医院）位于厦门市翔安区翔安东路2000号，是由厦门市政府与厦门大学共同投资建设的非营利性公立医院',
-						avatar:'../../static/hospital.png',
+						avatar:'../../static/hospital0.png',
 						tags:['市级','公立'],
 					},
 					{
 						name:'厦门大学附属翔安医院',
 						abstract:'厦门大学附属翔安医院（以下简称翔安医院）位于厦门市翔安区翔安东路2000号，是由厦门市政府与厦门大学共同投资建设的非营利性公立医院',
-						avatar:'../../static/hospital.png',
+						avatar:'../../static/hospital0.png',
 						tags:['市级','公立'],
 					},
 					{
 						name:'厦门大学附属翔安医院',
 						abstract:'厦门大学附属翔安医院（以下简称翔安医院）位于厦门市翔安区翔安东路2000号，是由厦门市政府与厦门大学共同投资建设的非营利性公立医院',
-						avatar:'../../static/hospital.png',
+						avatar:'../../static/hospital0.png',
 						tags:['市级','公立'],
 					},
 					{
 						name:'厦门大学附属翔安医院',
 						abstract:'厦门大学附属翔安医院（以下简称翔安医院）位于厦门市翔安区翔安东路2000号，是由厦门市政府与厦门大学共同投资建设的非营利性公立医院',
-						avatar:'../../static/hospital.png',
+						avatar:'../../static/hospital0.png',
 						tags:['市级','公立'],
 					},
 					{
 						name:'厦门大学附属翔安医院',
 						abstract:'厦门大学附属翔安医院（以下简称翔安医院）位于厦门市翔安区翔安东路2000号，是由厦门市政府与厦门大学共同投资建设的非营利性公立医院',
-						avatar:'../../static/hospital.png',
+						avatar:'../../static/hospital0.png',
 						tags:['市级','公立'],
 					},
 				]
@@ -158,7 +158,8 @@
 				uni.navigateBack();
 			}
 		},
-		onLoad() {
+		onLoad(data) {
+			this.keyword=data.keyword;
 			this.Province=exp;
 		}
 	}

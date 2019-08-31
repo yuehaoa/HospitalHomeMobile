@@ -6,7 +6,7 @@
 				<image src="../../static/hospital0.png" mode="aspectFill"></image>
 				<view class="nav flex">
 					<view class="padding-lr">
-						<button class="cu-btn cuIcon bg-grey text-xl" @click="back">
+						<button class="cu-btn cuIcon bg-grey text-xl" @click="NavToIndex">
 							<text class="cuIcon-home"></text>
 						</button>
 					</view>
@@ -178,9 +178,9 @@
 				});
 			},
 			back(){
-				uni.reLaunch({
-					url: '../index',
-				});
+				uni.navigateBack({
+					
+				})
 			},
 			NavToDetail(){
 				uni.navigateTo({
@@ -190,8 +190,15 @@
 			},
 			NavNewsPage(){
 				uni.navigateTo({
-					url: '../newspage',
+					url: '../News/newsList',
 					success: res => {},
+				});
+			},
+			NavToIndex(){
+				uni.navigateTo({
+					url: '../index2',
+					success: res => {},
+					
 				});
 			}
 		}

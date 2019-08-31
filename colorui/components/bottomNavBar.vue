@@ -20,7 +20,10 @@
 			}
 		},
 		props:{
-			navs:Array,
+			navs:{
+				type:Array,
+				required: true
+			},
 			textsize:{
 				type:String,
 				default:''

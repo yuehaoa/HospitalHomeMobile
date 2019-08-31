@@ -94,17 +94,17 @@
 					{
 						name:"首页",
 						icon:"cuIcon-home",
-						url:"./index"
+						url:"./index3"
 					},
 					{
 						name:"招聘",
 						icon:"cuIcon-discover",
-						url:""
+						url:"./News/newsList?cate=招聘"
 					},
 					{
 						name:"招投标",
 						icon:"cuIcon-dianhua",
-						url:""
+						url:"./News/newsList?cate=招投标"
 					},
 					{
 						name:"我的",
