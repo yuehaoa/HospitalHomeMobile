@@ -1,6 +1,6 @@
 <template>
 	<view class="nav text-center bg-white" style="position: fixed; bottom: 0; width: 100%;">
-		<view class="cu-bar tabbar bg-white">
+		<view class="cu-bar tabbar bg-white flex">
 			<view class="action" :class="index==TabCur?'text-blue cur':''" @tap="tabSelect" :data-id=index v-for="(nav,index) in navs" :key=index>
 				<view class="flex-sub":class="textsize">
 					<text :class="nav.icon"></text>
@@ -20,7 +20,10 @@
 			};
 		},
 		props:{
-			navs:Array,
+			navs:{
+				type:Array,
+				required: true
+			},
 			textsize:{
 				type:String,
 				default:''

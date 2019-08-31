@@ -7,11 +7,12 @@
 				<view class="cu-bar search">
 					<view class="cu-avatar round" style="background-image:url(../mob/static/brand.png); background-color: rgba(0,0,0,0);"></view>
 					<view class="search-form round bg-white">
-						<input @tap="NavToSearch" style="padding-left: 20rpx;" :adjust-position="false" type="text" placeholder="让呼吸更健康" confirm-type="search"></input>
+						<input @tap="NavToSearch" style="padding-left: 20rpx;" :adjust-position="false" 
+						type="text" placeholder="让呼吸更健康" confirm-type="search" ></input>
 						<text class="cuIcon-search text-blue margin-right-sm" style="font-size: 36rpx;"></text>
 					</view>
 					<view class="action">
-						<text class="text-white">厦门</text>
+						<text class="text-white text-lg">厦门</text>
 						<text class="text-white text-xxl margin-left-sm">|</text>
 						<view class="cu-avatar round margin-left-sm" style="background-image:url(../mob/static/avatar.png);"></view>
 					</view>
@@ -94,7 +95,7 @@
 						id:0,
 						name:"首页",
 						icon:"cuIcon-home",
-						url:"./index"
+						url:"./index3"
 					},
 					{
 						id:1,

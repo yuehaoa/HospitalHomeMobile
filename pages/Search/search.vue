@@ -4,11 +4,12 @@
 		<view class="cu-bar search bg-gray text-xxl">
 			<span class="cuIcon-back_android margin-left" @tap="back()" ></span>
 			<view class="search-form round text-xxl">
-				<input class="padding-left" :adjust-position="false" type="text" placeholder="原发性肝癌" confirm-type="search" @confirm="NavToRes"></input>
+				<input class="padding-left" :adjust-position="false" type="text" :placeholder="inikeyword" confirm-type="search" 
+				v-model="keyword" @confirm="NavToRes(false)"></input>
 				<text class="cuIcon-voice text-blue" style="font-size: 44rpx;"></text>
 			</view>
 			<view class="action">
-				<button class="cu-btn shadow-blur round" @tap="NavToRes()">搜索</button>
+				<button class="cu-btn shadow-blur round" @tap="NavToRes(false)">搜索</button>
 			</view>
 		</view>
 		<view>
@@ -27,23 +28,20 @@
 			</scroll-view>
 		</view>
 		<view class="bg-white">
-			<view class="cu-bar">
+			<view class="cu-bar" v-show="oldKeywordList.length!=0">
 				<view class="action flex" style="width: 100%;">
 					<text class="cuIcon-titles text-blue"></text>
 					<text class="text-xl text-bold">历史搜索</text>
-					<text class="cuIcon-delete" style="margin-left: auto;"></text>
+					<text class="cuIcon-delete" style="margin-left: auto;" @tap="oldDelete()"></text>
 				</view>
 			</view>
-			<view>
-				<button class="cu-btn round margin-lr-sm margin-tb-xs">呼吸科</button>
-				<button class="cu-btn round margin-lr-sm margin-tb-xs">呼吸健康</button>
-				<button class="cu-btn round margin-lr-sm margin-tb-xs">原发性肝癌</button>
-				<button class="cu-btn round margin-lr-sm margin-tb-xs">呼吸科权威医院</button>
-				<button class="cu-btn round margin-lr-sm margin-tb-xs">医院</button>
-				<button class="cu-btn round margin-lr-sm margin-tb-xs">广州医科</button>
-				<button class="cu-btn cuIcon margin-lr-sm margin-tb-xs">
-					<text class="cuIcon-unfold"></text>
-				</button>
+			<view class="flex padding-sm flex-wrap">
+				
+				<view :key="index" v-for="(key,index) in oldKeywordList" :class="fold?'fold':'unfold'" v-if="fold?index<6:index<10"><button class="cu-btn round margin-lr-sm margin-tb-xs" @tap="NavToRes(key)" >{{key}}</button></view>
+					<button class="cu-btn cuIcon margin-lr-sm margin-tb-xs" @click="btn" v-show="oldKeywordList.length>6&&fold" ><text class="cuIcon-unfold" ></text></button>
+					<button class="cu-btn cuIcon margin-lr-sm margin-tb-xs" @click="btn" v-show="!fold" ><text class="cuIcon-fold" ></text></button>
+					
+				
 			</view>
 			<view>
 				<view class="cu-bar">
@@ -74,12 +72,49 @@
 
 <script>
 	export default {
+		onLoad() {
+			this.loadoldkeys();
+		},
 		data() {
 			return {
 				TabCur:0,
+				inikeyword:"原发性肝癌",
+				keyword:"",
+				oldKeywordList:[],
+				fold:true
+				
 			}
 		},
 		methods: {
+			btn:function()
+			{
+				this.fold=!this.fold;
+			},
+			oldDelete() {
+				uni.showModal({
+					content: '确定清除历史搜索记录？',
+					success: (res) => {
+						if (res.confirm) {
+							console.log('用户点击确定');
+							this.oldKeywordList = [];
+							uni.removeStorage({
+								key: 'oldkeys'
+							});
+						} else if (res.cancel) {
+							console.log('用户点击取消');
+						}
+					}
+				});
+			},
+			loadoldkeys(){
+				uni.getStorage({
+					key:'oldkeys',
+					success: (res) => {
+						var OldKeys=res.data;
+						this.oldKeywordList=OldKeys;
+					}
+				});
+			},
 			tabSelect(e) {
 				this.TabCur = e.currentTarget.dataset.id;
 			},
@@ -88,10 +123,42 @@
 					
 				})
 			},
-			NavToRes(){
+			NavToRes(key){
+				
+				key=key?key:this.keyword?this.keyword:this.inikeyword;
+				this.keyword=key;
+				this.saveKeyword(key);
+				
 				uni.navigateTo({
-					url:'./Result'
+					url:'./Result?keyword=' + this.keyword,
 				})
+				
+			},
+			saveKeyword(key)
+			{
+				uni.getStorage({
+					key:'oldkeys',
+					success: (res) => {
+						var Oldkeys=res.data;
+						if(Oldkeys.indexOf(key)==-1)
+						Oldkeys.push(key);
+						Oldkeys.length>10 && Oldkeys.pop();
+						uni.setStorage({
+							key:'oldkeys',
+							data:Oldkeys
+						})
+						this.oldKeywordList=Oldkeys;
+					},
+					fail:(e)=>{
+						var OldKeys=[key];
+						uni.setStorage({
+							key:'oldkeys',
+							data:OldKeys
+						});
+						this.oldKeywordList=OldKeys;
+					}
+					
+				});
 			}
 		}
 	}
