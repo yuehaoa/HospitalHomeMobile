@@ -55,9 +55,11 @@
 					</view>
 				</view>
 			</scroll-view>
-			<swiper @change="Show" :current="TabCur"style="width:100%" >
-				<swiper-item  style="width: 100%;padding:10rpx" >
-					<p>{{abs}}</p>
+			<swiper @change="Show" :current="TabCur">
+				<swiper-item>
+					<view>
+						<p class="margin-sm">{{abs}}</p>
+					</view>
 					<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" @click="">
 						<text>查看更多</text>
 						<text class="cuIcon-playfill"></text>
