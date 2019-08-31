@@ -10,9 +10,15 @@
         {
             "path" : "pages/index",
             "style" : {
-                "navigationBarTitleText" : "主页"
+                "navigationBarTitleText" : "新闻详细页"
             }
         },
+		{
+		    "path" : "pages/newsDetail",
+		    "style" : {
+		        "navigationBarTitleText" : "主页"
+		    }
+		},
 		{
 		    "path" : "pages/index2",
 		    "style" : {
