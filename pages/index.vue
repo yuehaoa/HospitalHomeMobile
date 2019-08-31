@@ -5,20 +5,20 @@
 			<image src="../static/blue.png" style="position: absolute;"></image>
 			<view class="content padding-top-sm">
 				<view class="cu-bar search">
-					<view class="cu-avatar round" style="background-image:url(../mob/static/brand.png); background-color: rgba(0,0,0,0);"></view>
+					<view class="cu-avatar round" style="background-image:url(../static/brand.png); background-color: rgba(0,0,0,0);"></view>
 					<view class="search-form round bg-white">
 						<input @tap="NavToSearch" style="padding-left: 20rpx;" :adjust-position="false" type="text" placeholder="让呼吸更健康" confirm-type="search"></input>
 						<text class="cuIcon-search text-blue margin-right-sm" style="font-size: 36rpx;"></text>
 					</view>
-					<view class="action">
+					<view class="action" @click="NavToProfile">
 						<text class="text-white">厦门</text>
 						<text class="text-white text-xxl margin-left-sm">|</text>
-						<view class="cu-avatar round margin-left-sm" style="background-image:url(../mob/static/avatar.png);"></view>
+						<view class="cu-avatar round margin-left-sm" style="background-image:url(../static/avatar.png);"></view>
 					</view>
 				</view>
 				<view class="margin-xs flex justify-around align-center">
 					<span class="text-white" style="z-index:1;">热搜：</span>
-					<span class="sm cu-tag round tag" :key="index" v-for="(tag,index) in tags">{{tag}}</span>
+					<span class="sm cu-tag round tag" :key="index" v-for="(tag,index) in tags" @tap="NavToSearch">{{tag}}</span>
 				</view>
 			</view>
 		</view>
@@ -48,13 +48,13 @@
 						<text class="cuIcon-titles text-blue"></text>
 						<text class="text-bold">医院介绍</text>
 					</view>
-					<view class="more" @tap="SearchMore">查看更多<text class="cuIcon-playfill"></text></view>
+					<view class="more" @tap="NavToHosDetail">查看更多<text class="cuIcon-playfill"></text></view>
 				</view>
 				<scroll-view scroll-x>
 					<view class="flex text-center" id='subsCard'>
-						<view class="card bg-white margin-lr-sm"  v-for="(hospital,index) in hospitals1" :key="index">
-							<view class="padding-top-sm"><image :src="hospital.avatar" class="cu-avatar round lg" style="background-color: white;"></image></view>
-							<view class="text text-black text-overflow">{{hospital.name}}</view>
+						<view class="card bg-white margin-lr-sm"  v-for="(hospital,index) in hospitals1" :key="index" >
+							<view class="padding-top-sm" @tap="NavToHosDetail"><image :src="hospital.avatar" class="cu-avatar round lg"></image></view>
+							<view class="text text-black text-overflow" @tap="NavToHosDetail">{{hospital.name}}</view>
 							<button id="button" class="text-xs" :class="[hospital.state=='关注'?'bg-blue':'']" @tap="subsribe1(index)">{{hospital.state}}</button>
 						</view>
 					</view>
@@ -82,7 +82,7 @@
 			</view>
 		</view>
 		<view style="height: 120rpx;"></view>
-		<bottom-navbar :navs='mynavs' style="position: fixed;bottom: 0;left: 0;" v-on:selectchange="change($event)"></bottom-navbar>
+		<bottom-navbar :navs='mynavs' v-on:selectchange="change($event)"></bottom-navbar>
 	</view>
 </template>
 
@@ -233,6 +233,16 @@
 					url:'./Search/Search'
 				})
 			},
+			NavToHosDetail() {
+				uni.navigateTo({
+					url: './HospitalDetail/HospitalDetail',
+				});
+			},
+			NavToProfile(){
+				uni.navigateTo({
+					url: './profile/profile',
+				});
+			}
 		}
 	}
 </script>

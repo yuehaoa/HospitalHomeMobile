@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<statusBar></statusBar>
 		<view id="HospitalInfo">
 			<view class="head bg-white">
 				<image src="../../static/hospital.png" mode="aspectFill"></image>
@@ -22,10 +23,11 @@
 					</view>
 				</view>
 			<view class="Info margin-left">
-					<p>
-						<strong>{{name}}</strong>
-						<span>{{area}}</span>
-					</p>
+					<view class="action text-xxl margin-tb-sm">	<!--医院名称与地址-->
+						<text class="cuIcon-titles text-blue"></text>
+						<text class="text-bold" style="color: #000;">{{name}}</text>
+						<text class="text-df margin-left">{{area}}</text>
+					</view>
 					<view class="flex margin-bottom margin-left-sm margin-top-xs" id="tags">
 						<view class="radius cu-tag line-blue padding-lr-sm text-black" :key="index" v-for="(tag,index) in tags">{{tag}}</view>
 					</view>
@@ -139,19 +141,6 @@
 			}
 		}
 		.Info{
-			p{
-				line-height: 80rpx;
-			}
-			strong{
-				color: #000;
-				font-size: 40rpx;
-				margin-right: 20rpx;
-				border-left: 10rpx rgb(0, 167, 244) solid;
-				padding-left: 10rpx;
-			}
-			span{
-				font-size: 32rpx;
-			}
 			.collection{
 				color: rgb(0, 167, 244);
 			}
