@@ -55,6 +55,12 @@
                 "navigationBarTitleText" : "医生详细"
             }
         },
+		 {
+		    "path" : "pages/HospitalDetail/HospitalDetail2",
+		    "style" : {
+		        "navigationBarTitleText" : "医院详细2"
+		    }
+		},
         {
             "path" : "pages/Search/Search",
             "style" : {
