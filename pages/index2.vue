@@ -95,19 +95,19 @@
 						id:0,
 						name:"首页",
 						icon:"cuIcon-home",
-						url:"./index3"
+						url:"./index"
 					},
 					{
 						id:1,
 						name:"招聘",
 						icon:"cuIcon-discover",
-						url:"./News/newsList?cate=招聘"
+						url:""
 					},
 					{
 						id:3,
 						name:"招投标",
 						icon:"cuIcon-dianhua",
-						url:"./News/newsList?cate=招投标"
+						url:""
 					},
 					{
 						id:4,
