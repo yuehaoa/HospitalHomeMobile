@@ -54,105 +54,97 @@
 						{{tabName}}<span v-if="index==1">({{dptInfoNum}})</span>
 					</view>
 				</view>
-				
 			</scroll-view>
 			<view>
-					<view v-show="TabCur==0" class="margin">
-						<p>{{abs}}</p>
-						<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm"@click="">
-							<text>查看更多</text>
-							<text class="cuIcon-playfill"></text>
+				<view v-show="TabCur==0" class="margin">
+					<p>{{abs}}</p>
+					<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" @click="">
+						<text>查看更多</text>
+						<text class="cuIcon-playfill"></text>
+					</view>
+				</view>
+				<view class="cu-list menu sm-border" id="list" v-show="TabCur==1">	<!--科室列表-->
+					<view class="cu-item" :key="index" v-for="(item, index) in departList">
+						<view class="content" @click="NavToDetail">
+							<text class="text-black">{{item}}</text>
 						</view>
 					</view>
-					
-						<view class="cu-list menu sm-border" id="list"v-show="TabCur==1">	<!--科室列表-->
-							<view class="cu-item" :key="index" v-for="(item, index) in departList">
-								<view class="content" @click="NavToDetail">
-									<text class="text-black">{{item}}</text>
-								</view>
+					<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" @click="NavDepartList">
+						<text>查看更多</text>
+						<text class="cuIcon-playfill"></text>
+					</view>
+				</view>
+				<view v-show="TabCur==2">
+					<view v-for="(item,index) in recruitNews" class="solids-bottom  margin-left margin-right">
+						<view class="padding" style="background-color: white;" v-if="item.photonumber==0">
+							<view class="padding-bottom-xs">
+								<text class="text-xl">{{item.title}}</text>
 							</view>
-							<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm"@click="NavDepartList">
-								<text>查看更多</text>
-								<text class="cuIcon-playfill"></text>
-							</view>
+								<text class="text-df">{{item.date}}</text>
 						</view>
-						<view v-show="TabCur==2">
-							<view v-for="(item,index) in recruitNews" class="solids-bottom  margin-left margin-right">
-								<view class="padding" style="background-color: white;"v-if="item.photonumber==0">
-									<view class=" padding-bottom-xs  ">
-										<text class="text-xl">{{item.title}}</text>
-									</view>
-										<text class="text-df">{{item.date}}</text>
-							</view>
-							<view class=" flex " style="background-color: white;"v-if="item.photonumber==1">
-								
-									<view class="flex-twice   margin">
-										<view class="margin-bottom-sm ">
-										<text class="text-xl pageNum3  ">{{item.title}}</text>
-										</view>
-										<text class="text-df">{{item.date}}</text>
-									</view>
-									<view class="flex-sub ">
-										<image  class=" margin-top padding-right" style="height:65px;width:130px" :src="item.photo" ></image>
-									</view>
-							</view>
-							<view class=" padding" style="background-color: white;"v-if="item.photonumber==3">
-								
-								<text class="text-xl ">{{item.title}}</text>
-								
-								<view class="col-3 flex margin-bottom-sm margin-top-sm" >
-									<image  class="margin-right-xs "style="height:65px;width:100px " :src="item.photo[0].name" ></image>
-									<image  class="margin-right-xs "style="height:65px;width:100px " :src="item.photo[1].name" ></image>
-									<image  class="margin-right-xs "style="height:65px;width:100px " :src="item.photo[2].name" ></image>
+						<view class=" flex " style="background-color: white;" v-if="item.photonumber==1">
+							<view class="flex-twice   margin">
+								<view class="margin-bottom-sm ">
+								<text class="text-xl pageNum3  ">{{item.title}}</text>
 								</view>
 								<text class="text-df">{{item.date}}</text>
 							</view>
+							<view class="flex-sub ">
+								<image  class=" margin-top padding-right" style="height:65px;width:130px" :src="item.photo" ></image>
 							</view>
-						<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm"@click="NavNewsPage">
-							<text>查看更多</text>
-							<text class="cuIcon-playfill"></text>
 						</view>
-					</view>
-					<view v-show="TabCur==3">
-						<view v-for="(item,index) in bidNews" class="solids-bottom  margin-left margin-right">
-							<view class="padding" style="background-color: white;"v-if="item.photonumber==0">
-								<view class=" padding-bottom-xs  ">
-									<text class="text-xl">{{item.title}}</text>
-								</view>
-									<text class="text-df">{{item.date}}</text>
-							</view>
-							<view class="flex " style="background-color: white;"v-if="item.photonumber==1">
-								
-									<view class="flex-twice   margin">
-										<view class="margin-bottom-sm ">
-										<text class="text-xl pageNum3  ">{{item.title}}</text>
-										</view>
-										<text class="text-df">{{item.date}}</text>
-									</view>
-									<view class="flex-sub ">
-										<image  class=" margin-top padding-right" style="height:65px;width:130px" :src="item.photo" ></image>
-									</view>
-							</view>
-							<view class="padding" style="background-color: white;"v-if="item.photonumber==3">
-								
-								<text class="text-xl ">{{item.title}}</text>
-								
-								<view class="col-3 flex margin-bottom-sm margin-top-sm" >
-									<image  class="margin-right-xs "style="height:65px;width:100px " :src="item.photo[0].name" ></image>
-									<image  class="margin-right-xs "style="height:65px;width:100px " :src="item.photo[1].name" ></image>
-									<image  class="margin-right-xs "style="height:65px;width:100px " :src="item.photo[2].name" ></image>
-								</view>
-								<text class="text-df">{{item.date}}</text>
-							</view>
+						<view class=" padding" style="background-color: white;"v-if="item.photonumber==3">
 							
-						</view>
-						<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm"@click="NavNewsPage">
-							<text>查看更多</text>
-							<text class="cuIcon-playfill"></text>
+							<text class="text-xl ">{{item.title}}</text>
+							
+							<view class="col-3 flex margin-bottom-sm margin-top-sm" >
+								<image  class="margin-right-xs " style="height:65px;width:100px " :src="item.photo[0].name" ></image>
+								<image  class="margin-right-xs " style="height:65px;width:100px " :src="item.photo[1].name" ></image>
+								<image  class="margin-right-xs " style="height:65px;width:100px " :src="item.photo[2].name" ></image>
+							</view>
+							<text class="text-df">{{item.date}}</text>
 						</view>
 					</view>
+					<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" @click="NavNewsPage">
+						<text>查看更多</text>
+						<text class="cuIcon-playfill"></text>
+					</view>
+				</view>
+				<view v-show="TabCur==3">
+					<view v-for="(item,index) in bidNews" class="solids-bottom  margin-left margin-right">
+						<view class="padding" style="background-color: white;" v-if="item.photonumber==0">
+							<view class=" padding-bottom-xs  ">
+								<text class="text-xl">{{item.title}}</text>
+							</view>
+								<text class="text-df">{{item.date}}</text>
+						</view>
+						<view class="flex " style="background-color: white;" v-if="item.photonumber==1">
+							<view class="flex-twice   margin">
+								<view class="margin-bottom-sm ">
+								<text class="text-xl pageNum3  ">{{item.title}}</text>
+								</view>
+								<text class="text-df">{{item.date}}</text>
+							</view>
+							<view class="flex-sub ">
+								<image  class=" margin-top padding-right" style="height:65px;width:130px" :src="item.photo" ></image>
+							</view>
+						</view>
+						<view class="padding" style="background-color: white;" v-if="item.photonumber==3">
+							<text class="text-xl ">{{item.title}}</text>
+							<view class="col-3 flex margin-bottom-sm margin-top-sm" >
+								<image  class="margin-right-xs " style="height:65px;width:100px " :src="item.photo[0].name" ></image>
+								<image  class="margin-right-xs " style="height:65px;width:100px " :src="item.photo[1].name" ></image>
+								<image  class="margin-right-xs " style="height:65px;width:100px " :src="item.photo[2].name" ></image>
+							</view>
+							<text class="text-df">{{item.date}}</text>
+						</view>
+					</view>
+					<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" @click="NavNewsPage">
+						<text>查看更多</text>
+						<text class="cuIcon-playfill"></text>
+					</view>
+				</view>
 			</view>
-			
 		</view>
 	</view>
 </template>
