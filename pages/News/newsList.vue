@@ -44,9 +44,9 @@
 			<view class="solids-bottom padding" style="background-color: white;" v-if="item.photo.length==3">
 				<text class="text-xxl ">{{item.title}}</text>
 				<view class="flex margin-tb-sm" >
-					<image class="margin-lr-xs" mode="widthFix" :src="item.photo[0].name" ></image>
-					<image class="margin-lr-xs" mode="widthFix" :src="item.photo[1].name" ></image>
-					<image class="margin-lr-xs" mode="widthFix" :src="item.photo[2].name" ></image>
+					<image class="margin-lr-xs " mode="widthFix" :src="item.photo[0].name" ></image>
+					<image class="margin-lr-xs " mode="widthFix" :src="item.photo[1].name" ></image>
+					<image class="margin-lr-xs " mode="widthFix" :src="item.photo[2].name" ></image>
 				</view>
 				<text class="text-df">{{item.date}}</text>
 			</view>
@@ -69,9 +69,9 @@
 					"新思想",
 				],
 				news:[
-					{title:'关于收看2019年“开学第一课”的提示',photo:[],date:'2019-08-28'},
-					{title:'佳都科技2019半年报：在手订单充裕，AI产品化升级迎接“5GABC”时代',photo:[{name:'../../static/hospital0.png',date:'2019-08-28'}]},
-					{title:'陕西：“最美逆行员”消防员 保护我们安全',photo:[{name:'../../static/hospital0.png'},{name:'../../static/hospital0.png'},{name:'../../static/hospital0.png'}],date:'2019-08-28'},
+					{title:'厦门大学附属翔安医院2019年度重症医学科招聘启事（增补第八批）',photo:[],date:'2019-07-19'},
+					{title:'厦门大学附属翔安医院2019年度超声科、病理科等科室部分岗位招聘启事（增补第七批）',photo:[{name:'../../static/hospital0.png',date:'2019-07-16'}]},
+					{title:'厦门大学附属翔安医院2019年度肿瘤科招聘启事（增补第五批）',photo:[{name:'../../static/hospital0.png'},{name:'../../static/hospital0.png'},{name:'../../static/hospital0.png'}],date:'2019-07-04'},
 				]
 			}
 		},
@@ -108,5 +108,6 @@
 		-webkit-box-orient: vertical;
 		-webkit-line-clamp: 3;
 		overflow: hidden;  
-	}
+		}
+	
 </style>
