@@ -3,7 +3,7 @@
 		<statusBar></statusBar>
 		<view class="head">
 			<p>
-				<span></span>
+				<span><navigator class="cuIcon-home" url="../index"></navigator></span>
 				<span><navigator class="cuIcon-settings" url="../userInfo/userInfo"></navigator></span>
 			</p>
 		</view>	
@@ -31,7 +31,7 @@
 		</view>
 			
 		<view class="iconCon">
-			<view>
+			<view @click="NavBackIndex">
 				<i class="iconfont icon-xiezuo icon_comment"></i>
 				<p>首页</p>
 			</view>
@@ -77,7 +77,10 @@
 				divheight:this.StatusBar,
 				currentUserGuid:'',
 				imgsrc:'',
-				userInfo:{},
+				userInfo:{
+					Collections:{	
+					}
+				},
 			}
 		},
 		onLoad(){
@@ -100,6 +103,15 @@
 						currentUserGuid:this.currentUserGuid,
 					},
 					success: res => {
+						if(res.data.success==false)
+						{
+							uni.showToast({title:res.data.msg});
+							setTimeout(function(){
+								uni.reLaunch({url:'../login/login'});
+								uni.hideToast();
+							},1500);
+							return;
+						}
 						this.userInfo = res.data.data;
 						this.imgsrc = "http://hh.ricebird.cn" + res.data.data.Avatar;
 					},
@@ -117,6 +129,10 @@
 					url:'../Guide/Guide',
 				});
 			},
+			NavBackIndex(){
+				uni.navigateBack({
+				});
+			}
 			
 		}
 
@@ -149,7 +165,7 @@
 	.head > p > span:nth-of-type(1){
 		display: inline-block;
 		float: left;
-		padding-left: 16px;
+		padding-left: 10px;
 		font-size: 18px;
 		font-weight: bold;
 	}
@@ -159,7 +175,7 @@
 		padding:0rpx 0rpx 0 0;
 		font-size: 20px;
 	}
-	.head > p > span:nth-of-type(2)> navigator{
+	.head > p > span> navigator{
 		text-align: center;
 		font-size: 40rpx;
 		width: 90rpx;
