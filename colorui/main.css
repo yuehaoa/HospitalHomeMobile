@@ -1390,7 +1390,7 @@ button.cuIcon.lg {
 
 .cu-list.menu {
 	display: block;
-	overflow: hidden
+	overflow: scroll;
 }
 
 .cu-list.menu.sm-border>.cu-item:after {
