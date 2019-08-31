@@ -95,7 +95,7 @@
 						id:0,
 						name:"首页",
 						icon:"cuIcon-home",
-						url:"./index"
+						url:"./index3"
 					},
 					{
 						id:1,
