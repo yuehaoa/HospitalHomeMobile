@@ -5,13 +5,13 @@
 			<p class="text-grey text-sm margin-tb"><span class="margin-right">来源：央视网</span><span>2019-8-30</span></p>
 		</view>
 		<view class="margin-tb solids-bottom">
-			<image src="../../static/HK.jpg"></image>
+			<image src="../static/HK.jpg"></image>
 			<p class="text-grey text-sm padding-bottom">8月29日上午，中国人民解放军驻香港部队完成进驻香港以来第22次轮换行动。这是当天凌晨陆军部队在香港赤杜军营举行交接仪式。（新华社发）</p>
 		</view>
 		<view>
 			<p>进入八月，四川省广安市岳池县临溪镇龙滩子村，成片的优质水稻相继成熟，金黄色的稻谷，把山村点缀美丽如画。</p>
 		</view>
-		<view class="margin-tb"><image src="../../static/scene.jpg"></image></view>
+		<view class="margin-tb"><image src="../static/scene.jpg"></image></view>
 		<view>
 			<p>进入八月，四川省广安市岳池县临溪镇龙滩子村，成片的优质水稻相继成熟，金黄色的稻谷，把山村点缀美丽如画。</p>
 		</view>
@@ -30,5 +30,8 @@
 	image{
 		width: 100%;
 		align-items: center;
+	}
+	main-image{
+		
 	}
 </style>

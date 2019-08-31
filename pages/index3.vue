@@ -7,8 +7,8 @@
 				<view class="cu-bar search">
 					<view class="cu-avatar round" style="background-image:url(../mob/static/brand.png); background-color: rgba(0,0,0,0);"></view>
 					<view class="search-form round bg-white">
-						<input @tap="NavToSearch" style="padding-left: 20rpx; padding-right: 0;" :adjust-position="false" type="text" placeholder="让呼吸更健康" placeholder-class="text-xxl" confirm-type="search"></input>
-						<text class="cuIcon-search text-blue margin-right-sm" style="font-size: 42rpx;"></text>
+						<input @tap="NavToSearch" style="padding-left: 20rpx;" :adjust-position="false" type="text" placeholder="让呼吸更健康" placeholder-class="text-xxl" confirm-type="search"></input>
+						<text class="cuIcon-search text-blue margin-right-sm" style="font-size: 36rpx;"></text>
 					</view>
 					<view class="action">
 						<text class="text-white text-xxl">厦门</text>
@@ -37,9 +37,8 @@
 			</view>
 			<view class="cu-bar input radius bg-grey margin-sm" style="background-color: #f9f9f9;margin-left: 0;">
 				<text class="cuIcon-voice text-white bg-blue cu-avatar round" style="font-size: 25px;border: #9edefb solid 7rpx;"></text>
-				<input placeholder="请输入症状/疾病/药品..." placeholder-class="text-xl" class="solid-bottom bg-white round shadow" 
-				:adjust-position="false" :focus="false" style="padding: 0 0 0 10px;" maxlength="300" cursor-spacing="10"></input>
-				<button class="text-df bg-blue">发送</button>
+				<input placeholder="请输入症状/疾病/药品..." placeholder-class="text-xl" class="solid-bottom bg-white round shadow padding-left" :adjust-position="false" :focus="false" maxlength="300" cursor-spacing="10"></input>
+				<button class="text-sm bg-blue">发送</button>
 			</view>
 			<view style="background-color: #f9f9f9;">
 				<view class="cu-bar">
@@ -101,13 +100,13 @@
 						id:1,
 						name:"招聘",
 						icon:"cuIcon-discover",
-						url:"./News/newsList?cate=招聘"
+						url:""
 					},
 					{
 						id:3,
 						name:"招投标",
 						icon:"cuIcon-dianhua",
-						url:"./News/newsList?cate=招投标"
+						url:""
 					},
 					{
 						id:4,
