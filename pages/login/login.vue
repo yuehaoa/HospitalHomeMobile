@@ -31,7 +31,7 @@
 			}
 		},
 		onLoad() {
-	
+			
 		},
 		methods: {
 			getCode()

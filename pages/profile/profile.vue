@@ -103,6 +103,15 @@
 						currentUserGuid:this.currentUserGuid,
 					},
 					success: res => {
+						if(res.data.success==false)
+						{
+							uni.showToast({title:res.data.msg});
+							setTimeout(function(){
+								uni.reLaunch({url:'../login/login'});
+								uni.hideToast();
+							},1500);
+							return;
+						}
 						this.userInfo = res.data.data;
 						this.imgsrc = "http://hh.ricebird.cn" + res.data.data.Avatar;
 					},

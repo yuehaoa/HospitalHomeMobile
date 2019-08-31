@@ -4,7 +4,7 @@
 		<view class="cu-bar search bg-gray text-xxl" >
 			<span class="cuIcon-back_android margin-left" @tap="back()"></span>
 			<view class="search-form round text-xxl">
-				<input class="padding-left" :adjust-position="false" type="text" placeholder="原发性肝癌" confirm-type="search"></input>
+				<input class="padding-left" :adjust-position="false" type="text" v-model="keyword" confirm-type="search"></input>
 				<text class="cuIcon-voice text-blue" style="font-size: 44rpx;"></text>
 			</view>
 			<view class="action">
@@ -95,35 +95,36 @@
 				hidden: 'hidden',
 				Province:[],
 				index:0,
+				keyword:'原发性肝癌',
 				searchResult:[
 					{
 						name:'厦门大学附属翔安医院',
 						abstract:'厦门大学附属翔安医院（以下简称翔安医院）位于厦门市翔安区翔安东路2000号，是由厦门市政府与厦门大学共同投资建设的非营利性公立医院',
-						avatar:'../../static/hospital.png',
+						avatar:'../../static/hospital0.png',
 						tags:['市级','公立'],
 					},
 					{
 						name:'厦门大学附属翔安医院',
 						abstract:'厦门大学附属翔安医院（以下简称翔安医院）位于厦门市翔安区翔安东路2000号，是由厦门市政府与厦门大学共同投资建设的非营利性公立医院',
-						avatar:'../../static/hospital.png',
+						avatar:'../../static/hospital0.png',
 						tags:['市级','公立'],
 					},
 					{
 						name:'厦门大学附属翔安医院',
 						abstract:'厦门大学附属翔安医院（以下简称翔安医院）位于厦门市翔安区翔安东路2000号，是由厦门市政府与厦门大学共同投资建设的非营利性公立医院',
-						avatar:'../../static/hospital.png',
+						avatar:'../../static/hospital0.png',
 						tags:['市级','公立'],
 					},
 					{
 						name:'厦门大学附属翔安医院',
 						abstract:'厦门大学附属翔安医院（以下简称翔安医院）位于厦门市翔安区翔安东路2000号，是由厦门市政府与厦门大学共同投资建设的非营利性公立医院',
-						avatar:'../../static/hospital.png',
+						avatar:'../../static/hospital0.png',
 						tags:['市级','公立'],
 					},
 					{
 						name:'厦门大学附属翔安医院',
 						abstract:'厦门大学附属翔安医院（以下简称翔安医院）位于厦门市翔安区翔安东路2000号，是由厦门市政府与厦门大学共同投资建设的非营利性公立医院',
-						avatar:'../../static/hospital.png',
+						avatar:'../../static/hospital0.png',
 						tags:['市级','公立'],
 					},
 				]
@@ -157,7 +158,8 @@
 				uni.navigateBack();
 			}
 		},
-		onLoad() {
+		onLoad(data) {
+			this.keyword=data.keyword;
 			this.Province=exp;
 		}
 	}
