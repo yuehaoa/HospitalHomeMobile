@@ -41,7 +41,7 @@
 			<view class="cu-bar search flex justify-center">	<!--搜索条-->
 				<view class="basis-xl">
 					<view class="search-form round" id="searcher">
-						<input v-model="keyword" class="padding-left" type="text" placeholder="肝胆外科" confirm-type="search" @input="search()"></input>
+						<input class="padding-left" type="text" placeholder="肝胆外科" confirm-type="search" @input="search"></input>
 						<text class="cuIcon-search text-blue" style="font-size: 40rpx;"></text>
 					</view>
 				</view>
@@ -61,6 +61,7 @@
 	export default {
 		data() {
 			return{
+				chooseIndex:'',
 				keyword:'',
 				departList:[
 					"脊柱外科(3位专家)",
@@ -94,8 +95,10 @@
 					
 				})
 			},
-			search(){
-				this.chooseIndex=departList.indexOf(this.keyword);
+			search(event){
+				debugger;
+				this.keyword=event.target.value;
+				this.chooseIndex=this.departList.indexOf(event.target.value);
 			}
 		}
 	}
