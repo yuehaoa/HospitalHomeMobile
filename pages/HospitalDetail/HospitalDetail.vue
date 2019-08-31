@@ -190,10 +190,10 @@
 			},
 			NavNewsPage(){
 				uni.navigateTo({
-					url: '../newspage',
+					url: '../News/newsList',
 					success: res => {},
 				});
-			}
+			},
 		}
 	}
 </script>
