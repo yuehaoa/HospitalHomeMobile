@@ -7,7 +7,7 @@
 				<view class="cu-bar search">
 					<view class="cu-avatar round" style="background-image:url(../../mob/static/brand.png); background-color: rgba(0,0,0,0);"></view>
 					<view class="search-form round bg-white">
-						<input @tap="" style="padding-left: 20rpx;" :adjust-position="false" type="text" placeholder="" confirm-type="search"></input>
+						<input @tap="navToSearch()" style="padding-left: 20rpx;" :adjust-position="false" type="text" placeholder="" confirm-type="search"></input>
 						<text class="cuIcon-search text-blue margin-right-sm" style="font-size: 36rpx;"></text>
 					</view>
 					<view class="action">
@@ -25,23 +25,23 @@
 				</view>
 			</view>
 		</scroll-view>
-		<view v-for="(item,index) in recruitNews">
-			<view class="solids-bottom padding" style="background-color: white;" v-if="item.photonumber==0">
+		<view :key="index" v-for="(item,index) in news">
+			<view class="solids-bottom padding" style="background-color: white;" v-if="item.photo.length==0">
 				<view class="padding-bottom-xs">
 					<text class="text-xxl">{{item.title}}</text>
 				</view>
 					<text class="text-df">{{item.date}}</text>
 			</view>
-			<view class="solids-bottom flex" style="background-color: white;" v-if="item.photonumber==1">
+			<view class="solids-bottom flex" style="background-color: white;" v-if="item.photo.length==1">
 				<view class="flex-twice padding">
 					<view class="margin-bottom-sm ">
-						<text class="text-xxl pageNum3  ">{{item.title}}</text>
+						<text class="text-xxl text-omit">{{item.title}}</text>
 					</view>
 					<text class="text-df">{{item.date}}</text>
 				</view>
-				<image class=" margin-top-lg margin-right flex-sub" mode="widthFix" :src="item.photo" ></image>
+				<image class=" margin-top-lg margin-right flex-sub" mode="widthFix" :src="item.photo[0].name" ></image>
 			</view>
-			<view class="solids-bottom padding" style="background-color: white;" v-if="item.photonumber==3">
+			<view class="solids-bottom padding" style="background-color: white;" v-if="item.photo.length==3">
 				<text class="text-xxl ">{{item.title}}</text>
 				<view class="flex margin-tb-sm" >
 					<image class="margin-lr-xs" mode="widthFix" :src="item.photo[0].name" ></image>
@@ -68,13 +68,10 @@
 					"快闪",
 					"新思想",
 				],
-				recruitNews:[
-					{title:'关于收看2019年“开学第一课”的提示',photo:[],date:'2019-08-28',photonumber:0},
-					{title:'2018年我国城乡居民健康素养水平提升至17.06%呈稳步提升态势',photo:'../../static/hospital0.png',photonumber:1,date:'2019-08-28'},
-					{title:'陕西：“最美逆行员”消防员 保护我们安全',photo:[{name:'../../static/hospital0.png'},{name:'../../static/hospital0.png'},{name:'../../static/hospital0.png'}],photonumber:3,date:'2019-08-28'},
-				],
-				bidNews:[
-					{title:'陕西：“最美逆行员”消防员 保护我们安全',photo:[{name:'../../static/hospital0.png'},{name:'../../static/hospital0.png'},{name:'../../static/hospital0.png'}],photonumber:3,date:'2019-08-28'},
+				news:[
+					{title:'关于收看2019年“开学第一课”的提示',photo:[],date:'2019-08-28'},
+					{title:'佳都科技2019半年报：在手订单充裕，AI产品化升级迎接“5GABC”时代',photo:[{name:'../../static/hospital0.png',date:'2019-08-28'}]},
+					{title:'陕西：“最美逆行员”消防员 保护我们安全',photo:[{name:'../../static/hospital0.png'},{name:'../../static/hospital0.png'},{name:'../../static/hospital0.png'}],date:'2019-08-28'},
 				]
 			}
 		},
@@ -85,6 +82,12 @@
 			tabSelect(e) {
 				this.TabCur = e.currentTarget.dataset.id;
 			},
+			navToSearch()
+			{
+				uni.navigateTo({
+					url:'../Search/Search',
+				})
+			}
 		}
 	}
 </script>
@@ -97,29 +100,13 @@
 			width: 100%;
 			height: 206rpx;
 		}
-		.content{
-			.tag{
-				min-width: 120rpx;
-				background-color: rgba(#4ddbfe, 0.4);
-				white-space: nowrap;
-				overflow: ellipsis;
-			}
-		}
 	}
-	.pageNum3{
-
-		  width: 200px;
-
-    word-break: break-all;
-
-    text-overflow: ellipsis;
-
-    display: -webkit-box; 
-
-    -webkit-box-orient: vertical; 
-
-    -webkit-line-clamp: 3; 
-
-    overflow: hidden;  
+	.text-omit{
+		word-break: break-all;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+		overflow: hidden;  
 	}
 </style>

@@ -74,67 +74,31 @@
 						<text class="cuIcon-playfill"></text>
 					</view>
 				</view>
-				<view v-show="TabCur==2">
-					<view v-for="(item,index) in recruitNews" class="solids-bottom  margin-left margin-right">
+				<view v-show="TabCur==2||TabCur==3">
+					<view :key="index" v-for="(item,index) in news">
 						<view class="padding" style="background-color: white;" v-if="item.photonumber==0">
 							<view class="padding-bottom-xs">
 								<text class="text-xl">{{item.title}}</text>
 							</view>
 								<text class="text-df">{{item.date}}</text>
 						</view>
-						<view class=" flex " style="background-color: white;" v-if="item.photonumber==1">
-							<view class="flex-twice   margin">
+						<view class="flex" style="background-color: white;" v-if="item.photonumber==1">
+							<view class="flex-twice margin">
 								<view class="margin-bottom-sm ">
-								<text class="text-xl pageNum3  ">{{item.title}}</text>
+									<text class="text-xl text-omit">{{item.title}}</text>
 								</view>
-								<text class="text-df">{{item.date}}</text>
+									<text class="text-df">{{item.date}}</text>
 							</view>
-							<view class="flex-sub ">
-								<image  class=" margin-top padding-right" style="height:65px;width:130px" :src="item.photo" ></image>
-							</view>
+								<image class=" margin-top-lg margin-right flex-sub" mode="widthFix" :src="item.photo[0].name" ></image>
 						</view>
-						<view class=" padding" style="background-color: white;"v-if="item.photonumber==3">
+						<view class=" padding" style="background-color: white;" v-if="item.photonumber==3">
 							
 							<text class="text-xl ">{{item.title}}</text>
 							
-							<view class="col-3 flex margin-bottom-sm margin-top-sm" >
-								<image  class="margin-right-xs " style="height:65px;width:100px " :src="item.photo[0].name" ></image>
-								<image  class="margin-right-xs " style="height:65px;width:100px " :src="item.photo[1].name" ></image>
-								<image  class="margin-right-xs " style="height:65px;width:100px " :src="item.photo[2].name" ></image>
-							</view>
-							<text class="text-df">{{item.date}}</text>
-						</view>
-					</view>
-					<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" @click="NavNewsPage">
-						<text>查看更多</text>
-						<text class="cuIcon-playfill"></text>
-					</view>
-				</view>
-				<view v-show="TabCur==3">
-					<view v-for="(item,index) in bidNews" class="solids-bottom  margin-left margin-right">
-						<view class="padding" style="background-color: white;" v-if="item.photonumber==0">
-							<view class=" padding-bottom-xs  ">
-								<text class="text-xl">{{item.title}}</text>
-							</view>
-								<text class="text-df">{{item.date}}</text>
-						</view>
-						<view class="flex " style="background-color: white;" v-if="item.photonumber==1">
-							<view class="flex-twice   margin">
-								<view class="margin-bottom-sm ">
-								<text class="text-xl pageNum3  ">{{item.title}}</text>
-								</view>
-								<text class="text-df">{{item.date}}</text>
-							</view>
-							<view class="flex-sub ">
-								<image  class=" margin-top padding-right" style="height:65px;width:130px" :src="item.photo" ></image>
-							</view>
-						</view>
-						<view class="padding" style="background-color: white;" v-if="item.photonumber==3">
-							<text class="text-xl ">{{item.title}}</text>
-							<view class="col-3 flex margin-bottom-sm margin-top-sm" >
-								<image  class="margin-right-xs " style="height:65px;width:100px " :src="item.photo[0].name" ></image>
-								<image  class="margin-right-xs " style="height:65px;width:100px " :src="item.photo[1].name" ></image>
-								<image  class="margin-right-xs " style="height:65px;width:100px " :src="item.photo[2].name" ></image>
+							<view class="flex margin-bottom-sm margin-top-sm" >
+								<image class="margin-right-xs " mode="widthFix" :src="item.photo[0].name" ></image>
+								<image class="margin-right-xs " mode="widthFix" :src="item.photo[1].name" ></image>
+								<image class="margin-right-xs " mode="widthFix" :src="item.photo[2].name" ></image>
 							</view>
 							<text class="text-df">{{item.date}}</text>
 						</view>
@@ -196,12 +160,9 @@
 					挂号电话:"0592-2889000",
 					急诊电话:"0592-2889000"
 				},
-				recruitNews:[
+				news:[
 					{title:'关于收看2019年“开学第一课”的提示',photo:[],date:'2019-08-28',photonumber:0},
-					{title:'2018年我国城乡居民健康素养水平提升至17.06%呈稳步提升态势',photo:'../../static/hospital0.png',photonumber:1,date:'2019-08-28'},
-					{title:'陕西：“最美逆行员”消防员 保护我们安全',photo:[{name:'../../static/hospital0.png'},{name:'../../static/hospital0.png'},{name:'../../static/hospital0.png'}],photonumber:3,date:'2019-08-28'},
-				],
-				bidNews:[
+					{title:'2018年我国城乡居民健康素养水平提升至17.06%呈稳步提升态势',photo:[{name:'../../static/hospital0.png'}],photonumber:1,date:'2019-08-28'},
 					{title:'陕西：“最美逆行员”消防员 保护我们安全',photo:[{name:'../../static/hospital0.png'},{name:'../../static/hospital0.png'},{name:'../../static/hospital0.png'}],photonumber:3,date:'2019-08-28'},
 				],
 			}
@@ -276,20 +237,13 @@
 			color: rgb(0, 167, 244);
 		}
 	}
-	.pageNum3{
-	
-		  width: 200px;
-	
-	word-break: break-all;
-	
-	text-overflow: ellipsis;
-	
-	display: -webkit-box; 
-	
-	-webkit-box-orient: vertical; 
-	
-	-webkit-line-clamp: 3; 
-	
-	overflow: hidden;  
+	.text-omit{
+		width: 200px;
+		word-break: break-all;
+		text-overflow: ellipsis;
+		display: -webkit-box; 
+		-webkit-box-orient: vertical; 
+		-webkit-line-clamp: 3; 
+		overflow: hidden;  
 	}
 </style>
