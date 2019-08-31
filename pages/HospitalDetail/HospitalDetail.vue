@@ -7,7 +7,7 @@
 				<view class="nav flex">
 					<view class="padding-lr">
 						<button class="cu-btn cuIcon bg-grey text-xl" @click="back">
-							<text class="cuIcon-back"></text>
+							<text class="cuIcon-home"></text>
 						</button>
 					</view>
 					<view class="padding-lr" style="margin-left: auto;">
@@ -178,9 +178,9 @@
 				});
 			},
 			back(){
-				uni.navigateBack({
-					
-				})
+				uni.reLaunch({
+					url: '../index',
+				});
 			},
 			NavToDetail(){
 				uni.navigateTo({
