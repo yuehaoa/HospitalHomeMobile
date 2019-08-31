@@ -65,4 +65,7 @@
 		width: 100%;
 		align-items: center;
 	}
+	main-image{
+		
+	}
 </style>
