@@ -6,8 +6,8 @@
 				<image src="../../static/hospital0.png" mode="aspectFill"></image>
 				<view class="nav flex">
 					<view class="padding-lr">
-						<button class="cu-btn cuIcon bg-grey text-xl" @click="back">
-							<text class="cuIcon-back"></text>
+						<button class="cu-btn cuIcon bg-grey text-xl" @click="NavToIndex">
+							<text class="cuIcon-home"></text>
 						</button>
 					</view>
 					<view class="padding-lr" style="margin-left: auto;">
@@ -190,8 +190,15 @@
 			},
 			NavNewsPage(){
 				uni.navigateTo({
-					url: '../newspage',
+					url: '../News/newsList',
 					success: res => {},
+				});
+			},
+			NavToIndex(){
+				uni.navigateTo({
+					url: '../index2',
+					success: res => {},
+					
 				});
 			}
 		}
