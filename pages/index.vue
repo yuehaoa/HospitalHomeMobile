@@ -82,7 +82,7 @@
 			</view>
 		</view>
 		<view style="height: 120rpx;"></view>
-		<bottom-navbar :navs='mynavs' v-on:selectchange="change($event)"></bottom-navbar>
+		<bottom-navbar :navs='mynavs' v-on:selectchange="change($event)" :iniTabCur="0"></bottom-navbar>
 	</view>
 </template>
 

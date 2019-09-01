@@ -17,7 +17,7 @@
 						<button class="cu-btn cuIcon margin-lr-xs bg-grey text-xl">
 							<text class="cuIcon-share"></text>
 						</button>
-						<button class="cu-btn cuIcon margin-lr-xs bg-grey text-xl"@click="NavToH2">
+						<button class="cu-btn cuIcon margin-lr-xs bg-grey text-xl"@click="back">
 							<text class="cuIcon-more"></text>
 						</button>
 					</view>
@@ -47,23 +47,25 @@
 				<button class="cu-btn" @click="NavDepartList()">查看科室</button>
 			</view>
 		</view>
-		<view id="HospitalDetail" class="bg-white">
+		<view id="HospitalDetail" class="bg-white" >
 			<scroll-view class="bg-white nav">
 				<view class="flex text-center">
-					<view class="cu-item flex flex-sub" :class="index==TabCur?'text-blue cur':''" v-for="(tabName,index) in tabNav" :key="index" @tap="tabSelect" :data-id="index">
+					<view class="cu-item flex flex-sub" :class="index==TabCur?'text-blue cur':''"v-for="(tabName,index) in tabNav" :key="index" @tap="tabSelect" :data-id="index">
 						{{tabName}}<span v-if="index==1">({{dptInfoNum}})</span>
 					</view>
 				</view>
 			</scroll-view>
-			<view>
-				<view v-show="TabCur==0" class="margin">
-					<p>{{abs}}</p>
+			<swiper @change="Show" :current="TabCur">
+				<swiper-item>
+					<view>
+						<p class="margin-sm">{{abs}}</p>
+					</view>
 					<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" @click="">
 						<text>查看更多</text>
 						<text class="cuIcon-playfill"></text>
 					</view>
-				</view>
-				<view class="cu-list menu sm-border" id="list" v-show="TabCur==1">	<!--科室列表-->
+				</swiper-item>
+				<swiper-item class="cu-list menu sm-border" id="list" >	<!--科室列表-->
 					<view class="cu-item" :key="index" v-for="(item, index) in departList">
 						<view class="content" @click="NavToDetail">
 							<text class="text-black">{{item}}</text>
@@ -73,8 +75,8 @@
 						<text>查看更多</text>
 						<text class="cuIcon-playfill"></text>
 					</view>
-				</view>
-				<view v-show="TabCur==2||TabCur==3">
+				</swiper-item>
+				<swiper-item >
 					<view :key="index" v-for="(item,index) in news">
 						<view class="padding" style="background-color: white;" v-if="item.photonumber==0">
 							<view class="padding-bottom-xs">
@@ -107,8 +109,42 @@
 						<text>查看更多</text>
 						<text class="cuIcon-playfill"></text>
 					</view>
-				</view>
-			</view>
+				</swiper-item>
+				<swiper-item >
+					<view :key="index" v-for="(item,index) in news">
+						<view class="padding" style="background-color: white;" v-if="item.photonumber==0">
+							<view class="padding-bottom-xs">
+								<text class="text-xl">{{item.title}}</text>
+							</view>
+								<text class="text-df">{{item.date}}</text>
+						</view>
+						<view class="flex" style="background-color: white;" v-if="item.photonumber==1">
+							<view class="flex-twice margin">
+								<view class="margin-bottom-sm ">
+									<text class="text-xl text-omit">{{item.title}}</text>
+								</view>
+									<text class="text-df">{{item.date}}</text>
+							</view>
+								<image class=" margin-top-lg margin-right flex-sub" mode="widthFix" :src="item.photo[0].name" ></image>
+						</view>
+						<view class=" padding" style="background-color: white;" v-if="item.photonumber==3">
+							
+							<text class="text-xl ">{{item.title}}</text>
+							
+							<view class="flex margin-bottom-sm margin-top-sm" >
+								<image class="margin-right-xs " mode="widthFix" :src="item.photo[0].name" ></image>
+								<image class="margin-right-xs " mode="widthFix" :src="item.photo[1].name" ></image>
+								<image class="margin-right-xs " mode="widthFix" :src="item.photo[2].name" ></image>
+							</view>
+							<text class="text-df">{{item.date}}</text>
+						</view>
+					</view>
+					<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" @click="NavNewsPage">
+						<text>查看更多</text>
+						<text class="cuIcon-playfill"></text>
+					</view>
+				</swiper-item>
+			</swiper>
 		</view>
 	</view>
 </template>
@@ -201,13 +237,10 @@
 					
 				});
 			},
-			NavToH2(){
-				uni.navigateTo({
-					url: '../HospitalDetail/HospitalDetail2',
-					success: res => {},
-				});
+			Show(e){
+				this.TabCur=e.detail.current;
 			}
-		}
+		},
 	}
 </script>
 
@@ -259,4 +292,8 @@
 		-webkit-line-clamp: 3; 
 		overflow: hidden;  
 	}
+	swiper-item{
+		overflow:scroll;
+	}
+   
 </style>

@@ -99,7 +99,7 @@
 			},
 			back(){
 				uni.reLaunch({
-					url: '../index',
+					url: '../index'
 				});
 			}
 		}
