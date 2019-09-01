@@ -108,8 +108,6 @@
 		},
 		onLoad(data) {
 			this.TabCur=this.tabNav.indexOf(data.cate);
-			if(data.cate=="招聘")this.x=1;
-			else this.x=2;
 		},
 		methods: {
 			change(index){
