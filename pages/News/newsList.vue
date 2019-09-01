@@ -9,7 +9,7 @@
 					<view class="cu-bar search">
 						<view class="cu-avatar round" style="background-image:url(../../static/brand.png); background-color: rgba(0,0,0,0);"></view>
 						<view class="search-form round bg-white">
-							<input @tap="navToSearch()" style="padding-left: 20rpx;" :adjust-position="false" type="text" placeholder="" confirm-type="search"></input>
+							<input @tap="navToSearch()" style="padding-left: 20rpx;" :adjust-position="false" type="text" placeholder="在此处搜索" confirm-type="search"></input>
 							<text class="cuIcon-search text-blue margin-right-sm" style="font-size: 36rpx;"></text>
 						</view>
 						<view class="action">

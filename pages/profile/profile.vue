@@ -3,7 +3,7 @@
 		<statusBar></statusBar>
 		<view class="head">
 			<p>
-				<span><navigator class="cuIcon-home" url="../index"></navigator></span>
+				<span><navigator class="cuIcon-home" open-type="redirect" url="../index"></navigator></span>
 				<span><navigator class="cuIcon-settings" url="../userInfo/userInfo"></navigator></span>
 			</p>
 		</view>	
@@ -130,7 +130,8 @@
 				});
 			},
 			NavBackIndex(){
-				uni.navigateBack({
+				uni.redirectTo({
+					url:'../index',
 				});
 			}
 			

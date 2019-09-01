@@ -39,9 +39,9 @@
 				</view>
 			</view>
 		</view>
-		<view id="Contact" class="bg-white flex justify-between align-center margin-tb-sm padding-lr padding-tb-sm">
+		<view id="Contact" class="bg-white flex justify-between align-center margin-tb-sm padding-lr padding-tb-xs">
 			<view class="text-xl">
-				<p :key="key" v-for="(value,key) in contacts">{{key}}:{{value}}</p>
+				<p :key="key" class="margin-tb-xs" v-for="(value,key) in contacts">{{key}}:{{value}}</p>
 			</view>
 			<view>
 				<button class="cu-btn" @click="NavDepartList()">查看科室</button>

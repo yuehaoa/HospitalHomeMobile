@@ -7,7 +7,8 @@
 				<view class="cu-bar search">
 					<view class="cu-avatar round" style="background-image:url(../static/brand.png); background-color: rgba(0,0,0,0);"></view>
 					<view class="search-form round bg-white">
-						<input @tap="NavToSearch" style="padding-left: 20rpx;" :adjust-position="false" type="text" placeholder="让呼吸更健康" confirm-type="search"></input>
+						<input @tap="NavToSearch" style="padding-left: 20rpx;" :adjust-position="false" 
+						type="text" placeholder="让呼吸更健康" confirm-type="search"></input>
 						<text class="cuIcon-search text-blue margin-right-sm" style="font-size: 36rpx;"></text>
 					</view>
 					<view class="action" @click="NavToProfile">
@@ -18,11 +19,11 @@
 				</view>
 				<view class="margin-xs flex justify-around align-center">
 					<span class="text-white" style="z-index:1;">热搜：</span>
-					<span class="sm cu-tag round tag" :key="index" v-for="(tag,index) in tags" @tap="NavToSearch">{{tag}}</span>
+					<span class="sm cu-tag round tag" :key="index" v-for="(tag,index) in tags" @tap="NavToSearchRes(tag)">{{tag}}</span>
 				</view>
 			</view>
 		</view>
-		<view class="margin-lr-sm" @tap="">
+		<view class="margin-lr-sm">
 			<view class="chat bg-white padding-bottom-xs">
 					<p class="padding-lr-xl padding-top-sm padding-bottom-xs text-xxl" style="color: #00a7f4;">智能导诊</p>
 					<view class="cu-chat margin-tb-sm">
@@ -37,7 +38,7 @@
 			</view>
 			<view class="cu-bar input radius bg-grey margin-sm" style="background-color: #f9f9f9;margin-left: 0;">
 				<text class="cuIcon-voice text-white bg-blue cu-avatar round" style="font-size: 25px;border: #9edefb solid 7rpx;"></text>
-				<input placeholder="请输入症状/疾病/药品/疫苗..." class="solid-bottom bg-white round shadow padding-left" :adjust-position="false" :focus="false" maxlength="300" cursor-spacing="10"></input>
+				<input @click="NavToGuide" placeholder="请输入症状/疾病/药品/疫苗..." class="solid-bottom bg-white round shadow padding-left" :adjust-position="false" :focus="false" maxlength="300" cursor-spacing="10"></input>
 				<button class="text-sm bg-blue">发送</button>
 			</view>
 		</view>
@@ -48,7 +49,7 @@
 						<text class="cuIcon-titles text-blue"></text>
 						<text class="text-bold">医院介绍</text>
 					</view>
-					<view class="more" @tap="NavToHosDetail">查看更多<text class="cuIcon-playfill"></text></view>
+					<view class="more" @tap="SearchMore()">查看更多<text class="cuIcon-playfill"></text></view>
 				</view>
 				<scroll-view scroll-x>
 					<view class="flex text-center" id='subsCard'>
@@ -193,6 +194,7 @@
 					"呼吸科权威医院",
 					"原发性肝癌",
 					"广州中医院",
+					"程序员脱发怎么办"
 				]
 			}
 		},
@@ -202,7 +204,7 @@
 		methods:{
 			change(index){
 				if(!this.mynavs[index].url)return;
-				uni.navigateTo({
+				uni.redirectTo({
 					url:this.mynavs[index].url
 				})
 			},
@@ -228,10 +230,16 @@
 					url:'./Search/Result'
 				})
 			},
+			NavToSearchRes(e){
+				uni.navigateTo({
+					url:'./Search/Result?keyword='+e
+				});
+			},
 			NavToSearch(){
 				uni.navigateTo({
 					url:'./Search/Search'
-				})
+				});
+
 			},
 			NavToHosDetail() {
 				uni.navigateTo({
@@ -243,6 +251,11 @@
 					url: './profile/profile',
 				});
 			},
+			NavToGuide(){
+				uni.navigateTo({
+					url: './Guide/Guide',
+				});
+			}
 		}
 	}
 </script>
