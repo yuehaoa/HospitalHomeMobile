@@ -5,20 +5,21 @@
 			<image src="../static/blue.png" style="position: absolute;"></image>
 			<view class="content padding-top-sm">
 				<view class="cu-bar search">
-					<view class="cu-avatar round" style="background-image:url(../mob/static/brand.png); background-color: rgba(0,0,0,0);"></view>
+					<view class="cu-avatar round" style="background-image:url(../static/brand.png); background-color: rgba(0,0,0,0);"></view>
 					<view class="search-form round bg-white">
-						<input @tap="NavToSearch" style="padding-left: 20rpx; padding-right: 0;" :adjust-position="false" type="text" placeholder="让呼吸更健康" placeholder-class="text-xxl" confirm-type="search"></input>
+						<input @tap="NavToSearch" style="padding-left: 20rpx; padding-right: 0;" :adjust-position="false"
+						type="text" placeholder="让呼吸更健康" placeholder-class="text-xxl" confirm-type="search"></input>
 						<text class="cuIcon-search text-blue margin-right-sm" style="font-size: 42rpx;"></text>
 					</view>
-					<view class="action">
+					<view class="action" @click="NavToProfile">
 						<text class="text-white text-xxl">厦门</text>
 						<text class="text-white text-xxl margin-left-sm">|</text>
-						<view class="cu-avatar round margin-left-sm" style="background-image:url(../mob/static/avatar.png);"></view>
+						<view class="cu-avatar round margin-left-sm" style="background-image:url(../static/avatar.png);"></view>
 					</view>
 				</view>
 				<view class="flex justify-around align-center margin-right  ">
 					<span class="text-white text-lg" style="z-index:1;">热搜：</span>
-					<span  style="z-index:1;" class="round tag cu-tags text-lg padding-xs" :key="index" v-for="(tag,index) in tags">{{tag}}</span>
+					<span  style="z-index:1;" class="round tag cu-tags text-lg padding-xs" @tap="NavToSearchRes(tag)" :key="index" v-for="(tag,index) in tags">{{tag}}</span>
 				</view>
 			</view>
 		</view>
@@ -37,7 +38,7 @@
 			</view>
 			<view class="cu-bar input radius bg-grey margin-sm" style="background-color: #f9f9f9;margin-left: 0;">
 				<text class="cuIcon-voice text-white bg-blue cu-avatar round" style="font-size: 25px;border: #9edefb solid 7rpx;"></text>
-				<input placeholder="请输入症状/疾病/药品..." placeholder-class="text-xl" class="solid-bottom bg-white round shadow" 
+				<input @click="NavToGuide" placeholder="请输入症状/疾病/药品..." placeholder-class="text-xl" class="solid-bottom bg-white round shadow" 
 				:adjust-position="false" :focus="false" style="padding: 0 0 0 10px;" maxlength="300" cursor-spacing="10"></input>
 				<button class="text-df bg-blue">发送</button>
 			</view>
@@ -70,8 +71,8 @@
 				<scroll-view scroll-x>
 					<view class="flex text-center" id='subsCard'>
 						<view class="card bg-white margin-lr-sm"  v-for="(hospital,index) in hospitals2" :key="index">
-							<view class="padding-top-sm"><image :src="hospital.avatar" class="cu-avatar round lg" style="background-color: white;"></image></view>
-							<view class="text text-black text-overflow text-xl">{{hospital.name}}</view>
+							<view class="padding-top-sm" @tap="NavToHosDetail"><image :src="hospital.avatar" class="cu-avatar round lg" style="background-color: white;"></image></view>
+							<view class="text text-black text-overflow text-xl" @tap="NavToHosDetail">{{hospital.name}}</view>
 							<button id="button" class="text-xl" :class="[hospital.state=='关注'?'bg-blue':'']" @tap="subsribe2(index)">{{hospital.state}}</button>
 						</view>
 					</view>
@@ -199,7 +200,7 @@
 		methods:{
 			change(index){
 				if(!this.mynavs[index].url)return;
-				uni.navigateTo({
+				uni.redirectTo({
 					url:this.mynavs[index].url
 				})
 			},
@@ -229,6 +230,26 @@
 				uni.navigateTo({
 					url:'./Search/Search'
 				})
+			},
+			NavToProfile(){
+				uni.navigateTo({
+					url: './profile/profile',
+				});
+			},
+			NavToSearchRes(e){
+				uni.navigateTo({
+					url:'./Search/Result?keyword='+e
+				});
+			},
+			NavToHosDetail() {
+				uni.navigateTo({
+					url: './HospitalDetail/HospitalDetail',
+				});
+			},
+			NavToGuide(){
+				uni.navigateTo({
+					url: './Guide/Guide',
+				});
 			}
 		}
 	}

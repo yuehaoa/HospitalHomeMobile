@@ -48,7 +48,7 @@
 			</view>
 		</view>
 		<view class="cu-list menu sm-border" id="list">	<!--科室列表-->
-			<view class="cu-item" v-show="keyword==''||(chooseIndex.indexOf(index.toString())>-1)" :key="index" v-for="(item, index) in departList">
+			<view class="cu-item" v-if="keyword==''||(chooseIndex.indexOf(index.toString())>-1)" :key="index" v-for="(item, index) in departList">
 				<view class="content" @click="NavToDetail">
 					<text class="text-black">{{item}}</text>
 				</view>

@@ -17,7 +17,7 @@
 						<button class="cu-btn cuIcon margin-lr-xs bg-grey text-xl">
 							<text class="cuIcon-share"></text>
 						</button>
-						<button class="cu-btn cuIcon margin-lr-xs bg-grey text-xl"@click="NavToH2">
+						<button class="cu-btn cuIcon margin-lr-xs bg-grey text-xl" @click="NavToH2">
 							<text class="cuIcon-more"></text>
 						</button>
 					</view>
@@ -39,9 +39,9 @@
 				</view>
 			</view>
 		</view>
-		<view id="Contact" class="bg-white flex justify-between align-center margin-tb-sm padding-lr padding-tb-sm">
+		<view id="Contact" class="bg-white flex justify-between align-center margin-tb-sm padding-lr padding-tb-xs">
 			<view class="text-xl">
-				<p :key="key" v-for="(value,key) in contacts">{{key}}:{{value}}</p>
+				<p :key="key" class="margin-tb-xs" v-for="(value,key) in contacts">{{key}}:{{value}}</p>
 			</view>
 			<view>
 				<button class="cu-btn" @click="NavDepartList()">查看科室</button>
@@ -56,14 +56,14 @@
 				</view>
 			</scroll-view>
 			<view>
-				<view v-show="TabCur==0" class="margin">
+				<view v-if="TabCur==0" class="margin">
 					<p>{{abs}}</p>
-					<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" @click="">
+					<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" >
 						<text>查看更多</text>
 						<text class="cuIcon-playfill"></text>
 					</view>
 				</view>
-				<view class="cu-list menu sm-border" id="list" v-show="TabCur==1">	<!--科室列表-->
+				<view class="cu-list menu sm-border" id="list" v-if="TabCur==1">	<!--科室列表-->
 					<view class="cu-item" :key="index" v-for="(item, index) in departList">
 						<view class="content" @click="NavToDetail">
 							<text class="text-black">{{item}}</text>
@@ -74,7 +74,7 @@
 						<text class="cuIcon-playfill"></text>
 					</view>
 				</view>
-				<view v-show="TabCur==2||TabCur==3">
+				<view v-if="TabCur==2||TabCur==3">
 					<view :key="index" v-for="(item,index) in news">
 						<view class="padding" style="background-color: white;" v-if="item.photonumber==0">
 							<view class="padding-bottom-xs">
@@ -103,7 +103,11 @@
 							<text class="text-df">{{item.date}}</text>
 						</view>
 					</view>
-					<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" @click="NavNewsPage">
+					<view v-if="TabCur==2" class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" @click="NavNewsPage1">
+						<text>查看更多</text>
+						<text class="cuIcon-playfill"></text>
+					</view>
+					<view  v-if="TabCur==3" class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" @click="NavNewsPage2">
 						<text>查看更多</text>
 						<text class="cuIcon-playfill"></text>
 					</view>
@@ -188,9 +192,15 @@
 					success: res => {},
 				});
 			},
-			NavNewsPage(){
+			NavNewsPage1(){
 				uni.navigateTo({
-					url: '../News/newsList',
+					url: '../News/newsList?cate=招聘',
+					success: res => {},
+				});
+			},
+			NavNewsPage2(){
+				uni.navigateTo({
+					url: '../News/newsList?cate=招投标',
 					success: res => {},
 				});
 			},

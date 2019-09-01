@@ -28,18 +28,19 @@
 			</scroll-view>
 		</view>
 		<view class="bg-white">
-			<view class="cu-bar" v-show="oldKeywordList.length!=0">
+			<view class="cu-bar" v-if="oldKeywordList.length!=0">
 				<view class="action flex" style="width: 100%;">
 					<text class="cuIcon-titles text-blue"></text>
 					<text class="text-xl text-bold">历史搜索</text>
 					<text class="cuIcon-delete" style="margin-left: auto;" @tap="oldDelete()"></text>
+					
 				</view>
 			</view>
 			<view class="flex padding-sm flex-wrap">
 				
 				<view :key="index" v-for="(key,index) in oldKeywordList" :class="fold?'fold':'unfold'" v-if="fold?index<6:index<10"><button class="cu-btn round margin-lr-sm margin-tb-xs" @tap="NavToRes(key)" >{{key}}</button></view>
-					<button class="cu-btn cuIcon margin-lr-sm margin-tb-xs" @click="btn" v-show="oldKeywordList.length>6&&fold" ><text class="cuIcon-unfold" ></text></button>
-					<button class="cu-btn cuIcon margin-lr-sm margin-tb-xs" @click="btn" v-show="!fold" ><text class="cuIcon-fold" ></text></button>
+					<button class="cu-btn cuIcon margin-lr-sm margin-tb-xs" @click="btn" v-if="oldKeywordList.length>6&&fold" ><text class="cuIcon-unfold" ></text></button>
+					<button class="cu-btn cuIcon margin-lr-sm margin-tb-xs" @click="btn" v-if="!fold" ><text class="cuIcon-fold" ></text></button>
 					
 				
 			</view>
@@ -48,22 +49,18 @@
 					<view class="action flex" style="width: 100%;">
 						<text class="cuIcon-titles text-blue"></text>
 						<text class="text-xl text-bold">搜索发现</text>
-						<text class="cuIcon-attention" style="margin-left:auto;"></text>
+						<text class="cuIcon-attention" style="margin-left:auto;" @click="btn1" v-if="atten"></text>
+						<text class="cuIcon-attentionforbid" style="margin-left:auto;" @click="btn1" v-if="!atten"></text>
 					</view>
 				</view>
-				<view class="box">
-					<view class="flex">
-						<view class="flex-sub  padding-sm margin-xs radius">呼吸科</view>
-						<view class="flex-sub padding-sm margin-xs radius">原发性肝癌</view>
-					</view>
-					<view class="flex">
-						<view class="flex-sub padding-sm margin-xs radius">呼吸科权威医院</view>
-						<view class="flex-sub padding-sm margin-xs radius">广州医科</view>
-					</view>
-					<view class="flex">
-						<view class="flex-sub padding-sm margin-xs radius">呼吸健康</view>
-						<view class="flex-sub padding-sm margin-xs radius">医院</view>
-					</view>
+				<view class="box flex flex-wrap">
+									<view v-if="atten" class="basis-sm padding-sm margin-xs radius" :key="index" v-for="(key,index) in findKeywordList" @tap="NavToRes(key)">{{key}}</view>
+				
+									 <view class="flex-sub text-center"  v-if="!atten">
+									 	<view class=" text-sm padding">
+									 		<text class="text-grey">当前搜索已隐藏</text>
+									 	</view>
+				</view>
 				</view>
 			</view>
 		</view>
@@ -74,6 +71,7 @@
 	export default {
 		onLoad() {
 			this.loadoldkeys();
+			this.loadfindkeys();
 		},
 		data() {
 			return {
@@ -81,11 +79,22 @@
 				inikeyword:"原发性肝癌",
 				keyword:"",
 				oldKeywordList:[],
-				fold:true
+				findKeywordList:[],
+				fold:true,
+				atten:true
 				
 			}
 		},
 		methods: {
+			btn1()
+						{
+							this.atten=!this.atten;
+						},
+						loadfindkeys()
+						{
+							this.findKeywordList=['呼吸科','原发性肝癌','呼吸科权威医院','广州医科','呼吸健康','医院'];
+							
+						},
 			btn()
 			{
 				this.fold=!this.fold;
@@ -137,10 +146,15 @@
 				uni.getStorage({
 					key:'oldkeys',
 					success: (res) => {
-						var Oldkeys=res.data;
-						if(Oldkeys.indexOf(key)==-1)
-						Oldkeys.push(key);
-						Oldkeys.length>10 && Oldkeys.pop();
+						let Oldkeys=res.data;
+						let f=Oldkeys.indexOf(key)
+						if(f>-1){
+								Oldkeys.splice(f,1);
+								}
+						Oldkeys.unshift(key);
+						if(Oldkeys.length>10){
+							Oldkeys.pop();
+												}
 						uni.setStorage({
 							key:'oldkeys',
 							data:Oldkeys
