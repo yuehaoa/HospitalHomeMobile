@@ -5,7 +5,7 @@
 			<image src="../static/blue.png" style="position: absolute;"></image>
 			<view class="content padding-top-sm">
 				<view class="cu-bar search">
-					<view class="cu-avatar round" style="background-image:url(../mob/static/brand.png); background-color: rgba(0,0,0,0);"></view>
+					<view class="cu-avatar round" style="background-image:url(../static/brand.png); background-color: rgba(0,0,0,0);"></view>
 					<view class="search-form round bg-white">
 						<input @tap="NavToSearch" style="padding-left: 20rpx; padding-right: 0;" :adjust-position="false" type="text" placeholder="让呼吸更健康" placeholder-class="text-xxl" confirm-type="search"></input>
 						<text class="cuIcon-search text-blue margin-right-sm" style="font-size: 42rpx;"></text>
@@ -13,7 +13,7 @@
 					<view class="action">
 						<text class="text-white text-xxl">厦门</text>
 						<text class="text-white text-xxl margin-left-sm">|</text>
-						<view class="cu-avatar round margin-left-sm" style="background-image:url(../mob/static/avatar.png);"></view>
+						<view class="cu-avatar round margin-left-sm" style="background-image:url(../static/avatar.png);"></view>
 					</view>
 				</view>
 				<view class="flex justify-around align-center margin-right  ">
