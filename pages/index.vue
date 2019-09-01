@@ -54,7 +54,7 @@
 				<scroll-view scroll-x>
 					<view class="flex text-center" id='subsCard'>
 						<view class="card bg-white margin-lr-sm"  v-for="(hospital,index) in hospitals1" :key="index" >
-							<view class="padding-top-sm" @tap="NavToHosDetail"><image :src="hospital.avatar" class="cu-avatar round lg"></image></view>
+							<view class="padding-top-sm" @tap="NavToHosDetail"><image :src="hospital.avatar" class="cu-avatar round lg" style="background-color: white;"></image></view>
 							<view class="text text-black text-overflow" @tap="NavToHosDetail">{{hospital.name}}</view>
 							<button id="button" class="text-xs" :class="[hospital.state=='关注'?'bg-blue':'']" @tap="subsribe1(index)">{{hospital.state}}</button>
 						</view>
