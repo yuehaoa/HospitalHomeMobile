@@ -48,7 +48,7 @@
 			</view>
 		</view>
 		<view class="cu-list menu sm-border" id="list">	<!--科室列表-->
-			<view class="cu-item" v-show="keyword==''||index==chooseIndex" :key="index" v-for="(item, index) in departList">
+			<view class="cu-item" v-show="keyword==''||(chooseIndex.indexOf(index.toString())>-1)" :key="index" v-for="(item, index) in departList">
 				<view class="content" @click="NavToDetail">
 					<text class="text-black">{{item}}</text>
 				</view>
@@ -61,7 +61,7 @@
 	export default {
 		data() {
 			return{
-				chooseIndex:'',
+				chooseIndex:[],
 				keyword:'',
 				departList:[
 					"脊柱外科(3位专家)",
@@ -96,9 +96,13 @@
 				});
 			},
 			search(event){
-				debugger;
+				this.chooseIndex=[];
 				this.keyword=event.target.value;
-				this.chooseIndex=this.departList.indexOf(event.target.value);
+				for (let index in this.departList) {
+					if(this.departList[index].indexOf(this.keyword)>-1){
+						this.chooseIndex.push(index);
+					}
+				}
 			}
 		}
 	}
