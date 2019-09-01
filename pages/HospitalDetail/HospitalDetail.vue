@@ -75,7 +75,7 @@
 					</view>
 				</view>
 				<view v-if="TabCur==2||TabCur==3">
-					<view :key="index" v-for="(item,index) in news">
+					<view :key="index" v-for="(item,index) in news"@click="NavToNewsDetail">
 						<view class="padding" style="background-color: white;" v-if="item.photonumber==0">
 							<view class="padding-bottom-xs">
 								<text class="text-xl">{{item.title}}</text>
@@ -214,6 +214,12 @@
 			NavToH2(){
 				uni.navigateTo({
 					url: '../HospitalDetail/HospitalDetail2',
+					success: res => {},
+				});
+			},
+			NavToNewsDetail(){
+				uni.navigateTo({
+					url: '../News/newsDetail',
 					success: res => {},
 				});
 			}
