@@ -105,7 +105,7 @@
 							<text class="text-df">{{item.date}}</text>
 						</view>
 					</view>
-					<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" @click="NavNewsPage">
+					<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" @click="NavNewsPage1">
 						<text>查看更多</text>
 						<text class="cuIcon-playfill"></text>
 					</view>
@@ -139,7 +139,7 @@
 							<text class="text-df">{{item.date}}</text>
 						</view>
 					</view>
-					<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" @click="NavNewsPage">
+					<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" @click="NavNewsPage2">
 						<text>查看更多</text>
 						<text class="cuIcon-playfill"></text>
 					</view>
@@ -224,9 +224,15 @@
 					success: res => {},
 				});
 			},
-			NavNewsPage(){
+			NavNewsPage1(){
 				uni.navigateTo({
-					url: '../News/newsList',
+					url: '../News/newsList?cate=招聘',
+					success: res => {},
+				});
+			},
+			NavNewsPage2(){
+				uni.navigateTo({
+					url: '../News/newsList?cate=招投标',
 					success: res => {},
 				});
 			},

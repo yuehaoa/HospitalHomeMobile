@@ -74,7 +74,7 @@
 						<text class="cuIcon-playfill"></text>
 					</view>
 				</view>
-				<view v-show="TabCur==2||TabCur==3">
+				<view v-show="TabCur==2">
 					<view :key="index" v-for="(item,index) in news">
 						<view class="padding" style="background-color: white;" v-if="item.photonumber==0">
 							<view class="padding-bottom-xs">
@@ -103,7 +103,13 @@
 							<text class="text-df">{{item.date}}</text>
 						</view>
 					</view>
-					<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" @click="NavNewsPage">
+					<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" @click="NavNewsPage1">
+						<text>查看更多</text>
+						<text class="cuIcon-playfill"></text>
+					</view>
+				</view>
+				<view v-show="TabCur==3">
+					<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" @click="NavNewsPage2">
 						<text>查看更多</text>
 						<text class="cuIcon-playfill"></text>
 					</view>
@@ -188,9 +194,15 @@
 					success: res => {},
 				});
 			},
-			NavNewsPage(){
+			NavNewsPage1(){
 				uni.navigateTo({
-					url: '../News/newsList',
+					url: '../News/newsList?cate=招聘',
+					success: res => {},
+				});
+			},
+			NavNewsPage2(){
+				uni.navigateTo({
+					url: '../News/newsList?cate=招投标',
 					success: res => {},
 				});
 			},
