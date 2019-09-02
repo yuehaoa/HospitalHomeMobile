@@ -39,9 +39,9 @@
 				</view>
 			</view>
 		</view>
-		<view id="Contact" class="bg-white flex justify-between align-center margin-tb-sm padding-lr padding-tb-sm">
+		<view id="Contact" class="bg-white flex justify-between align-center margin-tb-sm padding-lr padding-tb-xs">
 			<view class="text-xl">
-				<p :key="key" v-for="(value,key) in contacts">{{key}}:{{value}}</p>
+				<p :key="key" class="margin-tb-xs" v-for="(value,key) in contacts">{{key}}:{{value}}</p>
 			</view>
 			<view>
 				<button class="cu-btn" @click="NavDepartList()">查看科室</button>
@@ -77,7 +77,7 @@
 					</view>
 				</swiper-item>
 				<swiper-item >
-					<view :key="index" v-for="(item,index) in news">
+					<view :key="index" v-for="(item,index) in news"@click="NavToNewsDetail">
 						<view class="padding" style="background-color: white;" v-if="item.photonumber==0">
 							<view class="padding-bottom-xs">
 								<text class="text-xl">{{item.title}}</text>
@@ -111,7 +111,7 @@
 					</view>
 				</swiper-item>
 				<swiper-item >
-					<view :key="index" v-for="(item,index) in news">
+					<view :key="index" v-for="(item,index) in news"@click="NavToNewsDetail">
 						<view class="padding" style="background-color: white;" v-if="item.photonumber==0">
 							<view class="padding-bottom-xs">
 								<text class="text-xl">{{item.title}}</text>
@@ -245,7 +245,12 @@
 			},
 			Show(e){
 				this.TabCur=e.detail.current;
-			}
+			},
+			NavToNewsDetail(){
+				uni.navigateTo({
+					url: '../News/newsDetail',
+					success: res => {},
+				});},
 		},
 	}
 </script>

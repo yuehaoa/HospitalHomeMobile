@@ -65,7 +65,7 @@
 				<view class="cu-item shadow">
 					<view class="title"><view class="text-cut">{{result.name}}</view></view>
 					<view class="content">
-						<image src="../../static/hospital.png" mode="aspectFill"></image>
+						<image src="../../static/hospital0.png" mode="aspectFill"></image>
 						<view class="desc">
 							<view class="text-content">{{result.abstract}}</view>
 							<view >
