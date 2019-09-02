@@ -12,7 +12,7 @@
 							<input @tap="navToSearch()" style="padding-left: 20rpx;" :adjust-position="false" type="text" placeholder="在此处搜索" confirm-type="search"></input>
 							<text class="cuIcon-search text-blue margin-right-sm" style="font-size: 36rpx;"></text>
 						</view>
-						<view class="action">
+						<view class="action" @click="NavToProfile">
 							<text class="text-white">厦门</text>
 							<text class="text-white text-xxl margin-left-sm">|</text>
 							<view class="cu-avatar round margin-left-sm" style="background-image:url(../../static/avatar.png);"></view>
@@ -128,6 +128,11 @@
 			toDetail(){
 				uni.navigateTo({
 					url:'./newsDetail',
+				})
+			},
+			NavToProfile(){
+				uni.navigateTo({
+					url:'../profile/profile',
 				})
 			}
 		}
