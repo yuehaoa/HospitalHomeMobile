@@ -79,7 +79,6 @@
 				</scroll-view>
 			</view>
 		</view>
-		<view style="height: 120rpx;" class="text-xl"></view>
 		<bottom-navbar :navs='mynavs' v-on:selectchange="change($event)" :iniTabCur="0"></bottom-navbar>
 	</view>
 </template>

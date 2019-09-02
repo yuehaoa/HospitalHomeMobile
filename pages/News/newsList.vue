@@ -22,7 +22,7 @@
 			</view>
 			<scroll-view scroll-x class="bg-white nav">
 				<view class="flex text-center">
-					<view class="cu-item flex flex-sub" :class="index==TabCur?'text-blue cur':''" v-for="(tabName,index) in tabNav" :key="index" @tap="tabSelect" :data-id="index">
+					<view class="cu-item flex flex-sub text-lg" :class="index==TabCur?'text-blue cur':''" v-for="(tabName,index) in tabNav" :key="index" @tap="tabSelect" :data-id="index">
 						{{tabName}}
 					</view>
 				</view>
@@ -33,16 +33,20 @@
 				<view class="padding-bottom-xs">
 					<text class="text-xxl">{{item.title}}</text>
 				</view>
-						<text class="text-df margin-right-sm">{{item.author}}</text>
-						<text class="text-df">{{item.date}}</text>
+				<view class="text-grey">
+					<text class="text-df margin-right-sm">{{item.author}}</text>
+					<text class="text-df">{{item.date}}</text>
+				</view>
 			</view>
 			<view class="solids-bottom flex" style="background-color: white;" v-if="item.photo.length==1">
 				<view class="flex-twice padding">
 					<view class="margin-bottom-sm ">
 						<text class="text-xxl text-omit">{{item.title}}</text>
 					</view>
-						<text class="text-df margin-right-sm">{{item.author}}</text>
-						<text class="text-df">{{item.date}}</text>
+				<view class="text-grey">
+					<text class="text-df margin-right-sm">{{item.author}}</text>
+					<text class="text-df">{{item.date}}</text>
+				</view>
 				</view>
 				<image class=" margin-top-lg margin-right flex-sub" mode="widthFix" :src="item.photo[0].name" ></image>
 			</view>
@@ -53,8 +57,10 @@
 					<image class="margin-lr-xs" mode="widthFix" :src="item.photo[1].name" ></image>
 					<image class="margin-lr-xs" mode="widthFix" :src="item.photo[2].name" ></image>
 				</view>
+				<view class="text-grey">
 					<text class="text-df margin-right-sm">{{item.author}}</text>
 					<text class="text-df">{{item.date}}</text>
+				</view>
 			</view>
 		</view>
 		<bottom-navbar :navs='mynavs' v-on:selectchange="change($event)" :iniTabCur="TabCur+1"></bottom-navbar>
