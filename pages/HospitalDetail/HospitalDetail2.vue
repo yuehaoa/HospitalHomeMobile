@@ -48,15 +48,15 @@
 			</view>
 		</view>
 		<view id="HospitalDetail" class="bg-white" >
-			<scroll-view class="bg-white nav">
+			<scroll-view id="swiper" class="bg-white nav">
 				<view class="flex text-center">
 					<view class="cu-item flex flex-sub" :class="index==TabCur?'text-blue cur':''"v-for="(tabName,index) in tabNav" :key="index" @tap="tabSelect" :data-id="index">
 						{{tabName}}<span v-if="index==1">({{dptInfoNum}})</span>
 					</view>
 				</view>
 			</scroll-view>
-			<swiper @change="Show" :current="TabCur">
-				<swiper-item>
+			<swiper @change="Show" :current="TabCur" :style="{height: height+'px'}" style="position: relative;">
+				<swiper-item id="item0">
 					<view>
 						<p class="margin-sm">{{abs}}</p>
 					</view>
@@ -65,7 +65,7 @@
 						<text class="cuIcon-playfill"></text>
 					</view>
 				</swiper-item>
-				<swiper-item class="cu-list menu sm-border" id="list" >	<!--科室列表-->
+				<swiper-item id="item1 list" class="cu-list menu sm-border">	<!--科室列表-->
 					<view class="cu-item" :key="index" v-for="(item, index) in departList">
 						<view class="content" @click="NavToDetail">
 							<text class="text-black">{{item}}</text>
@@ -76,7 +76,7 @@
 						<text class="cuIcon-playfill"></text>
 					</view>
 				</swiper-item>
-				<swiper-item >
+				<swiper-item id="item2">
 					<view :key="index" v-for="(item,index) in news"@click="NavToNewsDetail">
 						<view class="padding" style="background-color: white;" v-if="item.photonumber==0">
 							<view class="padding-bottom-xs">
@@ -110,7 +110,7 @@
 						<text class="cuIcon-playfill"></text>
 					</view>
 				</swiper-item>
-				<swiper-item >
+				<swiper-item id="item3">
 					<view :key="index" v-for="(item,index) in news"@click="NavToNewsDetail">
 						<view class="padding" style="background-color: white;" v-if="item.photonumber==0">
 							<view class="padding-bottom-xs">
@@ -154,6 +154,7 @@
 		data()
 		{
 			return{
+				height: 150,
 				TabCur: 0,
 				scrollLeft: 0,
 				dptInfoNum: 51,
@@ -250,8 +251,27 @@
 				uni.navigateTo({
 					url: '../News/newsDetail',
 					success: res => {},
-				});},
+				});
+			},
+			calHeight(){
+				let THIS=this;
+				let xId=uni.createSelectorQuery().in(this).select('#swiper');
+				uni.getSystemInfo({
+					success: function (res) {
+						THIS.height=res.windowHeight;
+						console.log("window height:"+res.windowHeight);
+					}
+				});
+				xId.boundingClientRect(data=>{
+					THIS.height=THIS.height-data.bottom;
+					console.log("bottom:"+data.bottom);
+					console.log(THIS.height);
+				}).exec();
+			}
 		},
+		onReady(){
+			this.calHeight();
+		}
 	}
 </script>
 
@@ -305,6 +325,7 @@
 	}
 	swiper-item{
 		overflow:scroll;
+		height: auto;
 	}
    
 </style>

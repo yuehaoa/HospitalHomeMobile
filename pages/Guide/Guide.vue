@@ -63,7 +63,7 @@
 					};
 					this.chatInfos.push(reply);
 				}
-				this.loading = true;
+				//this.loading = true;
 				let THIS = this;
 				uni.request({
 					url: 'http://hh.ricebird.cn/api/hospital/GetNextQuestion',
