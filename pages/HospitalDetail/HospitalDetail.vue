@@ -23,16 +23,16 @@
 					</view>
 				</view>
 			<view class="Info margin-left">
-					<view class="action text-xxl margin-tb-sm">	<!--医院名称与地址-->
+					<view class="action  margin-tb-sm">	<!--医院名称与地址-->
 						<text class="cuIcon-titles text-blue"></text>
-						<text class="text-bold" style="color: #000;">{{name}}</text>
-						<text class="text-df margin-left">{{area}}</text>
+						<text class="text-bold text-xxl" style="color: #000;">{{name}}</text>
+						<text class="text-lg margin-left">{{area}}</text>
 					</view>
 					<view class="flex margin-bottom margin-left-sm margin-top-xs" id="tags">
-						<view class="radius cu-tag line-blue padding-lr-sm text-black" :key="index" v-for="(tag,index) in tags">{{tag}}</view>
+						<view class="radius cu-tag line-blue padding-lr-sm text-black text-df" :key="index" v-for="(tag,index) in tags">{{tag}}</view>
 					</view>
 					<view class="flex margin-left-sm padding-bottom-sm">
-						<view class="flex justify-between basis-lg">
+						<view class="flex justify-between basis-lg text-lg">
 							<view class="collection" :key="key" v-for="(value,key) in collections">{{key}}:{{value}}</view>
 						</view>
 					</view>
@@ -44,12 +44,12 @@
 				<p :key="key" class="margin-tb-xs" v-for="(value,key) in contacts">{{key}}:{{value}}</p>
 			</view>
 			<view>
-				<button class="cu-btn" @click="NavDepartList()">查看科室</button>
+				<button class="cu-btn text-lg" @click="NavDepartList()">查看科室</button>
 			</view>
 		</view>
 		<view id="HospitalDetail" class="bg-white">
 			<scroll-view class="bg-white nav">
-				<view class="flex text-center">
+				<view class="flex text-center ">
 					<view class="cu-item flex flex-sub" :class="index==TabCur?'text-blue cur':''" v-for="(tabName,index) in tabNav" :key="index" @tap="tabSelect" :data-id="index">
 						{{tabName}}<span v-if="index==1">({{dptInfoNum}})</span>
 					</view>
@@ -57,20 +57,20 @@
 			</scroll-view>
 			<view>
 				<view v-if="TabCur==0" class="margin">
-					<p>{{abs}}</p>
+					<p class="text-lg">{{abs}}</p>
 					<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" >
-						<text>查看更多</text>
+						<text class="text-lg">查看更多</text>
 						<text class="cuIcon-playfill"></text>
 					</view>
 				</view>
 				<view class="cu-list menu sm-border" id="list" v-if="TabCur==1">	<!--科室列表-->
 					<view class="cu-item" :key="index" v-for="(item, index) in departList">
 						<view class="content" @click="NavToDetail">
-							<text class="text-black">{{item}}</text>
+							<text class="text-black text-xl">{{item}}</text>
 						</view>
 					</view>
 					<view class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" @click="NavDepartList">
-						<text>查看更多</text>
+						<text class="text-lg">查看更多</text>
 						<text class="cuIcon-playfill"></text>
 					</view>
 				</view>
@@ -78,37 +78,37 @@
 					<view :key="index" v-for="(item,index) in news"@click="NavToNewsDetail">
 						<view class="padding" style="background-color: white;" v-if="item.photonumber==0">
 							<view class="padding-bottom-xs">
-								<text class="text-xl">{{item.title}}</text>
+								<text class="text-xxl">{{item.title}}</text>
 							</view>
-								<text class="text-df">{{item.date}}</text>
+								<text class="text-lg">{{item.date}}</text>
 						</view>
 						<view class="flex" style="background-color: white;" v-if="item.photonumber==1">
 							<view class="flex-twice margin">
 								<view class="margin-bottom-sm ">
-									<text class="text-xl text-omit">{{item.title}}</text>
+									<text class="text-xxl text-omit">{{item.title}}</text>
 								</view>
-									<text class="text-df">{{item.date}}</text>
+									<text class="text-lg">{{item.date}}</text>
 							</view>
 								<image class=" margin-top-lg margin-right flex-sub" mode="widthFix" :src="item.photo[0].name" ></image>
 						</view>
 						<view class=" padding" style="background-color: white;" v-if="item.photonumber==3">
 							
-							<text class="text-xl ">{{item.title}}</text>
+							<text class="text-xxl ">{{item.title}}</text>
 							
 							<view class="flex margin-bottom-sm margin-top-sm" >
 								<image class="margin-right-xs " mode="widthFix" :src="item.photo[0].name" ></image>
 								<image class="margin-right-xs " mode="widthFix" :src="item.photo[1].name" ></image>
 								<image class="margin-right-xs " mode="widthFix" :src="item.photo[2].name" ></image>
 							</view>
-							<text class="text-df">{{item.date}}</text>
+							<text class="text-lg">{{item.date}}</text>
 						</view>
 					</view>
 					<view v-if="TabCur==2" class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" @click="NavNewsPage1">
-						<text>查看更多</text>
+						<text class="text-lg">查看更多</text>
 						<text class="cuIcon-playfill"></text>
 					</view>
 					<view  v-if="TabCur==3" class="more flex justify-end align-center padding-lr-sm padding-bottom-sm" @click="NavNewsPage2">
-						<text>查看更多</text>
+						<text class="text-lg">查看更多</text>
 						<text class="cuIcon-playfill"></text>
 					</view>
 				</view>
