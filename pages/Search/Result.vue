@@ -57,7 +57,7 @@
 				</view>
 			</view>
 			<view class="padding flex flex-direction">
-				<button class="cu-btn bg-grey lg" @click="open()">确定</button>
+				<button class="cu-btn bg-grey lg" @click="openDropList()">确定</button>
 			</view>
 		</scroll-view>
 		<view>	<!--搜索结果-->

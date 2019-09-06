@@ -52,8 +52,8 @@
 		},
 		methods: {
 			BackPage() {
-				uni.navigateBack({
-					delta: 1
+				uni.redirectTo({
+					url:'../index'
 				});
 			}
 		}

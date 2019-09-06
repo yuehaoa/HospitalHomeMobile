@@ -63,7 +63,7 @@
 				</view>
 			</view>
 		</view>
-		<bottom-navbar :navs='mynavs' v-on:selectchange="change($event)" :iniTabCur="TabCur+1"></bottom-navbar>
+		<bottom-navbar :navs='mynavs' v-on:selectchange="change($event)" :iniTabCur="2"></bottom-navbar>
 	</view>
 </template>
 
@@ -79,13 +79,13 @@
 						url:"/pages/index2"
 					},
 					{
-						name:"招聘",
-						icon:"cuIcon-discover",
-						url:"/pages/News/newsList?cate=招聘"
+						name:"智能导诊",
+						icon:"cuIcon-question",
+						url:"/pages/Guide/Guide"
 					},
 					{
-						name:"招投标",
-						icon:"cuIcon-dianhua",
+						name:"科普知识",
+						icon:"cuIcon-discover",
 						url:"/pages/News/newsList?cate=招投标"
 					},
 					{

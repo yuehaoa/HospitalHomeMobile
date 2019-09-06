@@ -23,31 +23,22 @@
 				</view>
 			</view>
 		</view>
-		<view class="margin-lr-sm">
-			<view class="chat bg-white padding-bottom-xs">
-					<p class="padding-lr-xl padding-top-sm padding-bottom-xs text-xxl" style="color: #00a7f4;">智能导诊</p>
-					<view class="cu-chat margin-tb-sm">
-						<view class="cu-item" style="padding: 10rpx;">
-							<view class="main">
-								<view class="content shadow" style="background-color: #f9f9f9;">
-									<text class="text-lg">Hi~<br/>我是智能导诊助手</text>
-								</view>
-							</view>
-						</view>
-					</view>
+		<view class="margin-lr-sm flex justify-around margin-tb bg-white padding-tb shadow">
+			<view :key="index" v-for="(item,index) in bigicon" style="width: 15%;border-bottom: #00CCFE 5rpx solid; border-bottom-left-radius: 20rpx;"
+			 class="text-center padding-tb-xs" @click="Nav(index)">
+				<image :src="item.icon" mode="widthFix" ></image>
+				<text class="text-xl text-bold">{{item.text}}</text>
 			</view>
-			<view class="cu-bar input radius bg-grey margin-sm" style="background-color: #f9f9f9;margin-left: 0;">
-				<text class="cuIcon-voice text-white bg-blue cu-avatar round" style="font-size: 44rpx;border: #9edefb solid 7rpx;"></text>
-				<input @click="NavToGuide" placeholder="请输入症状/疾病/药品/疫苗..." class="solid-bottom bg-white round shadow padding-left" :adjust-position="false" :focus="false" maxlength="300" cursor-spacing="10"></input>
-				<button class="text-lg bg-blue" style="line-height: 70rpx;">发送</button>
-			</view>
+		</view>
+		<view class="flex justify-center margin-lr" >
+			<image src="../static/banner.jpg" style="height: 150rpx; width: 100%;"></image>
 		</view>
 		<view class="margin-lr-sm">
 			<view style="background-color: #f9f9f9;">
 				<view class="cu-bar">
 					<view class="text-xxl">
 						<text class="cuIcon-titles text-blue"></text>
-						<text class="text-bold">医院介绍</text>
+						<text class="text-bold">收藏医院</text>
 					</view>
 					<view class="more text-lg" @tap="SearchMore()">查看更多<text class="cuIcon-playfill"></text></view>
 				</view>
@@ -63,11 +54,50 @@
 			</view>
 		</view>
 		<view class="margin-lr-sm">
+			<view class="cu-bar">
+				<view class="text-xxl">
+					<text class="cuIcon-titles text-blue"></text>
+					<text class="text-bold">健康知识</text>
+				</view>
+				<view class="more text-lg" @tap="SearchMore">查看更多<text class="cuIcon-playfill"></text></view>
+			</view>
+			<view class="cu-card article no-card " @click="NavToHospital">
+				<view class="cu-item shadow">
+					<view class="title"><view class="text-cut text-xl">程序员如何缓解脱发</view></view>
+					<view class="content">
+						<image src="../static/hospital0.png" mode="aspectFill"></image>
+						<view class="desc">
+							<view class="text-content">脱发是现在很多中年人常见的一种情况，可现在趋于年轻化发展，在脱发的人群中，和工作性质也有很大关系，尤其是程序员整体上脱发比较厉害</view>
+							<view >
+								<view class="cu-tag bg-red light sm round ">优质</view>
+								<view class="cu-tag bg-red light sm round ">关注</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="cu-card article no-card " @click="NavToHospital">
+				<view class="cu-item shadow">
+					<view class="title"><view class="text-cut text-xl">程序员如何缓解脱发</view></view>
+					<view class="content">
+						<image src="../static/hospital0.png" mode="aspectFill"></image>
+						<view class="desc">
+							<view class="text-content">脱发是现在很多中年人常见的一种情况，可现在趋于年轻化发展，在脱发的人群中，和工作性质也有很大关系，尤其是程序员整体上脱发比较厉害</view>
+							<view >
+								<view class="cu-tag bg-red light sm round ">优质</view>
+								<view class="cu-tag bg-red light sm round ">关注</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="margin-lr-sm">
 			<view style="background-color: #f9f9f9;">
 				<view class="cu-bar">
 					<view class="text-xxl">
 						<text class="cuIcon-titles text-blue"></text>
-						<text class="text-bold">进驻医疗机构</text>
+						<text class="text-bold">进驻机构</text>
 					</view>
 					<view class="more text-lg" @tap="SearchMore">查看更多<text class="cuIcon-playfill"></text></view>
 				</view>
@@ -93,6 +123,24 @@
 			return{
 				TabCur: 0,
 				scrollLeft: 0,
+				bigicon:[
+					{
+						icon:'../static/guide.png',
+						text:'智能导诊',
+					},
+					{
+						icon:'../static/booking.png',
+						text:'代约医生',
+					},
+					{
+						icon:'../static/re.png',
+						text:'人才招聘',
+					},
+					{
+						icon:'../static/bid.png',
+						text:'招投标',
+					}
+				],
 				mynavs:[
 					{
 						name:"首页",
@@ -100,13 +148,13 @@
 						url:"./index2"
 					},
 					{
-						name:"招聘",
-						icon:"cuIcon-discover",
-						url:"./News/newsList?cate=招聘"
+						name:"智能导诊",
+						icon:"cuIcon-question",
+						url:"./Guide/Guide"
 					},
 					{
-						name:"招投标",
-						icon:"cuIcon-dianhua",
+						name:"科普知识",
+						icon:"cuIcon-discover",
 						url:"./News/newsList?cate=招投标"
 					},
 					{
@@ -253,6 +301,15 @@
 				uni.navigateTo({
 					url: './Guide/Guide',
 				});
+			},
+			Nav(index){
+				if(index==0)this.NavToGuide();
+				else if(index==1);
+				else if(index==2||index==3){
+					uni.redirectTo({
+						url:'./News/newsList'
+					})
+				}
 			}
 		}
 	}
