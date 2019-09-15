@@ -12,7 +12,7 @@
 							<input @tap="navToSearch()" style="padding-left: 20rpx;" :adjust-position="false" type="text" placeholder="在此处搜索" confirm-type="search"></input>
 							<text class="cuIcon-search text-blue margin-right-sm" style="font-size: 36rpx;"></text>
 						</view>
-						<view class="action">
+						<view class="action" @click="NavToProfile">
 							<text class="text-white">厦门</text>
 							<text class="text-white text-xxl margin-left-sm">|</text>
 							<view class="cu-avatar round margin-left-sm" style="background-image:url(../../static/avatar.png);"></view>
@@ -63,7 +63,7 @@
 				</view>
 			</view>
 		</view>
-		<bottom-navbar :navs='mynavs' v-on:selectchange="change($event)" :iniTabCur="TabCur+1"></bottom-navbar>
+		<bottom-navbar :navs='mynavs' v-on:selectchange="change($event)" :iniTabCur="2"></bottom-navbar>
 	</view>
 </template>
 
@@ -79,13 +79,13 @@
 						url:"/pages/index2"
 					},
 					{
-						name:"招聘",
-						icon:"cuIcon-discover",
-						url:"/pages/News/newsList?cate=招聘"
+						name:"智能导诊",
+						icon:"cuIcon-question",
+						url:"/pages/Guide/Guide"
 					},
 					{
-						name:"招投标",
-						icon:"cuIcon-dianhua",
+						name:"科普知识",
+						icon:"cuIcon-discover",
 						url:"/pages/News/newsList?cate=招投标"
 					},
 					{
@@ -134,6 +134,11 @@
 			toDetail(){
 				uni.navigateTo({
 					url:'./newsDetail',
+				})
+			},
+			NavToProfile(){
+				uni.navigateTo({
+					url:'../profile/profile',
 				})
 			}
 		}

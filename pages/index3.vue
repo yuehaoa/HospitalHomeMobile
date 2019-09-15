@@ -97,13 +97,13 @@
 						url:"./index"
 					},
 					{
-						name:"招聘",
-						icon:"cuIcon-discover",
-						url:"./News/newsList?cate=招聘"
+						name:"智能导诊",
+						icon:"cuIcon-question",
+						url:"./Guide/Guide"
 					},
 					{
-						name:"招投标",
-						icon:"cuIcon-dianhua",
+						name:"科普知识",
+						icon:"cuIcon-discover",
 						url:"./News/newsList?cate=招投标"
 					},
 					{
