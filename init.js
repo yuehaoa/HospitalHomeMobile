@@ -8,7 +8,7 @@ uni.post = (url, params, callback) => {
 			currentUserGuid: app.currentUserGuid
 		},
 		header: {
-			'content-type': "application/x-www-form-urlencoded"
+			'Content-Type': "application/x-www-form-urlencoded"
 		},
 		success (res) {
 			if (typeof callback === 'function') {

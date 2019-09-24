@@ -23,7 +23,7 @@
 		{
 			return {
 				divheight:this.StatusBar,
-				perAge:'',
+				preAge:'',
 				age: '',
 				currentUserGuid:'',
 				tip:''

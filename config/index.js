@@ -1,9 +1,8 @@
 let appSetting={
 	currentUserGuid: "",
 	userInfo: {
-		permissions: []
+		
 	},
-	checkPermission () { return false; },
 	dashboard: "../index",
 	domain:  "http://hh.ricebird.cn" ,
 }

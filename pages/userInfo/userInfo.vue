@@ -15,38 +15,38 @@
 				<navigator class="menu_item" url="./modifyRealName">
 					<text style="flex:1;">昵称</text>
 					<view class="detail-info">
-						<text>{{userInfo.RealName}}</text>
+						<text>{{app.userInfo.RealName}}</text>
 					</view>
 				</navigator>
 				<navigator class="menu_item" url="./modifyMobile">
 					<text style="flex:1;">手机号码</text>
 					<view class="detail-info">
-						<text>{{userInfo.Mobile}}</text>
+						<text>{{app.userInfo.Mobile}}</text>
 					</view>
 					
 				</navigator>
 				<navigator class="menu_item">
 					<text style="flex:1;">邮箱</text>
 					<view class="detail-info">
-						<text>{{userInfo.Email?userInfo.Email:"未填写"}}</text>
+						<text>{{app.userInfo.Email?app.userInfo.Email:"未填写"}}</text>
 					</view>
 				</navigator>
 				<navigator class="menu_item" url="./modifyGrade">
 					<text style="flex:1;">年龄</text>
 					<view class="detail-info">
-						<text>{{userInfo.Grade?userInfo.Grade:"未填写"}}</text>
+						<text>{{app.userInfo.Grade?app.userInfo.Grade:"未填写"}}</text>
 					</view>
 				</navigator>
 				<navigator class="menu_item">
 					<text style="flex:1;">性别</text>
 					<view class="detail-info">
-						<text>{{userInfo.Gender?userInfo.Gender:"未填写"}}</text>
+						<text>{{app.userInfo.Gender?app.userInfo.Gender:"未填写"}}</text>
 					</view>
 				</navigator>
 				<navigator class="menu_item" >
 					<text style="flex:1;">地址</text>
 					<view class="detail-info">
-						<text>{{userInfo.Location?userInfo.Location:"未填写"}}</text>
+						<text>{{app.userInfo.Location?app.userInfo.Location:"未填写"}}</text>
 					</view>
 				</navigator>
 			</view>
@@ -63,7 +63,7 @@
 			uni.getStorage({
 				key:'currentUserGuid',
 				success: (res) => {
-					this.currentUserGuid=res.data;
+					this.app.currentUserGuid=res.data;
 				},
 			});
 		},
@@ -73,8 +73,6 @@
 		data() {
 			return {
 				divheight:this.StatusBar,
-				currentUserGuid:'',
-				userInfo:{},
 				imgsrc:'',
 			};
 		},
@@ -84,10 +82,10 @@
 					url: 'http://hh.ricebird.cn/uc/GetUserInfo',
 					method: 'POST',
 					data: {
-						currentUserGuid:this.currentUserGuid,
+						currentUserGuid:this.app.currentUserGuid,
 					},
 					success: res => {
-						this.userInfo = res.data.data;
+						this.app.userInfo = res.data.data;
 						this.imgsrc = "http://hh.ricebird.cn" + res.data.data.Avatar;
 						uni.setStorage({
 							key:'userInfo',
@@ -103,7 +101,7 @@
 					url: 'http://hh.ricebird.cn/api/security/logout',
 					method: 'POST',
 					data: {
-						currentUserGuid:this.currentUserGuid,
+						currentUserGuid:this.app.currentUserGuid,
 					},
 					success: res => {},
 					fail: () => {},

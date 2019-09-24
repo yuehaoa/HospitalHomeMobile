@@ -75,13 +75,10 @@
 	export default {
 		data() {
 			return {
+				userInfo:{},
 				divheight:this.StatusBar,
 				currentUserGuid:'',
 				imgsrc:'',
-				userInfo:{
-					Collections:{	
-					}
-				},
 				mynavs:[
 					{
 						name:"首页",
@@ -107,6 +104,7 @@
 			}
 		},
 		onLoad(){
+			this.userInfo=this.app.userInfo;
 			uni.getStorage({
 				key:'currentUserGuid',
 				success: (res) => {
@@ -125,6 +123,7 @@
 				})
 			},
 			GetInfor(){
+				let THIS=this;
 				uni.request({
 					url: 'http://hh.ricebird.cn/uc/GetUserInfo',
 					method: 'POST',
@@ -141,7 +140,7 @@
 							},1500);
 							return;
 						}
-						this.userInfo = res.data.data;
+						THIS.userInfo = res.data.data;
 						this.imgsrc = "http://hh.ricebird.cn" + res.data.data.Avatar;
 					},
 					fail: () => {},
@@ -164,8 +163,7 @@
 				});
 			}
 			
-		}
-
+		},
 	}
 </script>
 
