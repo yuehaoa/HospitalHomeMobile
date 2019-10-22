@@ -9,6 +9,7 @@ Vue.component('bottom-navbar',bottomNavBar)
 
 Vue.config.productionTip = false
 let app = require("@/config");
+Vue.prototype.app=app;
 require("./init");
 App.mpType = 'app'
 

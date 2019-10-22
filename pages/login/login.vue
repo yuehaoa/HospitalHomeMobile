@@ -19,7 +19,6 @@
 </template>
 
 <script>
-	let app = require("@/config");
 	export default {
 		data() {
 			return {
@@ -76,15 +75,11 @@
 						key:'currentUserGuid',
 						data: msg.currentUserGuid,
 					});
-					app.currentUserGuid = msg.currentUserGuid;
-					app.userInfo = msg.userInfo;
-					let ps = app.userInfo.permissons;
-					app.checkPermission = (p) => {
-						return ps && ps.indexOf(p) >= 0;
-					}
+					this.app.currentUserGuid = msg.currentUserGuid;
+					this.app.userInfo = msg.userInfo;
 				});
 				uni.navigateTo({
-					url: app.dashboard
+					url: this.app.dashboard
 				})
 			},
 		},
